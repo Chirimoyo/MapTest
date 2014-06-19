@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GoogleMaps/GoogleMaps.h>
+@interface MapTestViewController : UIViewController<UITextFieldDelegate>
 
-@interface MapTestViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIView *mapView;
 
 @end
