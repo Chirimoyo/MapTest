@@ -8,8 +8,23 @@
 
 #import <UIKit/UIKit.h>
 #import <GoogleMaps/GoogleMaps.h>
-@interface MapTestViewController : UIViewController<UITextFieldDelegate>
+#import <CoreLocation/CoreLocation.h>
+#import "UnidadGeografica.h"
+#import <UIKit/UIKit.h>
+
+@class MapTestViewController;
+
+@protocol MapTestViewControllerDelegate <NSObject>
+- (void)addItemViewController:(MapTestViewController *)controller didFinishEnteringItem:(UnidadGeografica *)item;
+@end
+
+@interface MapTestViewController : UIViewController<UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
+{
+__weak IBOutlet UITableView *tableView;
+
+}
 
 @property (weak, nonatomic) IBOutlet UIView *mapView;
-
+@property (nonatomic, weak) id <MapTestViewControllerDelegate> delegate;
+@property (nonatomic) NSString *nombreCiudad;
 @end

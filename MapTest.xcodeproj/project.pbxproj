@@ -35,6 +35,12 @@
 		BF6FF5FE19508A05001905AC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6FF5FD19508A05001905AC /* OpenGLES.framework */; };
 		BF6FF60019508A13001905AC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6FF5FF19508A13001905AC /* QuartzCore.framework */; };
 		BF6FF60219508A1C001905AC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6FF60119508A1C001905AC /* SystemConfiguration.framework */; };
+		BF6FF6051958CA91001905AC /* PropMeli.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6FF6041958CA91001905AC /* PropMeli.m */; };
+		BF6FF608195A1C90001905AC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF6FF606195A1C90001905AC /* Default-568h@2x.png */; };
+		BF6FF609195A1C90001905AC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF6FF607195A1C90001905AC /* Default@2x.png */; };
+		BFC87164195C810E0007D662 /* VistaMapaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC87163195C810E0007D662 /* VistaMapaViewController.m */; };
+		BFC87167195CD24B0007D662 /* UnidadGeografica.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC87166195CD24B0007D662 /* UnidadGeografica.m */; };
+		BFC8716A195DA7160007D662 /* ListadoPropiedadesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC87169195DA7160007D662 /* ListadoPropiedadesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +87,16 @@
 		BF6FF5FD19508A05001905AC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF6FF5FF19508A13001905AC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BF6FF60119508A1C001905AC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		BF6FF6031958CA91001905AC /* PropMeli.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropMeli.h; sourceTree = "<group>"; };
+		BF6FF6041958CA91001905AC /* PropMeli.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropMeli.m; sourceTree = "<group>"; };
+		BF6FF606195A1C90001905AC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		BF6FF607195A1C90001905AC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		BFC87162195C810E0007D662 /* VistaMapaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VistaMapaViewController.h; sourceTree = "<group>"; };
+		BFC87163195C810E0007D662 /* VistaMapaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VistaMapaViewController.m; sourceTree = "<group>"; };
+		BFC87165195CD24B0007D662 /* UnidadGeografica.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnidadGeografica.h; sourceTree = "<group>"; };
+		BFC87166195CD24B0007D662 /* UnidadGeografica.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnidadGeografica.m; sourceTree = "<group>"; };
+		BFC87168195DA7160007D662 /* ListadoPropiedadesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListadoPropiedadesViewController.h; sourceTree = "<group>"; };
+		BFC87169195DA7160007D662 /* ListadoPropiedadesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListadoPropiedadesViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,10 +186,18 @@
 				BF6FF5C1195088DF001905AC /* MapTestAppDelegate.h */,
 				BF6FF5C2195088DF001905AC /* MapTestAppDelegate.m */,
 				BF6FF5C4195088DF001905AC /* Main.storyboard */,
+				BFC87168195DA7160007D662 /* ListadoPropiedadesViewController.h */,
+				BFC87169195DA7160007D662 /* ListadoPropiedadesViewController.m */,
+				BFC87162195C810E0007D662 /* VistaMapaViewController.h */,
+				BFC87163195C810E0007D662 /* VistaMapaViewController.m */,
 				BF6FF5C7195088DF001905AC /* MapTestViewController.h */,
 				BF6FF5C8195088DF001905AC /* MapTestViewController.m */,
 				BF6FF5CA195088DF001905AC /* Images.xcassets */,
 				BF6FF5B9195088DF001905AC /* Supporting Files */,
+				BF6FF6031958CA91001905AC /* PropMeli.h */,
+				BF6FF6041958CA91001905AC /* PropMeli.m */,
+				BFC87165195CD24B0007D662 /* UnidadGeografica.h */,
+				BFC87166195CD24B0007D662 /* UnidadGeografica.m */,
 			);
 			path = MapTest;
 			sourceTree = "<group>";
@@ -181,6 +205,8 @@
 		BF6FF5B9195088DF001905AC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BF6FF606195A1C90001905AC /* Default-568h@2x.png */,
+				BF6FF607195A1C90001905AC /* Default@2x.png */,
 				BF6FF5BA195088DF001905AC /* MapTest-Info.plist */,
 				BF6FF5BB195088DF001905AC /* InfoPlist.strings */,
 				BF6FF5BE195088DF001905AC /* main.m */,
@@ -284,9 +310,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF6FF609195A1C90001905AC /* Default@2x.png in Resources */,
 				BF6FF5CB195088DF001905AC /* Images.xcassets in Resources */,
 				BF6FF5BD195088DF001905AC /* InfoPlist.strings in Resources */,
 				BF6FF5C6195088DF001905AC /* Main.storyboard in Resources */,
+				BF6FF608195A1C90001905AC /* Default-568h@2x.png in Resources */,
 				BF6FF5EA1950897A001905AC /* GoogleMaps.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,8 +334,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFC87164195C810E0007D662 /* VistaMapaViewController.m in Sources */,
 				BF6FF5BF195088DF001905AC /* main.m in Sources */,
+				BFC8716A195DA7160007D662 /* ListadoPropiedadesViewController.m in Sources */,
+				BF6FF6051958CA91001905AC /* PropMeli.m in Sources */,
 				BF6FF5C9195088DF001905AC /* MapTestViewController.m in Sources */,
+				BFC87167195CD24B0007D662 /* UnidadGeografica.m in Sources */,
 				BF6FF5C3195088DF001905AC /* MapTestAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,6 +456,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				"PROVISIONING_PROFILE[sdk=*]" = "MapTest dev";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -522,6 +555,7 @@
 				BF6FF5E3195088DF001905AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BF6FF5E4195088DF001905AC /* Build configuration list for PBXNativeTarget "MapTestTests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +564,7 @@
 				BF6FF5E6195088DF001905AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
