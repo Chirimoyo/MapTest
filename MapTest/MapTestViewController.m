@@ -40,13 +40,24 @@
     
     locationManager = [[CLLocationManager alloc] init];
     //location.delegate = self;
-    self.input.text = self.nombreCiudad;
+    [self llamadoAutoComplete: self.nombreCiudad];
+    if ([self.nombreCiudad rangeOfString:@"Posición actual"].location == NSNotFound) {
+        self.input.text = self.nombreCiudad;
+    } else {
+        self.input.text = @"";
+    }
+    //self.input.text = self.nombreCiudad;
     [locationManager startUpdatingLocation];
     [super viewDidLoad];
     self.input.delegate = self;
+    self.input.clearButtonMode = UITextFieldViewModeWhileEditing;
+   
+    //textField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [self.view addSubview:self.input];
 }
-
+- (BOOL)textFieldShouldClear:(UITextField *)textField {
+    return YES;
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -57,38 +68,71 @@
     CGFloat currentZoom = mapView_.camera.zoom;
     [mapView_ animateToCameraPosition:[GMSCameraPosition cameraWithTarget: mapView_.camera.target zoom:currentZoom + 1]];
 }
+-(void)llamadoAutoComplete:(NSString *)nombreUgeo{
 
-/*
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    NSLog(@"touchesBegan:withEvent:");
-    [self.view endEditing:YES];
-    [super touchesBegan:touches withEvent:event];
-}
+    NSString *urlString = [NSString  stringWithFormat:@"https://maps.googleapis.com/maps/api/place/autocomplete/json?input=%@&types=geocode&language=cl&sensor=true&key=AIzaSyA6ORrTeE4pXuzmbP9nm2nFpgoLB_EHhlc&componentRestrictions={country:cl}", nombreUgeo];
+    
+    
+    NSString *strUrl=[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *url = [NSURL URLWithString:strUrl];
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    
+    [[session dataTaskWithURL:url
+      
+            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
+      
+      {
+          
+          
+          
+          NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+          
+          if (httpResponse.statusCode == 200)
+              
+          {
+              
+              
+              NSError *jsonError;
+              NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+              
+              if (!jsonError)
+                  
+              {
+                  if(!self.mapView.hidden){
+                      [self.mapView setHidden: YES];
+                      [tableView setHidden: NO];
+                  }
+                  
+                  [self.listado removeAllObjects];
+                  
+                  for( id key in jsonData){
+                      
+                      if ( [key isEqualToString:@"predictions"]){
+                          NSDictionary *value = [jsonData objectForKey:key];
+                          for (id valor in value) {
+                              [self.listado addObject:[valor objectForKey:@"description"]];
+                              
+                              
+                          }
+                      }
+                  }
+                  dispatch_async(dispatch_get_main_queue(), ^{
+                      [self refreshTableView];
+                  });
+                  
+              }
+              
+          }
+          
+      }] resume];
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-    NSLog(@"textFieldShouldBeginEditing");
-    textField.backgroundColor = [UIColor colorWithRed:220.0f/255.0f green:220.0f/255.0f blue:220.0f/255.0f alpha:1.0f];
-    return YES;
 }
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField{
-    NSLog(@"esta editando????");
-}
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
-    NSLog(@"textFieldShouldEndEditing");
-    textField.backgroundColor = [UIColor whiteColor];
-    return YES;
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField{
-    NSLog(@"textFieldDidEndEditing");
-}
-*/
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     
     
-    NSString *nombreUgeo = [[textField text]
+/*    NSString *nombreUgeo = [[textField text]
                             stringByReplacingCharactersInRange:range withString:string];
     
     NSString *urlString = [NSString  stringWithFormat:@"https://maps.googleapis.com/maps/api/place/autocomplete/json?input=%@&types=geocode&language=cl&sensor=true&key=AIzaSyA6ORrTeE4pXuzmbP9nm2nFpgoLB_EHhlc&componentRestrictions={country:cl}", nombreUgeo];
@@ -146,7 +190,9 @@
               
           }
           
-      }] resume];
+      }] resume];*/
+    [self llamadoAutoComplete:[[textField text]
+                               stringByReplacingCharactersInRange:range withString:string]];
     
     return true;
 }

@@ -10,7 +10,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import <CoreLocation/CoreLocation.h>
 #import "UnidadGeografica.h"
-#import <UIKit/UIKit.h>
+
 
 @class MapTestViewController;
 
@@ -18,7 +18,7 @@
 - (void)addItemViewController:(MapTestViewController *)controller didFinishEnteringItem:(UnidadGeografica *)item;
 @end
 
-@interface MapTestViewController : UIViewController<UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface MapTestViewController : UIViewController<UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate>
 {
 __weak IBOutlet UITableView *tableView;
 

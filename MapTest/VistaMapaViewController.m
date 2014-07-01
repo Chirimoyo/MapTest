@@ -37,10 +37,7 @@
     locationManager = [[CLLocationManager alloc] init];
     //location.delegate = self;
     [locationManager startUpdatingLocation];
-    
-    
-    [super viewDidLoad];
-    
+    self.title  = @"Posición actual";
     
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude: locationManager.location.coordinate.latitude
                                                             longitude:locationManager.location.coordinate.longitude
@@ -58,6 +55,16 @@
     marker.title = @"Santiago";
     marker.snippet = @"Chile";
     marker.map = mapView_;
+    
+    if(self.ugeo == nil){
+    [self ApiMeli:@"Santiago"];
+    }
+    else
+    {
+        [self ApiMeli: self.ugeo.nombre];
+    }
+    //UIImage *imagen = [UIImage imageNamed:@"pin.png"];
+    
 
     // Do any additional setup after loading the view.
 }
@@ -73,19 +80,32 @@
     dispatch_async(dispatch_get_main_queue(), ^{
     self.title = item.nombre;
     
-        [self refreshMap:item.latitud longitud:item.longitud];
+        [self refreshMap:item.latitud longitud:item.longitud nombreCiudad: item.nombre];
     });
     //NSLog(@"This was returned from ViewControllerB %@",item.nombre);
 }
 
 -(IBAction)listadoPropiedades:(id)sender
 {
+    if([[self title ] isEqualToString: @"Posición actual"]){
+        
+    }
+    else{
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
-    ListadoPropiedadesViewController *second = [storyboard instantiateViewControllerWithIdentifier:@"ListadoPropiedadesViewController"];
-  
-        [self.navigationController pushViewController:second animated:YES ];
-
+    ListadoPropiedadesViewController *vistaListado = [storyboard instantiateViewControllerWithIdentifier:@"ListadoPropiedadesViewController"];
+    UnidadGeografica *unidadgeo = [UnidadGeografica new];
+    unidadgeo.nombre = [self title];
+    vistaListado.unidadGeografica.nombre = [self title];
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.3f;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionFade;
+    transition.subtype = kCATransitionFromRight;
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+    
+    [self.navigationController pushViewController:vistaListado animated:YES ];
+    }
 
     
 }
@@ -104,9 +124,10 @@
 
 }
 
-- (void) refreshMap:(id)lat  longitud:(id)lng{
+- (void) refreshMap:(id)lat  longitud:(id)lng nombreCiudad:(NSString *)nombreCiudad{
+    [mapView_ clear];
     [mapView_ animateToLocation:CLLocationCoordinate2DMake([lat doubleValue], [lng doubleValue])];
-    [self ApiMeli:@"santiago"];
+    [self ApiMeli:nombreCiudad];
 }
 
 
@@ -115,13 +136,30 @@
     marker.position = CLLocationCoordinate2DMake([lat doubleValue], [lng doubleValue]);
     marker.title = idMeli;
     marker.snippet = idMeli;
+    UIImage *imagen = [UIImage imageNamed:@"pin.png" ];
+    [marker setIcon:imagen];
     marker.map = mapView_;
 }
 -(void) ApiMeli:(NSString *) ciudad{
     
     
-    NSString *urlString = @"https://mobile.mercadolibre.com.ar/sites/MLC/search?category=MLC1480&limit=50&state=TUxDUE1FVEExM2JlYg&city=TUxDQ1NBTjk4M2M";
+    NSString *urlString;
+   
     
+    if ([ciudad rangeOfString:@"Santiago"].location != NSNotFound) {
+        urlString = @"https://mobile.mercadolibre.com.ar/sites/MLC/search?category=MLC1480&limit=50&state=TUxDUE1FVEExM2JlYg&city=TUxDQ1NBTjk4M2M";
+    } else {
+        
+        if ([ciudad rangeOfString:@"del Mar"].location != NSNotFound) {
+            urlString = @"https://mobile.mercadolibre.com.ar/sites/MLC/search?category=MLC1480&limit=50&state=TUxDUFZBTE84MDVj&city=TUxDQ1ZJ0WQ3ZGU4";
+        } else {
+            
+            urlString =@"https://mobile.mercadolibre.com.ar/sites/MLC/search?category=MLC1480&limit=50&state=TUxDUERFTE9lODZj&city=TUxDQ0NPTjYwZTdk";
+        }
+    }
+
+
+
     urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     NSURL *url = [NSURL URLWithString:urlString];
@@ -155,17 +193,6 @@
                           for (id valor in value) {
                               id lat= [[valor objectForKey:@"location"] objectForKey:@"latitude"];
                               id lng= [[valor objectForKey:@"location"] objectForKey:@"longitude"];
-                              
-                              
-                              
-                              /*PropMeli *prop = [[PropMeli alloc] init];
-                              [prop setIdMeli:[valor objectForKey:@"id"]];
-                              [prop setUrl:[valor objectForKey:@"permalink"]];
-                              [prop setUrl:[valor objectForKey:@"latitude"]];
-                              [prop setUrl:[valor objectForKey:@"longitude"]];
-                              [prop setImagen:[valor objectForKey:@"mosaic_picture"]];
-                              
-                              [self.listado addObject:prop];*/
                               dispatch_async(dispatch_get_main_queue(), ^{
                                   [self addMarker:lat longitud:lng idMeli:[valor objectForKey:@"permalink"] ];
                               });

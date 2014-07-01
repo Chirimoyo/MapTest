@@ -14,4 +14,8 @@
 @property (strong, nonatomic) id latitude;
 @property (strong, nonatomic) id longitud;
 @property (strong, nonatomic) NSString *imagen;
+@property (strong, nonatomic) UIImage *img;
+@property (strong, nonatomic) NSString *precio;
+@property (strong, nonatomic) NSString *title;
+
 @end

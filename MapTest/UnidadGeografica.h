@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface UnidadGeografica : NSObject
 @property (strong, nonatomic) NSString *nombre;
 @property (strong, nonatomic) id latitud;

@@ -15,5 +15,5 @@
 @interface VistaMapaViewController : UIViewController<MapTestViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *mapView;
-
+@property (weak, nonatomic) UnidadGeografica *ugeo;
 @end

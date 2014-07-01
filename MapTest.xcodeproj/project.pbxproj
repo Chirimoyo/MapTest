@@ -41,6 +41,10 @@
 		BFC87164195C810E0007D662 /* VistaMapaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC87163195C810E0007D662 /* VistaMapaViewController.m */; };
 		BFC87167195CD24B0007D662 /* UnidadGeografica.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC87166195CD24B0007D662 /* UnidadGeografica.m */; };
 		BFC8716A195DA7160007D662 /* ListadoPropiedadesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC87169195DA7160007D662 /* ListadoPropiedadesViewController.m */; };
+		BFC87170195FABAA0007D662 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = BFC8716F195FABAA0007D662 /* pin.png */; };
+		BFC87174195FBEB00007D662 /* burger.png in Resources */ = {isa = PBXBuildFile; fileRef = BFC87173195FBEB00007D662 /* burger.png */; };
+		BFC871791961EF0C0007D662 /* esperando.gif in Resources */ = {isa = PBXBuildFile; fileRef = BFC871781961EF0C0007D662 /* esperando.gif */; };
+		BFC8717B1961F0BE0007D662 /* esperando1.png in Resources */ = {isa = PBXBuildFile; fileRef = BFC8717A1961F0BE0007D662 /* esperando1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +101,10 @@
 		BFC87166195CD24B0007D662 /* UnidadGeografica.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnidadGeografica.m; sourceTree = "<group>"; };
 		BFC87168195DA7160007D662 /* ListadoPropiedadesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListadoPropiedadesViewController.h; sourceTree = "<group>"; };
 		BFC87169195DA7160007D662 /* ListadoPropiedadesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListadoPropiedadesViewController.m; sourceTree = "<group>"; };
+		BFC8716F195FABAA0007D662 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
+		BFC87173195FBEB00007D662 /* burger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = burger.png; sourceTree = "<group>"; };
+		BFC871781961EF0C0007D662 /* esperando.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = esperando.gif; sourceTree = "<group>"; };
+		BFC8717A1961F0BE0007D662 /* esperando1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = esperando1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +213,10 @@
 		BF6FF5B9195088DF001905AC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BFC8717A1961F0BE0007D662 /* esperando1.png */,
+				BFC871781961EF0C0007D662 /* esperando.gif */,
+				BFC87173195FBEB00007D662 /* burger.png */,
+				BFC8716F195FABAA0007D662 /* pin.png */,
 				BF6FF606195A1C90001905AC /* Default-568h@2x.png */,
 				BF6FF607195A1C90001905AC /* Default@2x.png */,
 				BF6FF5BA195088DF001905AC /* MapTest-Info.plist */,
@@ -313,6 +325,10 @@
 				BF6FF609195A1C90001905AC /* Default@2x.png in Resources */,
 				BF6FF5CB195088DF001905AC /* Images.xcassets in Resources */,
 				BF6FF5BD195088DF001905AC /* InfoPlist.strings in Resources */,
+				BFC87170195FABAA0007D662 /* pin.png in Resources */,
+				BFC871791961EF0C0007D662 /* esperando.gif in Resources */,
+				BFC8717B1961F0BE0007D662 /* esperando1.png in Resources */,
+				BFC87174195FBEB00007D662 /* burger.png in Resources */,
 				BF6FF5C6195088DF001905AC /* Main.storyboard in Resources */,
 				BF6FF608195A1C90001905AC /* Default-568h@2x.png in Resources */,
 				BF6FF5EA1950897A001905AC /* GoogleMaps.bundle in Resources */,

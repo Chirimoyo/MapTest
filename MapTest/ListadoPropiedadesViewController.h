@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UnidadGeografica.h"
+#import "VistaMapaViewController.h"
 
 @interface ListadoPropiedadesViewController : UIViewController
 
+{
+    __weak IBOutlet UITableView *tableview;
+}
+@property UnidadGeografica * unidadGeografica;
 @end
