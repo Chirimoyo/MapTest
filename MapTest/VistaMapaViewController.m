@@ -96,7 +96,7 @@
     ListadoPropiedadesViewController *vistaListado = [storyboard instantiateViewControllerWithIdentifier:@"ListadoPropiedadesViewController"];
     UnidadGeografica *unidadgeo = [UnidadGeografica new];
     unidadgeo.nombre = [self title];
-    vistaListado.unidadGeografica.nombre = [self title];
+    vistaListado.unidadGeografica = unidadgeo;
     CATransition *transition = [CATransition animation];
     transition.duration = 0.3f;
     transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
