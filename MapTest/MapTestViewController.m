@@ -131,67 +131,7 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     
-    
-/*    NSString *nombreUgeo = [[textField text]
-                            stringByReplacingCharactersInRange:range withString:string];
-    
-    NSString *urlString = [NSString  stringWithFormat:@"https://maps.googleapis.com/maps/api/place/autocomplete/json?input=%@&types=geocode&language=cl&sensor=true&key=AIzaSyA6ORrTeE4pXuzmbP9nm2nFpgoLB_EHhlc&componentRestrictions={country:cl}", nombreUgeo];
-    
-    
-    NSString *strUrl=[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSURL *url = [NSURL URLWithString:strUrl];
-    
-    NSURLSession *session = [NSURLSession sharedSession];
-    
-    [[session dataTaskWithURL:url
-      
-            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
-      
-      {
-          
-          
-          
-          NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-          
-          if (httpResponse.statusCode == 200)
-              
-          {
-              
-              
-              NSError *jsonError;
-              NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
-              
-              if (!jsonError)
-                  
-              {
-                  if(!self.mapView.hidden){
-                      [self.mapView setHidden: YES];
-                      [tableView setHidden: NO];
-                  }
-                  
-                  [self.listado removeAllObjects];
-                  
-                  for( id key in jsonData){
-                      
-                      if ( [key isEqualToString:@"predictions"]){
-                          NSDictionary *value = [jsonData objectForKey:key];
-                          for (id valor in value) {
-                              [self.listado addObject:[valor objectForKey:@"description"]];
-                              
-                              
-                          }
-                      }
-                  }
-                  dispatch_async(dispatch_get_main_queue(), ^{
-                      [self refreshTableView];
-                  });
-                  
-              }
-              
-          }
-          
-      }] resume];*/
-    [self llamadoAutoComplete:[[textField text]
+        [self llamadoAutoComplete:[[textField text]
                                stringByReplacingCharactersInRange:range withString:string]];
     
     return true;

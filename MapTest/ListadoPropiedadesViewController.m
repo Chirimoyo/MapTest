@@ -8,15 +8,18 @@
 
 #import "ListadoPropiedadesViewController.h"
 #import "PropMeli.h"
-@interface ListadoPropiedadesViewController ()
+#import "AlphaGradientView.h"
 
+@interface ListadoPropiedadesViewController ()
+@property NSMutableArray *propiedades;
 @end
 
 @implementation ListadoPropiedadesViewController
-{
-    NSMutableArray *propiedades;
-}
 
+
+
+
+@synthesize propiedades;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -26,23 +29,20 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    self.navigationItem.hidesBackButton = YES;
+- (void) cargarTabla: (NSInteger) offset{
     
     NSString *urlString;
-
+    
     
     if ([self.unidadGeografica.nombre rangeOfString:@"Santiago"].location != NSNotFound) {
-        urlString = @"https://mobile.mercadolibre.com.ar/sites/MLC/search?category=MLC1480&limit=50&state=TUxDUE1FVEExM2JlYg&city=TUxDQ1NBTjk4M2M";
+        urlString = [NSString stringWithFormat:@"https://mobile.mercadolibre.com.ar/sites/MLC/search?category=MLC1480&limit=3&state=TUxDUE1FVEExM2JlYg&city=TUxDQ1NBTjk4M2M&offset=%d" , offset];
     } else {
         
         if ([self.unidadGeografica.nombre rangeOfString:@"del Mar"].location != NSNotFound) {
-            urlString = @"https://mobile.mercadolibre.com.ar/sites/MLC/search?category=MLC1480&limit=50&state=TUxDUFZBTE84MDVj&city=TUxDQ1ZJ0WQ3ZGU4";
+            urlString = [ NSString stringWithFormat:@"https://mobile.mercadolibre.com.ar/sites/MLC/search?category=MLC1480&limit=3&state=TUxDUFZBTE84MDVj&city=TUxDQ1ZJ0WQ3ZGU4&offset=%d", offset];
         } else {
             
-            urlString =@"https://mobile.mercadolibre.com.ar/sites/MLC/search?category=MLC1480&limit=50&state=TUxDUERFTE9lODZj&city=TUxDQ0NPTjYwZTdk";
+            urlString =[ NSString stringWithFormat: @"https://mobile.mercadolibre.com.ar/sites/MLC/search?category=MLC1480&limit=3&state=TUxDUERFTE9lODZj&city=TUxDQ0NPTjYwZTdk&offset=%d", offset];
         }
     }
     urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -56,7 +56,7 @@
             completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
       
       {
-
+          
           NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
           
           if (httpResponse.statusCode == 200)
@@ -69,35 +69,38 @@
               if (!jsonError)
                   
               {
-                  
+                  int i = 1;
                   for( id key in jsonData){
                       
                       if ( [key isEqualToString:@"results"]){
                           NSDictionary *value = [jsonData objectForKey:key];
-                             NSMutableArray *array = [NSMutableArray new];
+                          NSMutableArray *array = [NSMutableArray new];
                           for (id valor in value) {
-                 
+                              
                               PropMeli *prop = [[PropMeli alloc] init];
-                               [prop setIdMeli:[valor objectForKey:@"id"]];
-                               [prop setUrl:[valor objectForKey:@"permalink"]];
-                               [prop setUrl:[valor objectForKey:@"latitude"]];
-                               [prop setUrl:[valor objectForKey:@"longitude"]];
-                               [prop setImagen:[valor objectForKey:@"gallery_picture"]];
-                               [prop setTitle:[valor objectForKey:@"title"]];
+                              [prop setIdMeli:[valor objectForKey:@"id"]];
+                              [prop setUrl:[valor objectForKey:@"permalink"]];
+                              [prop setUrl:[valor objectForKey:@"latitude"]];
+                              [prop setUrl:[valor objectForKey:@"longitude"]];
+                              [prop setImagen:[valor objectForKey:@"gallery_picture"]];
+                              [prop setTitle:[valor objectForKey:@"title"]];
+                              
+                              prop.esFavorito = NO ;
                               id precio = [valor objectForKey:@"price"];
                               NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
                               [numberFormatter setFormatterBehavior: NSNumberFormatterBehavior10_4];
                               [numberFormatter setNumberStyle: NSNumberFormatterDecimalStyle];
                               NSString *numberString = [numberFormatter stringFromNumber: [NSNumber numberWithDouble:[precio doubleValue]]];
-                               
                               
-                               [prop setPrecio:[NSString stringWithFormat:@"%@ %@", @"$", numberString]];
-                               [array addObject:prop];
+                              
+                              [prop setPrecio:[NSString stringWithFormat:@"%@ %@", @"$", numberString]];
+                              [array addObject:prop];
+                              i++;
                           }
                           dispatch_async(dispatch_get_main_queue(), ^{
                               [self refreshTableView: array];
                           });
-
+                          
                       }
                   }
                   
@@ -106,13 +109,27 @@
           }
           
       }] resume];
+
     
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.navigationItem.hidesBackButton = YES;
+    
+    self.title = self.unidadGeografica.nombre ;
+    propiedades =  [NSMutableArray new];
+    [self cargarTabla:0];
     
     // Do any additional setup after loading the view.
 }
 - (void) refreshTableView:(NSMutableArray *)listado
 {
-    propiedades = listado;
+    for (PropMeli *prop in listado) {
+        [propiedades addObject:prop];
+    }
+    
     [tableview reloadData];
 }
 - (void)didReceiveMemoryWarning
@@ -125,6 +142,22 @@
 {
     // Return the number of rows in the section.
     return propiedades.count;
+}
+-(IBAction) toggleUIButtonImage:(UIButton*)sender{
+    PropMeli *propiedad = ((PropMeli * )propiedades[sender.tag]);
+    
+    if ([sender isSelected]) {
+        [sender setImage:[UIImage imageNamed:@"NoEsFavorito"] forState:UIControlStateNormal];
+        [sender setSelected:NO];
+        propiedad.esFavorito = NO;
+
+        
+    } else {
+        [sender setImage:[UIImage imageNamed:@"EsFavorito"] forState:UIControlStateSelected];
+        [sender setSelected:YES];
+        propiedad.esFavorito = YES;
+
+    }
 }
 - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
     //UIGraphicsBeginImageContext(newSize);
@@ -164,7 +197,7 @@
 - (void)bajarImagenDesdeUrl:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock
 {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    [NSURLConnection sendAsynchronousRequest:request
+    [NSURLConnection  sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
                                if ( !error )
@@ -177,6 +210,38 @@
                            }];
 }
 
+
+- (UIImage *) imagenFondoNegro:(UIImage *) image{
+
+    CGFloat scale = image.scale;
+    UIGraphicsBeginImageContext(CGSizeMake(image.size.width * scale, image.size.height * scale));
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextTranslateCTM(context, 0, image.size.height);
+    CGContextScaleCTM(context, 1.0, -1.0);
+    
+    CGContextSetBlendMode(context, kCGBlendModeMultiply);
+    CGRect rect = CGRectMake(0, 0, image.size.width * scale, image.size.height * scale);
+    CGContextDrawImage(context, rect, image.CGImage);
+    
+    // Create gradient
+    
+    UIColor *colorOne = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+    UIColor *colorTwo = [UIColor colorWithRed:0 green:0 blue:0 alpha:50];
+    
+    
+    NSArray *colors = [NSArray arrayWithObjects:(id)colorOne.CGColor, (id)colorTwo.CGColor, nil];
+    CGColorSpaceRef space = CGColorSpaceCreateDeviceRGB();
+    CGGradientRef gradient = CGGradientCreateWithColors(space, (CFArrayRef)colors, NULL);
+    
+    // Apply gradient
+    
+    CGContextClipToMask(context, rect, image.CGImage);
+    CGContextDrawLinearGradient(context, gradient, CGPointMake(0,image.size.height),CGPointMake(0,50), 10);
+    UIImage *gradientImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return gradientImage;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
@@ -187,11 +252,31 @@
     }
     
     PropMeli *propiedad = ((PropMeli * )propiedades[indexPath.row]);
+    
+  
+    
+    UISwipeGestureRecognizer *gestureR = [[UISwipeGestureRecognizer alloc]
+                                          initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [gestureR setDirection:UISwipeGestureRecognizerDirectionRight];//|UISwipeGestureRecognizerDirectionRight)];
+    [cell addGestureRecognizer:gestureR];
+    
+    
+   
+    
     if (propiedad.img != nil) {
-        UIImageView *cellBackgroundView = [[UIImageView alloc] initWithImage:propiedad.img];
-        cellBackgroundView.image = propiedad.img;
-        cell.backgroundView = cellBackgroundView;
+        
+        AlphaGradientView* gradient = [[AlphaGradientView alloc] initWithFrame:
+                                       CGRectMake(0, 0, cell.frame.size.width,
+                                                  cell.frame.size.height)];
+        
+        gradient.color = [UIColor blackColor];
+        gradient.direction = GRADIENT_DOWN;
+        UIColor *background = [[UIColor alloc] initWithPatternImage:propiedad.img];
+        gradient.backgroundColor = background;
+        [cell addSubview:gradient];
+        cell.backgroundView = gradient;
 
+    
     }
     else
     {
@@ -202,13 +287,30 @@
         //cell.imageView.image = ;
         [self bajarImagenDesdeUrl:[NSURL URLWithString:propiedad.imagen] completionBlock:^(BOOL succeeded, UIImage *image) {
             if (succeeded) {
-               
-                //cell.imageView.image = image;
-                UIImage *miima = [self imageWithImage:image scaledToSize:CGSizeMake(cell.frame.size.width, cell.frame.size.height)];
-                UIImageView *cellBackgroundView = [[UIImageView alloc] initWithImage:miima];
-                cellBackgroundView.image = miima;
+        
                 
-                cell.backgroundView = cellBackgroundView;
+                //cell.imageView.image = image;
+                //UIImage *miima = [self imageWithImage:image scaledToSize:CGSizeMake(cell.frame.size.width, cell.frame.size.height)];
+                
+                 UIImage *miima = [self imageWithImage:image scaledToSize:CGSizeMake(cell.frame.size.width, cell.frame.size.height)];
+                
+                AlphaGradientView* gradient = [[AlphaGradientView alloc] initWithFrame:
+                                               CGRectMake(0, 0, cell.frame.size.width,
+                                                          cell.frame.size.height)];
+                
+                gradient.color = [UIColor blackColor];
+                gradient.direction = GRADIENT_DOWN;
+                UIColor *background = [[UIColor alloc] initWithPatternImage:miima];
+                gradient.backgroundColor = background;
+                
+         
+                
+               
+                [cell addSubview:gradient];
+
+                cell.backgroundView = gradient;
+                
+                //cell.backgroundView = cellBackgroundView;
                 
                 // pal cache..
                 propiedad.img = miima;
@@ -216,15 +318,51 @@
         }];
 
     }
+    
+    UIButton *btnAgregarFavoritos = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnAgregarFavoritos.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    btnAgregarFavoritos.frame = CGRectMake(250.0f, 134.0f, 50.0f, 45.0f);
+    
+    if (propiedad.esFavorito == YES) {
+        [btnAgregarFavoritos setImage:[UIImage imageNamed:@"EsFavorito"] forState:UIControlStateSelected];
+        [btnAgregarFavoritos setSelected:YES];
+        
+    } else {
+        [btnAgregarFavoritos setImage:[UIImage imageNamed:@"NoEsFavorito"] forState:UIControlStateNormal];
+        [btnAgregarFavoritos setSelected:NO];
+    }
+    
+    btnAgregarFavoritos.tag = indexPath.row;
+    [btnAgregarFavoritos setTintColor: [UIColor whiteColor]];
+    [btnAgregarFavoritos addTarget:self action:@selector(toggleUIButtonImage:) forControlEvents:UIControlEventTouchUpInside];
+    [cell addSubview:btnAgregarFavoritos];
 
+    
     UILabel *recipeNameLabel = (UILabel *)[cell viewWithTag:102];
     recipeNameLabel.text = propiedad.title;
     
     UILabel *recipeDetailLabel = (UILabel *)[cell viewWithTag:103];
     recipeDetailLabel.text = propiedad.precio;
     
+    
     return cell;
 }
 
+
+- (void)scrollViewDidEndDecelerating: (UIScrollView*)scroll {
+    
+    CGFloat currentOffset = scroll.contentOffset.y;
+    CGFloat maximumOffset = scroll.contentSize.height - scroll.frame.size.height;
+
+    if (maximumOffset - currentOffset <= 10.0) {
+       [self cargarTabla: [propiedades count]  +1 ];
+    }
+}
+
+
+- (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer {
+    
+    NSLog(@"%d = %d",recognizer.direction,recognizer.state);
+}
 
 @end

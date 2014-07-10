@@ -10,12 +10,6 @@
 		BF6FF5B3195088DF001905AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6FF5B2195088DF001905AC /* Foundation.framework */; };
 		BF6FF5B5195088DF001905AC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6FF5B4195088DF001905AC /* CoreGraphics.framework */; };
 		BF6FF5B7195088DF001905AC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6FF5B6195088DF001905AC /* UIKit.framework */; };
-		BF6FF5BD195088DF001905AC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF6FF5BB195088DF001905AC /* InfoPlist.strings */; };
-		BF6FF5BF195088DF001905AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6FF5BE195088DF001905AC /* main.m */; };
-		BF6FF5C3195088DF001905AC /* MapTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6FF5C2195088DF001905AC /* MapTestAppDelegate.m */; };
-		BF6FF5C6195088DF001905AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF6FF5C4195088DF001905AC /* Main.storyboard */; };
-		BF6FF5C9195088DF001905AC /* MapTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6FF5C8195088DF001905AC /* MapTestViewController.m */; };
-		BF6FF5CB195088DF001905AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF6FF5CA195088DF001905AC /* Images.xcassets */; };
 		BF6FF5D2195088DF001905AC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6FF5D1195088DF001905AC /* XCTest.framework */; };
 		BF6FF5D3195088DF001905AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6FF5B2195088DF001905AC /* Foundation.framework */; };
 		BF6FF5D4195088DF001905AC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6FF5B6195088DF001905AC /* UIKit.framework */; };
@@ -35,16 +29,21 @@
 		BF6FF5FE19508A05001905AC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6FF5FD19508A05001905AC /* OpenGLES.framework */; };
 		BF6FF60019508A13001905AC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6FF5FF19508A13001905AC /* QuartzCore.framework */; };
 		BF6FF60219508A1C001905AC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6FF60119508A1C001905AC /* SystemConfiguration.framework */; };
-		BF6FF6051958CA91001905AC /* PropMeli.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6FF6041958CA91001905AC /* PropMeli.m */; };
-		BF6FF608195A1C90001905AC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF6FF606195A1C90001905AC /* Default-568h@2x.png */; };
-		BF6FF609195A1C90001905AC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF6FF607195A1C90001905AC /* Default@2x.png */; };
-		BFC87164195C810E0007D662 /* VistaMapaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC87163195C810E0007D662 /* VistaMapaViewController.m */; };
-		BFC87167195CD24B0007D662 /* UnidadGeografica.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC87166195CD24B0007D662 /* UnidadGeografica.m */; };
-		BFC8716A195DA7160007D662 /* ListadoPropiedadesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC87169195DA7160007D662 /* ListadoPropiedadesViewController.m */; };
-		BFC87170195FABAA0007D662 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = BFC8716F195FABAA0007D662 /* pin.png */; };
-		BFC87174195FBEB00007D662 /* burger.png in Resources */ = {isa = PBXBuildFile; fileRef = BFC87173195FBEB00007D662 /* burger.png */; };
-		BFC871791961EF0C0007D662 /* esperando.gif in Resources */ = {isa = PBXBuildFile; fileRef = BFC871781961EF0C0007D662 /* esperando.gif */; };
-		BFC8717B1961F0BE0007D662 /* esperando1.png in Resources */ = {isa = PBXBuildFile; fileRef = BFC8717A1961F0BE0007D662 /* esperando1.png */; };
+		BFC8720F196B29A40007D662 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFC871EF196B29A40007D662 /* Main.storyboard */; };
+		BFC87213196B29A40007D662 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BFC871F4196B29A40007D662 /* InfoPlist.strings */; };
+		BFC87218196B29A40007D662 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFC871FA196B29A40007D662 /* Images.xcassets */; };
+		BFC87219196B29A40007D662 /* ListadoPropiedadesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC871FC196B29A40007D662 /* ListadoPropiedadesViewController.m */; };
+		BFC8721C196B29A40007D662 /* MapTest-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFC871FF196B29A40007D662 /* MapTest-Info.plist */; };
+		BFC8721D196B29A40007D662 /* MapTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC87202196B29A40007D662 /* MapTestAppDelegate.m */; };
+		BFC8721E196B29A40007D662 /* MapTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC87204196B29A40007D662 /* MapTestViewController.m */; };
+		BFC87221196B29A40007D662 /* PropMeli.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC87208196B29A40007D662 /* PropMeli.m */; };
+		BFC87223196B29A40007D662 /* UnidadGeografica.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC8720C196B29A40007D662 /* UnidadGeografica.m */; };
+		BFC87224196B29A40007D662 /* VistaMapaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC8720E196B29A40007D662 /* VistaMapaViewController.m */; };
+		BFC8723F196B2BC20007D662 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC8723E196B2BC20007D662 /* main.m */; };
+		BFC87241196B2E660007D662 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = BFC87240196B2E660007D662 /* Assets */; };
+		BFC8724D196B4A710007D662 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC8724C196B4A710007D662 /* CollectionViewController.m */; };
+		BFC87250196B4ABA0007D662 /* Celda.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC8724F196B4ABA0007D662 /* Celda.m */; };
+		BFC87253196C84650007D662 /* AlphaGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC87252196C84650007D662 /* AlphaGradientView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,16 +61,6 @@
 		BF6FF5B2195088DF001905AC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BF6FF5B4195088DF001905AC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		BF6FF5B6195088DF001905AC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		BF6FF5BA195088DF001905AC /* MapTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MapTest-Info.plist"; sourceTree = "<group>"; };
-		BF6FF5BC195088DF001905AC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		BF6FF5BE195088DF001905AC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		BF6FF5C0195088DF001905AC /* MapTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MapTest-Prefix.pch"; sourceTree = "<group>"; };
-		BF6FF5C1195088DF001905AC /* MapTestAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapTestAppDelegate.h; sourceTree = "<group>"; };
-		BF6FF5C2195088DF001905AC /* MapTestAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapTestAppDelegate.m; sourceTree = "<group>"; };
-		BF6FF5C5195088DF001905AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BF6FF5C7195088DF001905AC /* MapTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapTestViewController.h; sourceTree = "<group>"; };
-		BF6FF5C8195088DF001905AC /* MapTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapTestViewController.m; sourceTree = "<group>"; };
-		BF6FF5CA195088DF001905AC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BF6FF5D0195088DF001905AC /* MapTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MapTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF6FF5D1195088DF001905AC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		BF6FF5D9195088DF001905AC /* MapTestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MapTestTests-Info.plist"; sourceTree = "<group>"; };
@@ -91,20 +80,30 @@
 		BF6FF5FD19508A05001905AC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF6FF5FF19508A13001905AC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BF6FF60119508A1C001905AC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		BF6FF6031958CA91001905AC /* PropMeli.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropMeli.h; sourceTree = "<group>"; };
-		BF6FF6041958CA91001905AC /* PropMeli.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropMeli.m; sourceTree = "<group>"; };
-		BF6FF606195A1C90001905AC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		BF6FF607195A1C90001905AC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		BFC87162195C810E0007D662 /* VistaMapaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VistaMapaViewController.h; sourceTree = "<group>"; };
-		BFC87163195C810E0007D662 /* VistaMapaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VistaMapaViewController.m; sourceTree = "<group>"; };
-		BFC87165195CD24B0007D662 /* UnidadGeografica.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnidadGeografica.h; sourceTree = "<group>"; };
-		BFC87166195CD24B0007D662 /* UnidadGeografica.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnidadGeografica.m; sourceTree = "<group>"; };
-		BFC87168195DA7160007D662 /* ListadoPropiedadesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListadoPropiedadesViewController.h; sourceTree = "<group>"; };
-		BFC87169195DA7160007D662 /* ListadoPropiedadesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListadoPropiedadesViewController.m; sourceTree = "<group>"; };
-		BFC8716F195FABAA0007D662 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
-		BFC87173195FBEB00007D662 /* burger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = burger.png; sourceTree = "<group>"; };
-		BFC871781961EF0C0007D662 /* esperando.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = esperando.gif; sourceTree = "<group>"; };
-		BFC8717A1961F0BE0007D662 /* esperando1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = esperando1.png; sourceTree = "<group>"; };
+		BFC871F0196B29A40007D662 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BFC871F5196B29A40007D662 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BFC871FA196B29A40007D662 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BFC871FB196B29A40007D662 /* ListadoPropiedadesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListadoPropiedadesViewController.h; sourceTree = "<group>"; };
+		BFC871FC196B29A40007D662 /* ListadoPropiedadesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListadoPropiedadesViewController.m; sourceTree = "<group>"; };
+		BFC871FF196B29A40007D662 /* MapTest-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MapTest-Info.plist"; sourceTree = "<group>"; };
+		BFC87201196B29A40007D662 /* MapTestAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapTestAppDelegate.h; sourceTree = "<group>"; };
+		BFC87202196B29A40007D662 /* MapTestAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapTestAppDelegate.m; sourceTree = "<group>"; };
+		BFC87203196B29A40007D662 /* MapTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapTestViewController.h; sourceTree = "<group>"; };
+		BFC87204196B29A40007D662 /* MapTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapTestViewController.m; sourceTree = "<group>"; };
+		BFC87207196B29A40007D662 /* PropMeli.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropMeli.h; sourceTree = "<group>"; };
+		BFC87208196B29A40007D662 /* PropMeli.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropMeli.m; sourceTree = "<group>"; };
+		BFC8720B196B29A40007D662 /* UnidadGeografica.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnidadGeografica.h; sourceTree = "<group>"; };
+		BFC8720C196B29A40007D662 /* UnidadGeografica.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnidadGeografica.m; sourceTree = "<group>"; };
+		BFC8720D196B29A40007D662 /* VistaMapaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VistaMapaViewController.h; sourceTree = "<group>"; };
+		BFC8720E196B29A40007D662 /* VistaMapaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VistaMapaViewController.m; sourceTree = "<group>"; };
+		BFC8723E196B2BC20007D662 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BFC87240196B2E660007D662 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
+		BFC8724B196B4A710007D662 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionViewController.h; path = ../CollectionViewController.h; sourceTree = "<group>"; };
+		BFC8724C196B4A710007D662 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionViewController.m; path = ../CollectionViewController.m; sourceTree = "<group>"; };
+		BFC8724E196B4ABA0007D662 /* Celda.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Celda.h; sourceTree = "<group>"; };
+		BFC8724F196B4ABA0007D662 /* Celda.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Celda.m; sourceTree = "<group>"; };
+		BFC87251196C84650007D662 /* AlphaGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlphaGradientView.h; sourceTree = "<group>"; };
+		BFC87252196C84650007D662 /* AlphaGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlphaGradientView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,7 +146,7 @@
 		BF6FF5A6195088DF001905AC = {
 			isa = PBXGroup;
 			children = (
-				BF6FF5B8195088DF001905AC /* MapTest */,
+				BFC871EE196B29A40007D662 /* MapTest */,
 				BF6FF5D7195088DF001905AC /* MapTestTests */,
 				BF6FF5B1195088DF001905AC /* Frameworks */,
 				BF6FF5B0195088DF001905AC /* Products */,
@@ -188,45 +187,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		BF6FF5B8195088DF001905AC /* MapTest */ = {
-			isa = PBXGroup;
-			children = (
-				BF6FF5C1195088DF001905AC /* MapTestAppDelegate.h */,
-				BF6FF5C2195088DF001905AC /* MapTestAppDelegate.m */,
-				BF6FF5C4195088DF001905AC /* Main.storyboard */,
-				BFC87168195DA7160007D662 /* ListadoPropiedadesViewController.h */,
-				BFC87169195DA7160007D662 /* ListadoPropiedadesViewController.m */,
-				BFC87162195C810E0007D662 /* VistaMapaViewController.h */,
-				BFC87163195C810E0007D662 /* VistaMapaViewController.m */,
-				BF6FF5C7195088DF001905AC /* MapTestViewController.h */,
-				BF6FF5C8195088DF001905AC /* MapTestViewController.m */,
-				BF6FF5CA195088DF001905AC /* Images.xcassets */,
-				BF6FF5B9195088DF001905AC /* Supporting Files */,
-				BF6FF6031958CA91001905AC /* PropMeli.h */,
-				BF6FF6041958CA91001905AC /* PropMeli.m */,
-				BFC87165195CD24B0007D662 /* UnidadGeografica.h */,
-				BFC87166195CD24B0007D662 /* UnidadGeografica.m */,
-			);
-			path = MapTest;
-			sourceTree = "<group>";
-		};
-		BF6FF5B9195088DF001905AC /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				BFC8717A1961F0BE0007D662 /* esperando1.png */,
-				BFC871781961EF0C0007D662 /* esperando.gif */,
-				BFC87173195FBEB00007D662 /* burger.png */,
-				BFC8716F195FABAA0007D662 /* pin.png */,
-				BF6FF606195A1C90001905AC /* Default-568h@2x.png */,
-				BF6FF607195A1C90001905AC /* Default@2x.png */,
-				BF6FF5BA195088DF001905AC /* MapTest-Info.plist */,
-				BF6FF5BB195088DF001905AC /* InfoPlist.strings */,
-				BF6FF5BE195088DF001905AC /* main.m */,
-				BF6FF5C0195088DF001905AC /* MapTest-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		BF6FF5D7195088DF001905AC /* MapTestTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +203,37 @@
 				BF6FF5DA195088DF001905AC /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BFC871EE196B29A40007D662 /* MapTest */ = {
+			isa = PBXGroup;
+			children = (
+				BFC87251196C84650007D662 /* AlphaGradientView.h */,
+				BFC87252196C84650007D662 /* AlphaGradientView.m */,
+				BFC8724B196B4A710007D662 /* CollectionViewController.h */,
+				BFC8724C196B4A710007D662 /* CollectionViewController.m */,
+				BFC87240196B2E660007D662 /* Assets */,
+				BFC8723E196B2BC20007D662 /* main.m */,
+				BFC871EF196B29A40007D662 /* Main.storyboard */,
+				BFC8724E196B4ABA0007D662 /* Celda.h */,
+				BFC8724F196B4ABA0007D662 /* Celda.m */,
+				BFC871F4196B29A40007D662 /* InfoPlist.strings */,
+				BFC871FA196B29A40007D662 /* Images.xcassets */,
+				BFC871FB196B29A40007D662 /* ListadoPropiedadesViewController.h */,
+				BFC871FC196B29A40007D662 /* ListadoPropiedadesViewController.m */,
+				BFC871FF196B29A40007D662 /* MapTest-Info.plist */,
+				BFC87201196B29A40007D662 /* MapTestAppDelegate.h */,
+				BFC87202196B29A40007D662 /* MapTestAppDelegate.m */,
+				BFC87203196B29A40007D662 /* MapTestViewController.h */,
+				BFC87204196B29A40007D662 /* MapTestViewController.m */,
+				BFC87207196B29A40007D662 /* PropMeli.h */,
+				BFC87208196B29A40007D662 /* PropMeli.m */,
+				BFC8720B196B29A40007D662 /* UnidadGeografica.h */,
+				BFC8720C196B29A40007D662 /* UnidadGeografica.m */,
+				BFC8720D196B29A40007D662 /* VistaMapaViewController.h */,
+				BFC8720E196B29A40007D662 /* VistaMapaViewController.m */,
+			);
+			path = MapTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,16 +313,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF6FF609195A1C90001905AC /* Default@2x.png in Resources */,
-				BF6FF5CB195088DF001905AC /* Images.xcassets in Resources */,
-				BF6FF5BD195088DF001905AC /* InfoPlist.strings in Resources */,
-				BFC87170195FABAA0007D662 /* pin.png in Resources */,
-				BFC871791961EF0C0007D662 /* esperando.gif in Resources */,
-				BFC8717B1961F0BE0007D662 /* esperando1.png in Resources */,
-				BFC87174195FBEB00007D662 /* burger.png in Resources */,
-				BF6FF5C6195088DF001905AC /* Main.storyboard in Resources */,
-				BF6FF608195A1C90001905AC /* Default-568h@2x.png in Resources */,
 				BF6FF5EA1950897A001905AC /* GoogleMaps.bundle in Resources */,
+				BFC87241196B2E660007D662 /* Assets in Resources */,
+				BFC87213196B29A40007D662 /* InfoPlist.strings in Resources */,
+				BFC87218196B29A40007D662 /* Images.xcassets in Resources */,
+				BFC8720F196B29A40007D662 /* Main.storyboard in Resources */,
+				BFC8721C196B29A40007D662 /* MapTest-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,13 +337,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFC87164195C810E0007D662 /* VistaMapaViewController.m in Sources */,
-				BF6FF5BF195088DF001905AC /* main.m in Sources */,
-				BFC8716A195DA7160007D662 /* ListadoPropiedadesViewController.m in Sources */,
-				BF6FF6051958CA91001905AC /* PropMeli.m in Sources */,
-				BF6FF5C9195088DF001905AC /* MapTestViewController.m in Sources */,
-				BFC87167195CD24B0007D662 /* UnidadGeografica.m in Sources */,
-				BF6FF5C3195088DF001905AC /* MapTestAppDelegate.m in Sources */,
+				BFC8724D196B4A710007D662 /* CollectionViewController.m in Sources */,
+				BFC87221196B29A40007D662 /* PropMeli.m in Sources */,
+				BFC87224196B29A40007D662 /* VistaMapaViewController.m in Sources */,
+				BFC87219196B29A40007D662 /* ListadoPropiedadesViewController.m in Sources */,
+				BFC87223196B29A40007D662 /* UnidadGeografica.m in Sources */,
+				BFC87253196C84650007D662 /* AlphaGradientView.m in Sources */,
+				BFC8721D196B29A40007D662 /* MapTestAppDelegate.m in Sources */,
+				BFC87250196B4ABA0007D662 /* Celda.m in Sources */,
+				BFC8723F196B2BC20007D662 /* main.m in Sources */,
+				BFC8721E196B29A40007D662 /* MapTestViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,26 +369,26 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		BF6FF5BB195088DF001905AC /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BF6FF5BC195088DF001905AC /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		BF6FF5C4195088DF001905AC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BF6FF5C5195088DF001905AC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BF6FF5DA195088DF001905AC /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				BF6FF5DB195088DF001905AC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BFC871EF196B29A40007D662 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BFC871F0196B29A40007D662 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BFC871F4196B29A40007D662 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BFC871F5196B29A40007D662 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

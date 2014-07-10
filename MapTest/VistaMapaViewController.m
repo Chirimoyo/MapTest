@@ -35,7 +35,7 @@
     [super viewDidLoad];
     
     locationManager = [[CLLocationManager alloc] init];
-    //location.delegate = self;
+    locationManager.delegate = self;
     [locationManager startUpdatingLocation];
     self.title  = @"Posición actual";
     
@@ -44,7 +44,7 @@
                                                                  zoom:10];
     
     mapView_ = [GMSMapView mapWithFrame:self.mapView.bounds camera:camera];
-    mapView_.myLocationEnabled = YES;
+    mapView_.myLocationEnabled = NO;
     [self.mapView addSubview: mapView_];
     
     
@@ -52,6 +52,9 @@
     // Creates a marker in the center of the map.
     GMSMarker *marker = [[GMSMarker alloc] init];
     marker.position = CLLocationCoordinate2DMake(locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude);
+    UIImage *imagen = [UIImage imageNamed:@"pinUsuario" ];
+    [marker setIcon:imagen];
+
     marker.title = @"Santiago";
     marker.snippet = @"Chile";
     marker.map = mapView_;
@@ -67,6 +70,28 @@
     
 
     // Do any additional setup after loading the view.
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    NSLog(@"didFailWithError: %@", error);
+    UIAlertView *errorAlert = [[UIAlertView alloc]
+                               initWithTitle:@"Error" message:@"Error obtener localizacion" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [errorAlert show];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+   
+    CLLocation *currentLocation = newLocation;
+    
+    if (currentLocation != nil) {
+        
+       
+
+        [self refreshMapDouble:currentLocation.coordinate.latitude  longitud:currentLocation.coordinate.longitude nombreCiudad: @"Posición actual"];
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -109,7 +134,7 @@
 
     
 }
--(IBAction)invocaListado:(id)sender
+-(IBAction)viewFiltrosBusqueda:(id)sender
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 
@@ -128,6 +153,19 @@
     [mapView_ clear];
     [mapView_ animateToLocation:CLLocationCoordinate2DMake([lat doubleValue], [lng doubleValue])];
     [self ApiMeli:nombreCiudad];
+}
+
+- (void) refreshMapDouble:(double)lat  longitud:(double)lng nombreCiudad:(NSString *)nombreCiudad{
+   [mapView_ clear];
+   [mapView_ animateToLocation:CLLocationCoordinate2DMake(lat, lng)];
+    GMSMarker *marker = [[GMSMarker alloc] init];
+    marker.position = CLLocationCoordinate2DMake(lat, lng);
+    UIImage *imagen = [UIImage imageNamed:@"pinUsuario" ];
+    [marker setIcon:imagen];
+    marker.title = @"Santiago";
+    marker.snippet = @"Chile";
+    marker.map = mapView_;
+   [self ApiMeli:nombreCiudad];
 }
 
 

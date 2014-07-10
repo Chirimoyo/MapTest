@@ -12,7 +12,7 @@
 #import "MapTestViewController.h"
 #import "UnidadGeografica.h"
 
-@interface VistaMapaViewController : UIViewController<MapTestViewControllerDelegate>
+@interface VistaMapaViewController : UIViewController<MapTestViewControllerDelegate, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *mapView;
 @property (weak, nonatomic) UnidadGeografica *ugeo;

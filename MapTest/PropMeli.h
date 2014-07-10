@@ -17,5 +17,9 @@
 @property (strong, nonatomic) UIImage *img;
 @property (strong, nonatomic) NSString *precio;
 @property (strong, nonatomic) NSString *title;
+@property (strong, nonatomic) NSArray *imagenes;
+@property (nonatomic) BOOL esFavorito;
+
+
 
 @end
