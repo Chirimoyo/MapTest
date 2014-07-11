@@ -12,10 +12,19 @@
 
 @interface ListadoPropiedadesViewController ()
 @property NSMutableArray *propiedades;
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
+
 @end
 
 @implementation ListadoPropiedadesViewController
+- (UIActivityIndicatorView *) activityIndicator{
+    if(!_activityIndicator) _activityIndicator = [self createactivityIndicator];
+    return _activityIndicator;
+}
 
+- (UIActivityIndicatorView * ) createactivityIndicator {
+    return [UIActivityIndicatorView new];
+}
 
 
 
@@ -99,6 +108,9 @@
                           }
                           dispatch_async(dispatch_get_main_queue(), ^{
                               [self refreshTableView: array];
+                              [self.activityIndicator stopAnimating];
+                              self.navigationItem.titleView = nil;
+                              
                           });
                           
                       }
@@ -280,8 +292,8 @@
     }
     else
     {
-        UIImageView *cbg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"esperando1.png"]];
-        cbg.image = [UIImage imageNamed:@"esperando1.png"];
+        UIImageView *cbg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"imagenNoDisponible.jpg"]];
+        cbg.image = [UIImage imageNamed:@"imagenNoDisponible.jpg"];
         cell.backgroundView = cbg;
         
         //cell.imageView.image = ;
@@ -349,12 +361,19 @@
 }
 
 
+
 - (void)scrollViewDidEndDecelerating: (UIScrollView*)scroll {
     
     CGFloat currentOffset = scroll.contentOffset.y;
     CGFloat maximumOffset = scroll.contentSize.height - scroll.frame.size.height;
 
     if (maximumOffset - currentOffset <= 10.0) {
+        self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+        
+        [self.activityIndicator startAnimating];
+        
+        self.navigationItem.titleView = self.activityIndicator;
+        
        [self cargarTabla: [propiedades count]  +1 ];
     }
 }

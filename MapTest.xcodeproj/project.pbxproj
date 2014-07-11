@@ -29,6 +29,7 @@
 		BF6FF5FE19508A05001905AC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6FF5FD19508A05001905AC /* OpenGLES.framework */; };
 		BF6FF60019508A13001905AC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6FF5FF19508A13001905AC /* QuartzCore.framework */; };
 		BF6FF60219508A1C001905AC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6FF60119508A1C001905AC /* SystemConfiguration.framework */; };
+		BFA8A9B019701AF600DFCAC1 /* imagenNoDisponible.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BFA8A9AF19701AF600DFCAC1 /* imagenNoDisponible.jpg */; };
 		BFC8720F196B29A40007D662 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFC871EF196B29A40007D662 /* Main.storyboard */; };
 		BFC87213196B29A40007D662 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BFC871F4196B29A40007D662 /* InfoPlist.strings */; };
 		BFC87218196B29A40007D662 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFC871FA196B29A40007D662 /* Images.xcassets */; };
@@ -80,6 +81,7 @@
 		BF6FF5FD19508A05001905AC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF6FF5FF19508A13001905AC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BF6FF60119508A1C001905AC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		BFA8A9AF19701AF600DFCAC1 /* imagenNoDisponible.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = imagenNoDisponible.jpg; sourceTree = "<group>"; };
 		BFC871F0196B29A40007D662 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BFC871F5196B29A40007D662 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BFC871FA196B29A40007D662 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 		BFC871EE196B29A40007D662 /* MapTest */ = {
 			isa = PBXGroup;
 			children = (
+				BFA8A9AF19701AF600DFCAC1 /* imagenNoDisponible.jpg */,
 				BFC87251196C84650007D662 /* AlphaGradientView.h */,
 				BFC87252196C84650007D662 /* AlphaGradientView.m */,
 				BFC8724B196B4A710007D662 /* CollectionViewController.h */,
@@ -319,6 +322,7 @@
 				BFC87218196B29A40007D662 /* Images.xcassets in Resources */,
 				BFC8720F196B29A40007D662 /* Main.storyboard in Resources */,
 				BFC8721C196B29A40007D662 /* MapTest-Info.plist in Resources */,
+				BFA8A9B019701AF600DFCAC1 /* imagenNoDisponible.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

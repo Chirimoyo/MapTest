@@ -54,13 +54,13 @@
     marker.position = CLLocationCoordinate2DMake(locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude);
     UIImage *imagen = [UIImage imageNamed:@"pinUsuario" ];
     [marker setIcon:imagen];
-
+    marker.zIndex = 99;
     marker.title = @"Santiago";
     marker.snippet = @"Chile";
     marker.map = mapView_;
     
     if(self.ugeo == nil){
-    [self ApiMeli:@"Santiago"];
+        [self ApiMeli:@"Santiago"];
     }
     else
     {
@@ -100,22 +100,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
 - (void)addItemViewController:(MapTestViewController *)controller didFinishEnteringItem:(UnidadGeografica *)item
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-    self.title = item.nombre;
-    
+        self.title = item.nombre;
+        
         [self refreshMap:item.latitud longitud:item.longitud nombreCiudad: item.nombre];
     });
     //NSLog(@"This was returned from ViewControllerB %@",item.nombre);
 }
 
+
 -(IBAction)listadoPropiedades:(id)sender
 {
-    if([[self title ] isEqualToString: @"Posición actual"]){
-        
-    }
-    else{
+
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     ListadoPropiedadesViewController *vistaListado = [storyboard instantiateViewControllerWithIdentifier:@"ListadoPropiedadesViewController"];
@@ -130,7 +130,6 @@
     [self.navigationController.view.layer addAnimation:transition forKey:nil];
     
     [self.navigationController pushViewController:vistaListado animated:YES ];
-    }
 
     
 }
@@ -146,6 +145,8 @@
 
     [second setModalPresentationStyle:UIModalPresentationFullScreen];
     [self presentViewController:second animated:YES completion:nil];
+    
+    
 
 }
 

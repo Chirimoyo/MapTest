@@ -42,29 +42,20 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                                 <state key="normal" title="Lista">
-                                    <color key="titleColor" red="0.45882352939999999" green="0.72941176470000002" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="0.45882352939999999" green="0.72941176470000002" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.2274509804" green="0.61176470589999998" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.2274509804" green="0.61176470589999998" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="listadoPropiedades:" destination="eM8-2P-CBl" eventType="touchUpInside" id="VSd-Tp-nxg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5UV-sq-TI3">
-                                <rect key="frame" x="111" y="529" width="125" height="30"/>
+                                <rect key="frame" x="98" y="527" width="125" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="13"/>
                                 <state key="normal" title="Guardar búsqueda">
-                                    <color key="titleColor" red="0.45882352939999999" green="0.72941176470000002" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="0.45882352939999999" green="0.72941176470000002" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hAR-6p-fYB">
-                                <rect key="frame" x="20" y="527" width="83" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
-                                <state key="normal" title="Info. local">
-                                    <color key="titleColor" red="0.45882352939999999" green="0.72941176470000002" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="0.45882352939999999" green="0.72941176470000002" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.22745098039215686" green="0.61176470588235299" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.2274509804" green="0.61176470589999998" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
                         </subviews>
@@ -103,8 +94,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                                 <state key="normal" title="Mapa">
-                                    <color key="titleColor" red="0.45882352939999999" green="0.72941176470000002" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="0.45882352939999999" green="0.72941176470000002" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.2274509804" green="0.61176470589999998" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.2274509804" green="0.61176470589999998" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="listadoPropiedades:" destination="eM8-2P-CBl" eventType="touchUpInside" id="acX-9u-cWi"/>
@@ -116,8 +107,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                                 <state key="normal" title="Ordenar">
-                                    <color key="titleColor" red="0.45882352939999999" green="0.72941176470000002" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="0.45882352939999999" green="0.72941176470000002" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.2274509804" green="0.61176470589999998" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.2274509804" green="0.61176470589999998" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="listadoPropiedades:" destination="eM8-2P-CBl" eventType="touchUpInside" id="afr-bd-mqf"/>
@@ -176,8 +167,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="13"/>
                                 <state key="normal" title="Guardar búsqueda">
-                                    <color key="titleColor" red="0.45882352939999999" green="0.72941176470000002" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="0.45882352939999999" green="0.72941176470000002" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.2274509804" green="0.61176470589999998" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.2274509804" green="0.61176470589999998" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
                         </subviews>
@@ -258,7 +249,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="DCf-ez-ReX" userLabel="google">
-                                <rect key="frame" x="11" y="58" width="299" height="464"/>
+                                <rect key="frame" x="11" y="58" width="299" height="450"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -266,6 +257,28 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="Sd4-Z1-cjT"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hwr-1q-law">
+                                <rect key="frame" x="11" y="527" width="61" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cancelar">
+                                    <color key="titleColor" red="0.2274509804" green="0.61176470589999998" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="CerrarModal:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="CU2-Te-auS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iNj-nC-Xl9">
+                                <rect key="frame" x="256" y="527" width="54" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Aceptar">
+                                    <color key="titleColor" red="0.2274509804" green="0.61176470589999998" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnAceptar:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="id9-rT-AGh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>

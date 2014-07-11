@@ -37,7 +37,7 @@
 
 - (void)viewDidLoad
 {
-    
+    [tableView setHidden: YES];
     locationManager = [[CLLocationManager alloc] init];
     //location.delegate = self;
     [self llamadoAutoComplete: self.nombreCiudad];
@@ -67,6 +67,10 @@
 - (IBAction)ZoomIn:(id)sender{
     CGFloat currentZoom = mapView_.camera.zoom;
     [mapView_ animateToCameraPosition:[GMSCameraPosition cameraWithTarget: mapView_.camera.target zoom:currentZoom + 1]];
+}
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField {
+    
 }
 -(void)llamadoAutoComplete:(NSString *)nombreUgeo{
 
@@ -159,35 +163,10 @@
     return [self.listado count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    //Where we coigure the cell in each row
-    
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell;
-    
-    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-    // Configure the cell... setting the text of our cell's label
-    cell.textLabel.text = [self.listado objectAtIndex:indexPath.row];
-    return cell;
-    [self.listado removeAllObjects];
-    
-}
+- (IBAction)btnAceptar:(id)sender{
 
-#pragma mark - Table view delegate
-
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    [self.input setText: cell.textLabel.text];
-    [self.view endEditing:YES];
-    [self.mapView setHidden: NO];
-    [tableView setHidden: YES];
     
-    
-    NSString *urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?address=%@&types=geocode&language=fr&sensor=true&key=AIzaSyA6ORrTeE4pXuzmbP9nm2nFpgoLB_EHhlc", cell.textLabel.text ];
+    NSString *urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?address=%@&types=geocode&language=fr&sensor=true&key=AIzaSyA6ORrTeE4pXuzmbP9nm2nFpgoLB_EHhlc", self.input.text ];
     
     urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
@@ -226,13 +205,13 @@
                               UnidadGeografica *ugeo = [UnidadGeografica new];
                               [ugeo setLatitud:lat];
                               [ugeo setLongitud:lng];
-                              [ugeo setNombre:cell.textLabel.text];
+                              [ugeo setNombre:self.input.text];
                               //NSString *itemToPassBack = @"Pass this value back to ViewControllerA";
                               [self.delegate addItemViewController:self didFinishEnteringItem:ugeo];
                               dispatch_async(dispatch_get_main_queue(), ^{
-                              [self dismissViewControllerAnimated:YES completion:nil];
+                                  [self dismissViewControllerAnimated:YES completion:nil];
                               });
-                                             
+                              
                               
                           }
                       }
@@ -243,7 +222,42 @@
           }
           
       }] resume];
+
 }
+
+- (IBAction)CerrarModal:(id)sender
+{
+     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    //Where we coigure the cell in each row
+    
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell;
+    
+    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    // Configure the cell... setting the text of our cell's label
+    cell.textLabel.text = [self.listado objectAtIndex:indexPath.row];
+    return cell;
+    [self.listado removeAllObjects];
+    
+}
+
+#pragma mark - Table view delegate
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    [self.input setText: cell.textLabel.text];
+    [self.view endEditing:YES];
+    [self.mapView setHidden: NO];
+    [tableView setHidden: YES];
+    
+  }
 
 
 
