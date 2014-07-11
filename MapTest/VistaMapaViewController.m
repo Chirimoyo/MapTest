@@ -175,7 +175,8 @@
     marker.position = CLLocationCoordinate2DMake([lat doubleValue], [lng doubleValue]);
     marker.title = idMeli;
     marker.snippet = idMeli;
-    UIImage *imagen = [UIImage imageNamed:@"pin.png" ];
+    marker.zIndex = 80;
+    UIImage *imagen = [UIImage imageNamed:@"PinPropiedad" ];
     [marker setIcon:imagen];
     marker.map = mapView_;
 }
