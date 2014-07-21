@@ -80,19 +80,7 @@
     [errorAlert show];
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
-{
-   
-    CLLocation *currentLocation = newLocation;
-    
-    if (currentLocation != nil) {
-        
-       
 
-        [self refreshMapDouble:currentLocation.coordinate.latitude  longitud:currentLocation.coordinate.longitude nombreCiudad: @"Posición actual"];
-        
-    }
-}
 
 - (void)didReceiveMemoryWarning
 {

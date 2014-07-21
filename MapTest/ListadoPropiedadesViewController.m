@@ -133,8 +133,6 @@
     self.title = self.unidadGeografica.nombre ;
     propiedades =  [NSMutableArray new];
     [self cargarTabla:0];
-    
-    // Do any additional setup after loading the view.
 }
 - (void) refreshTableView:(NSMutableArray *)listado
 {
@@ -147,12 +145,10 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
     return propiedades.count;
 }
 -(IBAction) toggleUIButtonImage:(UIButton*)sender{
@@ -235,8 +231,6 @@
     CGRect rect = CGRectMake(0, 0, image.size.width * scale, image.size.height * scale);
     CGContextDrawImage(context, rect, image.CGImage);
     
-    // Create gradient
-    
     UIColor *colorOne = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
     UIColor *colorTwo = [UIColor colorWithRed:0 green:0 blue:0 alpha:50];
     
@@ -244,8 +238,6 @@
     NSArray *colors = [NSArray arrayWithObjects:(id)colorOne.CGColor, (id)colorTwo.CGColor, nil];
     CGColorSpaceRef space = CGColorSpaceCreateDeviceRGB();
     CGGradientRef gradient = CGGradientCreateWithColors(space, (CFArrayRef)colors, NULL);
-    
-    // Apply gradient
     
     CGContextClipToMask(context, rect, image.CGImage);
     CGContextDrawLinearGradient(context, gradient, CGPointMake(0,image.size.height),CGPointMake(0,50), 10);
@@ -295,14 +287,8 @@
         UIImageView *cbg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"imagenNoDisponible.jpg"]];
         cbg.image = [UIImage imageNamed:@"imagenNoDisponible.jpg"];
         cell.backgroundView = cbg;
-        
-        //cell.imageView.image = ;
         [self bajarImagenDesdeUrl:[NSURL URLWithString:propiedad.imagen] completionBlock:^(BOOL succeeded, UIImage *image) {
             if (succeeded) {
-        
-                
-                //cell.imageView.image = image;
-                //UIImage *miima = [self imageWithImage:image scaledToSize:CGSizeMake(cell.frame.size.width, cell.frame.size.height)];
                 
                  UIImage *miima = [self imageWithImage:image scaledToSize:CGSizeMake(cell.frame.size.width, cell.frame.size.height)];
                 
@@ -314,16 +300,10 @@
                 gradient.direction = GRADIENT_DOWN;
                 UIColor *background = [[UIColor alloc] initWithPatternImage:miima];
                 gradient.backgroundColor = background;
-                
-         
-                
-               
                 [cell addSubview:gradient];
 
                 cell.backgroundView = gradient;
-                
-                //cell.backgroundView = cellBackgroundView;
-                
+
                 // pal cache..
                 propiedad.img = miima;
             }

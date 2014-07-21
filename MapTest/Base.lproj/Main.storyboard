@@ -25,8 +25,8 @@
             <objects>
                 <viewController storyboardIdentifier="VistaMapaViewController" id="eM8-2P-CBl" customClass="VistaMapaViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jIy-Dx-UZJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="xnE-BT-SD1"/>
+                        <viewControllerLayoutGuide type="top" id="XnW-4z-CPK"/>
+                        <viewControllerLayoutGuide type="bottom" id="jfy-mQ-4lU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="UFy-ar-wyu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -82,8 +82,8 @@
             <objects>
                 <viewController storyboardIdentifier="ListadoPropiedadesViewController" id="xwH-ty-43V" customClass="ListadoPropiedadesViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="VIA-La-1VH"/>
-                        <viewControllerLayoutGuide type="bottom" id="K5B-bI-6T6"/>
+                        <viewControllerLayoutGuide type="top" id="LIl-YD-h0u"/>
+                        <viewControllerLayoutGuide type="bottom" id="2KU-wr-K27"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="raX-KA-Gge">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -235,21 +235,15 @@
             <objects>
                 <viewController storyboardIdentifier="MapTestViewController" id="vXZ-lx-hvc" customClass="MapTestViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                        <viewControllerLayoutGuide type="top" id="oFC-py-ogn"/>
+                        <viewControllerLayoutGuide type="bottom" id="3xV-96-bBO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Eb-hd-rnc">
-                                <rect key="frame" x="11" y="20" width="299" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="DCf-ez-ReX" userLabel="google">
-                                <rect key="frame" x="11" y="58" width="299" height="450"/>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="DCf-ez-ReX" userLabel="google">
+                                <rect key="frame" x="0.0" y="65" width="320" height="450"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -257,8 +251,8 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="Sd4-Z1-cjT"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hwr-1q-law">
-                                <rect key="frame" x="11" y="527" width="61" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hwr-1q-law">
+                                <rect key="frame" x="9" y="529" width="61" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Cancelar">
                                     <color key="titleColor" red="0.2274509804" green="0.61176470589999998" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -268,10 +262,11 @@
                                     <action selector="CerrarModal:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="CU2-Te-auS"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iNj-nC-Xl9">
-                                <rect key="frame" x="256" y="527" width="54" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iNj-nC-Xl9">
+                                <rect key="frame" x="239" y="529" width="64" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Aceptar">
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+                                <state key="normal" title="Aplicar">
                                     <color key="titleColor" red="0.2274509804" green="0.61176470589999998" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -279,17 +274,272 @@
                                     <action selector="btnAceptar:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="id9-rT-AGh"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S2t-mV-Afz">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T1a-ax-GoE">
+                                        <rect key="frame" x="12" y="25" width="297" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="297" id="U0K-Wk-TwN"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="0.2274509804" green="0.61176470589999998" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UOU-L6-dkr">
+                                <rect key="frame" x="0.0" y="65" width="320" height="456"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ls2-q9-91H">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="456"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MNX-os-ReX">
+                                                <rect key="frame" x="13" y="82" width="297" height="0.0"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <pickerView hidden="YES" contentMode="scaleToFill" fixedFrame="YES" showsSelectionIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JkY-93-Bjc">
+                                                        <rect key="frame" x="0.0" y="0.0" width="297" height="162"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                        <color key="tintColor" red="0.2274509804" green="0.61176470589999998" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="vXZ-lx-hvc" id="DP2-0z-PHq"/>
+                                                            <outlet property="delegate" destination="vXZ-lx-hvc" id="P7t-Gn-hjV"/>
+                                                        </connections>
+                                                    </pickerView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Akm-hF-vA7">
+                                                <rect key="frame" x="9" y="207" width="300" height="0.0"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <pickerView hidden="YES" contentMode="scaleToFill" fixedFrame="YES" showsSelectionIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCl-h5-qET">
+                                                        <rect key="frame" x="0.0" y="30" width="300" height="162"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                        <color key="tintColor" red="0.2274509804" green="0.61176470589999998" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="vXZ-lx-hvc" id="HYX-PB-Con"/>
+                                                            <outlet property="delegate" destination="vXZ-lx-hvc" id="qY8-JT-LGJ"/>
+                                                        </connections>
+                                                    </pickerView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                            </view>
+                                            <button opaque="NO" tag="100" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1KG-vm-Jn1">
+                                                <rect key="frame" x="9" y="66" width="301" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
+                                                <color key="tintColor" red="0.2274509804" green="0.61176470589999998" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="    Tipo propiedad">
+                                                    <color key="titleColor" red="0.2274509804" green="0.61176470589999998" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="tipoPropiedadClick:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ZOH-B0-6bz"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="100" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WYJ-Cd-Lvg">
+                                                <rect key="frame" x="9" y="178" width="301" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
+                                                <color key="tintColor" red="0.2274509804" green="0.61176470589999998" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="    Superficie">
+                                                    <color key="titleColor" red="0.2274509804" green="0.61176470589999998" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="superficieClick:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Otv-TE-uUk"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KNg-5p-exJ">
+                                                <rect key="frame" x="94" y="127" width="216" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
+                                                <color key="tintColor" red="0.2274509804" green="0.61176470589999998" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="  Cualquiera">
+                                                    <color key="titleColor" red="0.2274509804" green="0.61176470589999998" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="rangoPrecioClick:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="eNN-tL-Cu4"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pLc-cI-ytb">
+                                                <rect key="frame" x="9" y="127" width="69" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
+                                                <color key="tintColor" red="0.2274509804" green="0.61176470589999998" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="UF">
+                                                    <color key="titleColor" red="0.2274509804" green="0.61176470589999998" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="tipoMonedaClick:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="8Yp-lf-gxG"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Precio" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36h-Wb-BTo">
+                                                <rect key="frame" x="9" y="104" width="49" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
+                                                <color key="textColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dormitorios" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pII-Xm-MQc">
+                                                <rect key="frame" x="9" y="225" width="77" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
+                                                <color key="textColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="oh4-KP-VuJ">
+                                                <rect key="frame" x="9" y="17" width="301" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                <segments>
+                                                    <segment title="Venta" width="75"/>
+                                                    <segment title="Arriendo" width="75"/>
+                                                    <segment title="Arriendo temporada"/>
+                                                </segments>
+                                                <color key="tintColor" red="0.22745098039215686" green="0.61176470588235299" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                                            </segmentedControl>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eNO-VL-SDJ">
+                                                <rect key="frame" x="9" y="247" width="301" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                <segments>
+                                                    <segment title="Cualquiera" width="90"/>
+                                                    <segment title="1"/>
+                                                    <segment title="2"/>
+                                                    <segment title="3"/>
+                                                    <segment title="4"/>
+                                                    <segment title="5 +" width="45"/>
+                                                </segments>
+                                                <color key="tintColor" red="0.2274509804" green="0.61176470589999998" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            </segmentedControl>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gJz-ZG-Hec">
+                                                <rect key="frame" x="9" y="308" width="301" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                <segments>
+                                                    <segment title="Cualquiera" width="90"/>
+                                                    <segment title="1"/>
+                                                    <segment title="2"/>
+                                                    <segment title="3"/>
+                                                    <segment title="4"/>
+                                                    <segment title="5 +" width="45"/>
+                                                </segments>
+                                                <color key="tintColor" red="0.2274509804" green="0.61176470589999998" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            </segmentedControl>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YIq-1B-jRc">
+                                                <rect key="frame" x="9" y="157" width="300" height="0.0"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <pickerView hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2SG-vY-it7">
+                                                        <rect key="frame" x="-12" y="-9" width="300" height="162"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="vXZ-lx-hvc" id="WF4-4D-2NM"/>
+                                                            <outlet property="delegate" destination="vXZ-lx-hvc" id="CiO-hT-jFE"/>
+                                                        </connections>
+                                                    </pickerView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YNL-ff-drp">
+                                                <rect key="frame" x="9" y="157" width="300" height="0.0"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <pickerView hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8NR-G6-gO1">
+                                                        <rect key="frame" x="0.0" y="0.0" width="143" height="162"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="vXZ-lx-hvc" id="h9N-8p-vXC"/>
+                                                            <outlet property="delegate" destination="vXZ-lx-hvc" id="k8H-d8-8Tg"/>
+                                                        </connections>
+                                                    </pickerView>
+                                                    <pickerView hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BQj-jO-hqC">
+                                                        <rect key="frame" x="148" y="0.0" width="143" height="162"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="vXZ-lx-hvc" id="m1m-FV-q1v"/>
+                                                            <outlet property="delegate" destination="vXZ-lx-hvc" id="heV-s7-c5f"/>
+                                                        </connections>
+                                                    </pickerView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                            </view>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Baños" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WoR-3B-867">
+                                                <rect key="frame" x="9" y="285" width="49" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
+                                                <color key="textColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVP-k8-8h0">
+                                                <rect key="frame" x="60" y="388" width="200" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="13"/>
+                                                <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Limpiar filtros">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </scrollView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="ls2-q9-91H" secondAttribute="bottom" id="6iI-MN-syx"/>
+                                    <constraint firstItem="ls2-q9-91H" firstAttribute="leading" secondItem="UOU-L6-dkr" secondAttribute="leading" constant="1" id="Kc2-cx-2j5"/>
+                                    <constraint firstAttribute="trailing" secondItem="ls2-q9-91H" secondAttribute="trailing" id="SGz-Sv-qbX"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DCf-ez-ReX" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="sbD-9u-MAq"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="input" destination="2Eb-hd-rnc" id="Oym-Ja-GcA"/>
+                        <outlet property="btnLimpiar" destination="JVP-k8-8h0" id="DtO-0A-cWz"/>
+                        <outlet property="btnRangoPrecio" destination="KNg-5p-exJ" id="CjN-sP-jKz"/>
+                        <outlet property="btnSuperficie" destination="WYJ-Cd-Lvg" id="uPm-nO-zE1"/>
+                        <outlet property="btnTipoMoneda" destination="pLc-cI-ytb" id="R4A-aR-KDv"/>
+                        <outlet property="input" destination="T1a-ax-GoE" id="dNj-AM-1Dp"/>
+                        <outlet property="lblBanos" destination="WoR-3B-867" id="20g-Sc-zaR"/>
+                        <outlet property="lblDormitorios" destination="pII-Xm-MQc" id="KUt-ad-0Hs"/>
+                        <outlet property="lblPrecio" destination="36h-Wb-BTo" id="0FF-kP-FJO"/>
+                        <outlet property="pickerRangoDesde" destination="8NR-G6-gO1" id="Ljz-Ap-rUd"/>
+                        <outlet property="pickerRangoHasta" destination="BQj-jO-hqC" id="466-2n-fGQ"/>
+                        <outlet property="pickerSuperficie" destination="vCl-h5-qET" id="rug-rC-Cby"/>
+                        <outlet property="pickerTipoMoneda" destination="2SG-vY-it7" id="7Pj-Dp-CPn"/>
+                        <outlet property="pickerTipoPropiedad" destination="JkY-93-Bjc" id="dqs-pi-Ij7"/>
+                        <outlet property="scrollView" destination="ls2-q9-91H" id="yqF-ly-g0h"/>
+                        <outlet property="segmentedBanos" destination="gJz-ZG-Hec" id="Sn6-KK-Ivb"/>
+                        <outlet property="segmentedDormitorios" destination="eNO-VL-SDJ" id="C6X-KZ-j2a"/>
                         <outlet property="tableView" destination="DCf-ez-ReX" id="kgJ-bq-DWi"/>
+                        <outlet property="tipoPropiedad" destination="1KG-vm-Jn1" id="ugi-4F-HOi"/>
+                        <outlet property="viewTipoPropiedad" destination="MNX-os-ReX" id="KuQ-Th-mKn"/>
+                        <outlet property="vistaRangoPrecios" destination="YNL-ff-drp" id="aCd-P5-wmZ"/>
+                        <outlet property="vistaSuperficie" destination="Akm-hF-vA7" id="lCR-Nh-l9Y"/>
+                        <outlet property="vistaTipoMoneda" destination="YIq-1B-jRc" id="j7Y-Ap-n4G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="400" y="66"/>
+            <point key="canvasLocation" x="405" y="60"/>
         </scene>
     </scenes>
     <resources>

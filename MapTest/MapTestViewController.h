@@ -18,7 +18,7 @@
 - (void)addItemViewController:(MapTestViewController *)controller didFinishEnteringItem:(UnidadGeografica *)item;
 @end
 
-@interface MapTestViewController : UIViewController<UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate>
+@interface MapTestViewController : UIViewController<UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UIPickerViewDelegate>
 {
 __weak IBOutlet UITableView *tableView;
 
