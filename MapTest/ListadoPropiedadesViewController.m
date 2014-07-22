@@ -8,7 +8,7 @@
 
 #import "ListadoPropiedadesViewController.h"
 #import "PropMeli.h"
-#import "AlphaGradientView.h"
+#import "CeldaPropiedadViewCell.h";
 
 @interface ListadoPropiedadesViewController ()
 @property NSMutableArray *propiedades;
@@ -151,6 +151,7 @@
 {
     return propiedades.count;
 }
+
 -(IBAction) toggleUIButtonImage:(UIButton*)sender{
     PropMeli *propiedad = ((PropMeli * )propiedades[sender.tag]);
     
@@ -167,25 +168,10 @@
 
     }
 }
-- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
-    //UIGraphicsBeginImageContext(newSize);
-    // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
-    // Pass 1.0 to force exact pixel size.
-    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
-    [image drawInRect:CGRectMake(0, 0, 320, 220)];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return newImage;
-}
+
 -(IBAction)volverMapa:(id)sender
 {
-
-
-    //second.delegate  = self;
-
-    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
 
     VistaMapaViewController *second = [storyboard instantiateViewControllerWithIdentifier:@"VistaMapaViewController"];
     UnidadGeografica *ugeo = [UnidadGeografica new];
@@ -202,145 +188,17 @@
 
 }
 
-- (void)bajarImagenDesdeUrl:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock
-{
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    [NSURLConnection  sendAsynchronousRequest:request
-                                       queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                               if ( !error )
-                               {
-                                   UIImage *image = [[UIImage alloc] initWithData:data];
-                                   completionBlock(YES,image);
-                               } else{
-                                   completionBlock(NO,nil);
-                               }
-                           }];
-}
-
-
-- (UIImage *) imagenFondoNegro:(UIImage *) image{
-
-    CGFloat scale = image.scale;
-    UIGraphicsBeginImageContext(CGSizeMake(image.size.width * scale, image.size.height * scale));
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextTranslateCTM(context, 0, image.size.height);
-    CGContextScaleCTM(context, 1.0, -1.0);
-    
-    CGContextSetBlendMode(context, kCGBlendModeMultiply);
-    CGRect rect = CGRectMake(0, 0, image.size.width * scale, image.size.height * scale);
-    CGContextDrawImage(context, rect, image.CGImage);
-    
-    UIColor *colorOne = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
-    UIColor *colorTwo = [UIColor colorWithRed:0 green:0 blue:0 alpha:50];
-    
-    
-    NSArray *colors = [NSArray arrayWithObjects:(id)colorOne.CGColor, (id)colorTwo.CGColor, nil];
-    CGColorSpaceRef space = CGColorSpaceCreateDeviceRGB();
-    CGGradientRef gradient = CGGradientCreateWithColors(space, (CFArrayRef)colors, NULL);
-    
-    CGContextClipToMask(context, rect, image.CGImage);
-    CGContextDrawLinearGradient(context, gradient, CGPointMake(0,image.size.height),CGPointMake(0,50), 10);
-    UIImage *gradientImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return gradientImage;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    CeldaPropiedadViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[CeldaPropiedadViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
-    PropMeli *propiedad = ((PropMeli * )propiedades[indexPath.row]);
-    
-  
-    
-    UISwipeGestureRecognizer *gestureR = [[UISwipeGestureRecognizer alloc]
-                                          initWithTarget:self action:@selector(handleSwipeFrom:)];
-    [gestureR setDirection:UISwipeGestureRecognizerDirectionRight];//|UISwipeGestureRecognizerDirectionRight)];
-    [cell addGestureRecognizer:gestureR];
-    
-    
-   
-    
-    if (propiedad.img != nil) {
-        
-        AlphaGradientView* gradient = [[AlphaGradientView alloc] initWithFrame:
-                                       CGRectMake(0, 0, cell.frame.size.width,
-                                                  cell.frame.size.height)];
-        
-        gradient.color = [UIColor blackColor];
-        gradient.direction = GRADIENT_DOWN;
-        UIColor *background = [[UIColor alloc] initWithPatternImage:propiedad.img];
-        gradient.backgroundColor = background;
-        [cell addSubview:gradient];
-        cell.backgroundView = gradient;
-
-    
-    }
-    else
-    {
-        UIImageView *cbg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"imagenNoDisponible.jpg"]];
-        cbg.image = [UIImage imageNamed:@"imagenNoDisponible.jpg"];
-        cell.backgroundView = cbg;
-        [self bajarImagenDesdeUrl:[NSURL URLWithString:propiedad.imagen] completionBlock:^(BOOL succeeded, UIImage *image) {
-            if (succeeded) {
-                
-                 UIImage *miima = [self imageWithImage:image scaledToSize:CGSizeMake(cell.frame.size.width, cell.frame.size.height)];
-                
-                AlphaGradientView* gradient = [[AlphaGradientView alloc] initWithFrame:
-                                               CGRectMake(0, 0, cell.frame.size.width,
-                                                          cell.frame.size.height)];
-                
-                gradient.color = [UIColor blackColor];
-                gradient.direction = GRADIENT_DOWN;
-                UIColor *background = [[UIColor alloc] initWithPatternImage:miima];
-                gradient.backgroundColor = background;
-                [cell addSubview:gradient];
-
-                cell.backgroundView = gradient;
-
-                // pal cache..
-                propiedad.img = miima;
-            }
-        }];
-
-    }
-    
-    UIButton *btnAgregarFavoritos = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnAgregarFavoritos.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-    btnAgregarFavoritos.frame = CGRectMake(250.0f, 134.0f, 50.0f, 45.0f);
-    
-    if (propiedad.esFavorito == YES) {
-        [btnAgregarFavoritos setImage:[UIImage imageNamed:@"EsFavorito"] forState:UIControlStateSelected];
-        [btnAgregarFavoritos setSelected:YES];
-        
-    } else {
-        [btnAgregarFavoritos setImage:[UIImage imageNamed:@"NoEsFavorito"] forState:UIControlStateNormal];
-        [btnAgregarFavoritos setSelected:NO];
-    }
-    
-    btnAgregarFavoritos.tag = indexPath.row;
-    [btnAgregarFavoritos setTintColor: [UIColor whiteColor]];
-    [btnAgregarFavoritos addTarget:self action:@selector(toggleUIButtonImage:) forControlEvents:UIControlEventTouchUpInside];
-    [cell addSubview:btnAgregarFavoritos];
-
-    
-    UILabel *recipeNameLabel = (UILabel *)[cell viewWithTag:102];
-    recipeNameLabel.text = propiedad.title;
-    
-    UILabel *recipeDetailLabel = (UILabel *)[cell viewWithTag:103];
-    recipeDetailLabel.text = propiedad.precio;
-    
-    
+    [cell setData:propiedades[indexPath.row]];
     return cell;
 }
-
-
 
 - (void)scrollViewDidEndDecelerating: (UIScrollView*)scroll {
     
@@ -356,12 +214,6 @@
         
        [self cargarTabla: [propiedades count]  +1 ];
     }
-}
-
-
-- (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer {
-    
-    NSLog(@"%d = %d",recognizer.direction,recognizer.state);
 }
 
 @end
