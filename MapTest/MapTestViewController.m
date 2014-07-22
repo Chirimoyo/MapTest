@@ -44,10 +44,18 @@
 @property (strong, nonatomic) NSArray *arrayTipoPropiedad;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerTipoMoneda;
 @property (strong, nonatomic) NSArray *arrayTipoMoneda;
-@property (strong, nonatomic) NSArray *arrayPrecioPesosDesde;
-@property (strong, nonatomic) NSArray *arrayPrecioPesosHasta;
-@property (strong, nonatomic) NSArray *arrayPrecioUFDesde;
-@property (strong, nonatomic) NSArray *arrayPrecioUFHasta;
+@property (strong, nonatomic) NSArray *arrayPrecioArriendoPesosDesde;
+@property (strong, nonatomic) NSArray *arrayPrecioArriendoPesosHasta;
+
+@property (strong, nonatomic) NSArray *arrayPrecioCompraPesosDesde;
+@property (strong, nonatomic) NSArray *arrayPrecioCompraPesosHasta;
+
+@property (strong, nonatomic) NSArray *arrayPrecioArriendoUFDesde;
+@property (strong, nonatomic) NSArray *arrayPrecioArriendoUFHasta;
+
+@property (strong, nonatomic) NSArray *arrayPrecioCompraUFDesde;
+@property (strong, nonatomic) NSArray *arrayPrecioCompraUFHasta;
+
 @property (strong, nonatomic) NSArray *arraySuperficie;
 @property (weak, nonatomic) IBOutlet UIView *vistaResultadoGoogle;
 @property (weak, nonatomic) IBOutlet UIView *vistafiltros;
@@ -65,11 +73,14 @@
 @synthesize delegate;
 @synthesize arrayTipoPropiedad;
 @synthesize arrayTipoMoneda;
-@synthesize arrayPrecioPesosDesde;
-@synthesize arrayPrecioPesosHasta;
-@synthesize arrayPrecioUFDesde;
-@synthesize arrayPrecioUFHasta;
-@synthesize arraySuperficie;
+@synthesize arrayPrecioArriendoPesosDesde;
+@synthesize arrayPrecioArriendoPesosHasta;
+@synthesize arrayPrecioCompraPesosDesde;
+@synthesize arrayPrecioCompraPesosHasta;
+@synthesize arrayPrecioArriendoUFDesde;
+@synthesize arrayPrecioArriendoUFHasta;
+@synthesize arrayPrecioCompraUFDesde;
+@synthesize arrayPrecioCompraUFHasta;
 
 bool isShown = false;
 
@@ -634,18 +645,18 @@ bool isShown = false;
     arrayTipoPropiedad = [[NSArray alloc] initWithObjects:@"Todos",@"Casa", @"Departamento", nil];
     arrayTipoMoneda = [[NSArray alloc] initWithObjects:@"UF", @"Pesos", nil];
     
-    arrayPrecioPesosDesde = [[NSArray alloc] initWithObjects:@"100.000",@"200.000", @"300.000",
-                             @"400.000",@"600.000", @"800.000",
-                             @"1.000.000",@"1.500.000", @"2.000.000",nil];
-    arrayPrecioPesosHasta= [[NSArray alloc] initWithObjects:@"100.000",@"200.000", @"300.000",
-                            @"400.000",@"600.000", @"800.000",
-                            @"1.000.000",@"1.500.000", @"2.000.000",nil];
+    arrayPrecioArriendoPesosDesde = [[NSArray alloc] initWithObjects:@"No min",@"50.000",@"100.000", @"150.000",
+                             @"200.000",@"300.000", @"400.000",
+                             @"500.000",@"1.000.000", @"1.500.000",nil];
+    arrayPrecioArriendoPesosHasta = [[NSArray alloc] initWithObjects:@"No max",@"50.000",@"100.000", @"150.000",
+                                     @"200.000",@"300.000", @"400.000",
+                                     @"500.000",@"1.000.000", @"1.500.000",nil];
     
-    arrayPrecioUFDesde = [[NSArray alloc] initWithObjects: @"Max",@"100",@"200", @"400",@"600",@"800", @"1000"
+  /*  arrayPrecioUFDesde = [[NSArray alloc] initWithObjects: @"Max",@"100",@"200", @"400",@"600",@"800", @"1000"
                           @"1500",@"1800", @"2000",@"2200",@"2600", @"3000", nil];
     arrayPrecioUFHasta = [[NSArray alloc] initWithObjects: @"Max",@"100",@"200", @"400",@"600",@"800", @"1000"
                           @"1500",@"1800", @"2000",@"2200",@"2600", @"3000", nil];
-    arraySuperficie =[[NSArray alloc] initWithObjects:@"50 mts",@"100 mts", @"200 mts", nil];
+    arraySuperficie =[[NSArray alloc] initWithObjects:@"50 mts",@"100 mts", @"200 mts", nil];*/
     
     [self agregarLabelBoton:self.tipoPropiedad texto:@"Todos"];
 
@@ -833,14 +844,22 @@ bool isShown = false;
     if(pickerView == self.pickerTipoPropiedad)
         [self agregarLabelBoton: self.tipoPropiedad texto:[arrayTipoPropiedad objectAtIndex:row]];
     else
-        if(pickerView == self.pickerTipoMoneda)
-        {
+        if(pickerView == self.pickerTipoMoneda){
             [self.btnTipoMoneda setTitle:[arrayTipoMoneda objectAtIndex:row] forState:UIControlStateNormal];
+        }
+        else{
+            if(pickerView == self.pickerRangoDesde)
+            {
+                
+            }
+            else{
+                
+            }
         }
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    if(pickerView == self.pickerTipoPropiedad)
+   /* if(pickerView == self.pickerTipoPropiedad)
         return [arrayTipoPropiedad count];
     else{
         if(pickerView == self.pickerTipoMoneda){
@@ -860,7 +879,8 @@ bool isShown = false;
                 }
             }
         }
-    }
+    }*/
+    return 0;
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
@@ -868,7 +888,7 @@ bool isShown = false;
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    if(pickerView == self.pickerTipoPropiedad)
+   /* if(pickerView == self.pickerTipoPropiedad)
         return [arrayTipoPropiedad objectAtIndex:row];
     else{
         if(pickerView == self.pickerTipoMoneda){
@@ -885,7 +905,8 @@ bool isShown = false;
                 }
             }
         }
-    }
+    }*/
+    return @"";
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
