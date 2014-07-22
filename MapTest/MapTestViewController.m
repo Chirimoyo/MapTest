@@ -20,7 +20,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnSuperficie;
 @property (weak, nonatomic) IBOutlet UIButton *btnLimpiar;
 
-@property (weak, nonatomic) IBOutlet UIView *vistaTipoPropiedad;
 @property (weak, nonatomic) IBOutlet UIView *viewTipoPropiedad;
 @property (weak, nonatomic) IBOutlet UIView *vistaTipoMoneda;
 @property (weak, nonatomic) IBOutlet UIView *vistaRangoPrecios;
@@ -32,13 +31,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblDormitorios;
 @property (weak, nonatomic) IBOutlet UILabel *lblBanos;
 
-
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerTipoPropiedad;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerRangoDesde;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerRangoHasta;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerSuperficie;
 
-@property (weak, nonatomic) IBOutlet UISegmentedControl *tipoOperacion;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedDormitorios;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedBanos;
 
@@ -47,10 +44,13 @@
 @property (strong, nonatomic) NSArray *arrayTipoPropiedad;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerTipoMoneda;
 @property (strong, nonatomic) NSArray *arrayTipoMoneda;
-@property (strong, nonatomic) NSArray *rangoPrecioPesosDesde;
-@property (strong, nonatomic) NSArray *rangoPrecioPesosHasta;
-@property (strong, nonatomic) NSArray *rangoPrecioUFDesde;
-@property (strong, nonatomic) NSArray *rangoPrecioUFHasta;
+@property (strong, nonatomic) NSArray *arrayPrecioPesosDesde;
+@property (strong, nonatomic) NSArray *arrayPrecioPesosHasta;
+@property (strong, nonatomic) NSArray *arrayPrecioUFDesde;
+@property (strong, nonatomic) NSArray *arrayPrecioUFHasta;
+@property (strong, nonatomic) NSArray *arraySuperficie;
+@property (weak, nonatomic) IBOutlet UIView *vistaResultadoGoogle;
+@property (weak, nonatomic) IBOutlet UIView *vistafiltros;
 
 
 @end
@@ -62,11 +62,14 @@
     
 }
 
-
-
 @synthesize delegate;
 @synthesize arrayTipoPropiedad;
 @synthesize arrayTipoMoneda;
+@synthesize arrayPrecioPesosDesde;
+@synthesize arrayPrecioPesosHasta;
+@synthesize arrayPrecioUFDesde;
+@synthesize arrayPrecioUFHasta;
+@synthesize arraySuperficie;
 
 bool isShown = false;
 
@@ -87,7 +90,7 @@ bool isShown = false;
         if ([view isKindOfClass:[UIView class]]) {
             UIView *vista = (UIView *) view;
              frame = vista.frame;
-            if (frame.size.height == 162){
+            if (frame.size.height >= 162 ){
                 frame.size.height = 0;
                 for (id elemento in vista.subviews) {
                     if ([elemento isKindOfClass:[UIPickerView class]]) {
@@ -109,45 +112,109 @@ bool isShown = false;
 -(IBAction) superficieClick:(id)sender{
     
     CGRect frameSuperficie = self.vistaSuperficie.frame;
+    CGRect framebtnSuperficie = self.btnSuperficie.frame;
+    CGRect frameLblDormitorio = self.lblDormitorios.frame;
+    CGRect frameSegmentedDormitorio = self.segmentedDormitorios.frame;
+    CGRect frameLblBanos = self.lblBanos.frame;
+    CGRect frameSegmentedBanos = self.segmentedBanos.frame;
+    CGRect frameBtnLimpiar = self.btnLimpiar.frame;
+    CGRect framelblPrecio = self.lblPrecio.frame;
     CGRect framebtnRangoPrecio = self.btnRangoPrecio.frame;
     CGRect framebtnTipoMoneda = self.btnTipoMoneda.frame;
-    CGRect framelblPrecio = self.lblPrecio.frame;
-    CGRect frameBtnSuperficie = self.btnSuperficie.frame;
 
-    if (frameSuperficie.size.height == 162){
-        
+
+    if (frameSuperficie.size.height == 172){
         frameSuperficie.size.height = 0;
+        frameLblDormitorio.origin.y = 225;
+        frameSegmentedDormitorio.origin.y = 247;
+        frameLblBanos.origin.y = 285;
+        frameSegmentedBanos.origin.y = 308;
+        frameBtnLimpiar.origin.y = 388;
+        
         self.pickerSuperficie.hidden = YES;
+        
+        [UIView animateWithDuration:0.5 animations:^{
+            self.lblDormitorios.frame = frameLblDormitorio;
+            self.segmentedDormitorios.frame = frameSegmentedDormitorio;
+            self.lblBanos.frame = frameLblBanos;
+            self.segmentedBanos.frame = frameSegmentedBanos;
+            self.btnLimpiar.frame = frameBtnLimpiar;
+            self.vistaSuperficie.frame = frameSuperficie;
+            
+         }];
         
     }
     else{
-        if([self cerrarPickers] && self.btnSuperficie.frame.origin.y > 170)
+        if(self.btnSuperficie.frame.origin.y > 178)
         {
-            framebtnRangoPrecio.origin.y = 117;
-            framebtnTipoMoneda.origin.y = 117;
-            framelblPrecio.origin.y = 95;
-            frameBtnSuperficie.origin.y = 170;
-            //agregar controlos deabajo
+           
+            framebtnRangoPrecio.origin.y = 127;
+            framebtnTipoMoneda.origin.y = 127;
+            framelblPrecio.origin.y = 105;
+            framebtnSuperficie.origin.y = 178;
+            frameLblDormitorio.origin.y = 225 + 172;
+            frameSegmentedDormitorio.origin.y = 247 + 172;
+            frameLblBanos.origin.y = 285 + 172;
+            frameSegmentedBanos.origin.y = 308 + 172;
+            frameBtnLimpiar.origin.y = 388 + 172;
+            if(frameSuperficie.size.height == 172)
+                frameSuperficie.size.height = 0;
+            else
+                frameSuperficie.size.height = 172;
+            
+            [UIView animateWithDuration:0.5 animations:^{
+                [self cerrarPickers];
+                self.btnSuperficie.frame = framebtnSuperficie;
+                self.lblDormitorios.frame = frameLblDormitorio;
+                self.segmentedDormitorios.frame = frameSegmentedDormitorio;
+                self.lblBanos.frame = frameLblBanos;
+                self.segmentedBanos.frame = frameSegmentedBanos;
+                self.btnLimpiar.frame = frameBtnLimpiar;
+                self.lblPrecio.frame = framelblPrecio;
+                self.btnRangoPrecio.frame = framebtnRangoPrecio;
+                self.btnTipoMoneda.frame = framebtnTipoMoneda;
+            } completion:^(BOOL finished)
+             {
+                 [UIView animateWithDuration:0.5 animations:^{
+                     self.vistaSuperficie.frame = frameSuperficie;
+                 } completion:^(BOOL finished) {
+                     if(frameSuperficie.size.height == 172){
+                         self.pickerSuperficie.hidden=NO;
+                     }
+                     else
+                         self.pickerSuperficie.hidden=YES;
+                 }];
+             }];
         }
-        frameSuperficie.size.height = 162;
+        else{
+            if(self.btnSuperficie.frame.origin.y == 178 && frameSuperficie.size.height == 0){
+            frameLblDormitorio.origin.y = 225 + 172;
+            frameSegmentedDormitorio.origin.y = 247 + 172;
+            frameLblBanos.origin.y = 285 + 172;
+            frameSegmentedBanos.origin.y = 308 + 172;
+            frameBtnLimpiar.origin.y = 388 + 172;
+            if(frameSuperficie.size.height == 172)
+                frameSuperficie.size.height = 0;
+            else
+                frameSuperficie.size.height = 172;
+            [UIView animateWithDuration:0.5 animations:^{
+                self.lblDormitorios.frame = frameLblDormitorio;
+                self.segmentedDormitorios.frame = frameSegmentedDormitorio;
+                self.lblBanos.frame = frameLblBanos;
+                self.segmentedBanos.frame = frameSegmentedBanos;
+                self.btnLimpiar.frame = frameBtnLimpiar;
+                self.vistaSuperficie.frame = frameSuperficie;
+            } completion:^(BOOL finished)
+             {
+                if(frameSuperficie.size.height == 172)
+                    self.pickerSuperficie.hidden=NO;
+                else
+                    self.pickerSuperficie.hidden=YES;
+             }];
+         }
+        }
         
     }
-    
-    [UIView animateWithDuration:0.5 animations:^{
-        self.btnSuperficie.frame= frameBtnSuperficie;
-        self.btnTipoMoneda.frame = framebtnTipoMoneda;
-        self.btnRangoPrecio.frame = framebtnRangoPrecio;
-        self.lblPrecio.frame = framelblPrecio;
-        
-    } completion:^(BOOL finished)
-     {
-        [UIView animateWithDuration:0.5 animations:^{
-            self.vistaSuperficie.frame = frameSuperficie;
-        } completion:^(BOOL finished) {
-            if(frameSuperficie.size.height == 162)
-                self.pickerSuperficie.hidden=NO;
-        }];
-     }];
 }
 
 -(IBAction)tipoMonedaClick:(id)sender{
@@ -166,7 +233,7 @@ bool isShown = false;
     if (frameTipoMoneda.size.height == 162){
         frameTipoMoneda.size.height = 0;
         self.pickerTipoMoneda.hidden = YES;
-        framebtnSuperficie.origin.y = 170;
+        framebtnSuperficie.origin.y = 178;
         frameLblDormitorio.origin.y = 225;
         frameSegmentedDormitorio.origin.y = 247;
         frameLblBanos.origin.y = 285;
@@ -189,7 +256,7 @@ bool isShown = false;
             framebtnRangoPrecio.origin.y = 127;
             framebtnTipoMoneda.origin.y = 127;
             framelblPrecio.origin.y = 105;
-            framebtnSuperficie.origin.y = 170 + 162;
+            framebtnSuperficie.origin.y = 178 + 162;
             frameLblDormitorio.origin.y = 225 + 162;
             frameSegmentedDormitorio.origin.y = 247 + 162;
             frameLblBanos.origin.y = 285 + 162;
@@ -226,14 +293,16 @@ bool isShown = false;
         }
         else{
             if (frameTipoMoneda.size.height == 0 && self.vistaRangoPrecios.frame.size.height == 0){
-                framebtnSuperficie.origin.y = 170 + 162;
+                double delay = ([self cerrarPickers] == YES? 0.5 : 0 );
+    
+                framebtnSuperficie.origin.y = 178 + 162;
                 frameLblDormitorio.origin.y = 225 + 162;
                 frameSegmentedDormitorio.origin.y = 247 + 162;
                 frameLblBanos.origin.y = 285 + 162;
                 frameSegmentedBanos.origin.y = 308 + 162;
                 frameBtnLimpiar.origin.y = 388 + 162;
                 frameTipoMoneda.size.height = 162;
-                [UIView animateWithDuration:0.5 animations:^{
+                [UIView animateWithDuration:0.5 delay: delay options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
                     self.vistaTipoMoneda.frame = frameTipoMoneda;
                     self.lblDormitorios.frame = frameLblDormitorio;
                     self.segmentedDormitorios.frame = frameSegmentedDormitorio;
@@ -259,11 +328,9 @@ bool isShown = false;
                      {
                          self.pickerTipoMoneda.hidden=NO;
                      }];
-                    
                 }
             }
         }
-        
     }
 }
 
@@ -285,7 +352,7 @@ bool isShown = false;
         frameRangoPrecios.size.height = 0;
         self.pickerRangoDesde.hidden = YES;
         self.pickerRangoHasta.hidden = YES;
-        framebtnSuperficie.origin.y = 170;
+        framebtnSuperficie.origin.y = 178;
         frameLblDormitorio.origin.y = 225;
         frameSegmentedDormitorio.origin.y = 247;
         frameLblBanos.origin.y = 285;
@@ -308,7 +375,7 @@ bool isShown = false;
             framebtnRangoPrecio.origin.y = 127;
             framebtnTipoMoneda.origin.y = 127;
             framelblPrecio.origin.y = 105;
-            framebtnSuperficie.origin.y = 170 + 162;
+            framebtnSuperficie.origin.y = 178 + 162;
             frameLblDormitorio.origin.y = 225 + 162;
             frameSegmentedDormitorio.origin.y = 247 + 162;
             frameLblBanos.origin.y = 285 + 162;
@@ -349,14 +416,15 @@ bool isShown = false;
         }
         else{
             if (frameRangoPrecios.size.height == 0 && self.vistaTipoMoneda.frame.size.height == 0){
-                framebtnSuperficie.origin.y = 170 + 162;
+                double delay = ([self cerrarPickers] == YES? 0.5 : 0 );
+                framebtnSuperficie.origin.y = 178 + 162;
                 frameLblDormitorio.origin.y = 225 + 162;
                 frameSegmentedDormitorio.origin.y = 247 + 162;
                 frameLblBanos.origin.y = 285 + 162;
                 frameSegmentedBanos.origin.y = 308 + 162;
                 frameBtnLimpiar.origin.y = 388 + 162;
                 frameRangoPrecios.size.height = 162;
-                [UIView animateWithDuration:0.5 animations:^{
+                [UIView animateWithDuration:0.5 delay:delay options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
                     self.vistaRangoPrecios.frame = frameRangoPrecios;
                     self.lblDormitorios.frame = frameLblDormitorio;
                     self.segmentedDormitorios.frame = frameSegmentedDormitorio;
@@ -385,7 +453,6 @@ bool isShown = false;
                 }
             }
         }
-        
     }
 }
 
@@ -407,7 +474,7 @@ bool isShown = false;
         framebtnRangoPrecio.origin.y = 117;
         framebtnTipoMoneda.origin.y = 117;
         framelblPrecio.origin.y = 95;
-        framebtnSuperficie.origin.y = 170;
+        framebtnSuperficie.origin.y = 178;
         frameLblDormitorio.origin.y = 225;
         frameSegmentedDormitorio.origin.y = 247;
         frameLblBanos.origin.y = 285;
@@ -420,7 +487,7 @@ bool isShown = false;
         framebtnRangoPrecio.origin.y = 117 + 162;
         framebtnTipoMoneda.origin.y = 117 + 162;
         framelblPrecio.origin.y = 95  + 162;
-        framebtnSuperficie.origin.y = 170 + 162;
+        framebtnSuperficie.origin.y = 178 + 162;
         frameLblDormitorio.origin.y = 225 + 162;
         frameSegmentedDormitorio.origin.y = 247 + 162;
         frameLblBanos.origin.y = 285 + 162;
@@ -442,12 +509,10 @@ bool isShown = false;
             self.viewTipoPropiedad.frame = frameTipoPropiedad;
         } completion:^(BOOL finished) {
                 self.pickerTipoPropiedad.hidden=NO;
-
         }];
 
     }
     else{
-        
         [UIView animateWithDuration:0.5 animations:^{
             self.viewTipoPropiedad.frame = frameTipoPropiedad;
             self.btnTipoMoneda.frame = framebtnTipoMoneda;
@@ -496,24 +561,17 @@ bool isShown = false;
     UILabel *buttonLabel ;
     for (UIView *subView in button.subviews)
     {
-        if (subView.tag == 100)
-        {
+        if (subView.tag == 100){
             [subView removeFromSuperview];
         }
     }
-    
     buttonLabel = [[UILabel alloc] initWithFrame:CGRectMake(190, 0, 100,buttonheight )];
-    
     buttonLabel.textColor = button.titleLabel.tintColor;
-
     buttonLabel.backgroundColor = [UIColor clearColor];
     buttonLabel.text = texto;
     buttonLabel.tag = 100;
-    
     buttonLabel.font = [UIFont systemFontOfSize:14];
-
     buttonLabel.textAlignment = UITextAlignmentCenter;
-    
     [button addSubview:buttonLabel];
 }
 
@@ -530,9 +588,7 @@ bool isShown = false;
     } else {
         self.input.text = @"";
     }
-    
 
-    
     //self.input.text = self.nombreCiudad;
     [locationManager startUpdatingLocation];
     [super viewDidLoad];
@@ -540,22 +596,59 @@ bool isShown = false;
     self.input.delegate = self;
     self.input.clearButtonMode = UITextFieldViewModeWhileEditing;
    
+    [self cargarData];
     //textField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [self redondearbotones:self.tipoPropiedad];
     [self redondearbotones:self.btnRangoPrecio];
     [self redondearbotones:self.btnTipoMoneda];
     [self redondearbotones:self.btnSuperficie];
 
-    arrayTipoPropiedad = [[NSArray alloc] initWithObjects:@"Todos",@"Casa", @"Departamento", nil];
-    arrayTipoMoneda = [[NSArray alloc] initWithObjects:@"UF", @"Pesos", nil];
-    
-    [self agregarLabelBoton:self.tipoPropiedad texto:@"Todos"];
     CGAffineTransform t0 = CGAffineTransformMakeTranslation (0, self.pickerTipoPropiedad.bounds.size.height/2);
     CGAffineTransform s0 = CGAffineTransformMakeScale       (1.0, 0.8);
     CGAffineTransform t1 = CGAffineTransformMakeTranslation (0, -self.pickerTipoPropiedad.bounds.size.height/2);
     self.pickerTipoPropiedad.transform = CGAffineTransformConcat          (t0, CGAffineTransformConcat(s0, t1));
     
+    t0 = CGAffineTransformMakeTranslation (0, self.pickerTipoMoneda.bounds.size.height/2);
+    s0 = CGAffineTransformMakeScale       (1.0, 0.8);
+    t1 = CGAffineTransformMakeTranslation (0, -self.pickerTipoMoneda.bounds.size.height/2);
+    self.pickerTipoMoneda.transform = CGAffineTransformConcat          (t0, CGAffineTransformConcat(s0, t1));
+    
+    t0 = CGAffineTransformMakeTranslation (0, self.pickerRangoDesde.bounds.size.height/2);
+    s0 = CGAffineTransformMakeScale       (1.0, 0.8);
+    t1 = CGAffineTransformMakeTranslation (0, -self.pickerRangoDesde.bounds.size.height/2);
+    self.pickerRangoDesde.transform = CGAffineTransformConcat          (t0, CGAffineTransformConcat(s0, t1));
+    
+    t0 = CGAffineTransformMakeTranslation (0, self.pickerRangoHasta.bounds.size.height/2);
+    s0 = CGAffineTransformMakeScale       (1.0, 0.8);
+    t1 = CGAffineTransformMakeTranslation (0, -self.pickerRangoHasta.bounds.size.height/2);
+    self.pickerRangoHasta.transform = CGAffineTransformConcat          (t0, CGAffineTransformConcat(s0, t1));
+    
+    t0 = CGAffineTransformMakeTranslation (0, self.pickerSuperficie.bounds.size.height/2);
+    s0 = CGAffineTransformMakeScale       (1.0, 0.8);
+    t1 = CGAffineTransformMakeTranslation (0, -self.pickerSuperficie.bounds.size.height/2);
+    self.pickerSuperficie.transform = CGAffineTransformConcat          (t0, CGAffineTransformConcat(s0, t1));
     [self.view addSubview:self.input];
+}
+
+-(void) cargarData{
+    arrayTipoPropiedad = [[NSArray alloc] initWithObjects:@"Todos",@"Casa", @"Departamento", nil];
+    arrayTipoMoneda = [[NSArray alloc] initWithObjects:@"UF", @"Pesos", nil];
+    
+    arrayPrecioPesosDesde = [[NSArray alloc] initWithObjects:@"100.000",@"200.000", @"300.000",
+                             @"400.000",@"600.000", @"800.000",
+                             @"1.000.000",@"1.500.000", @"2.000.000",nil];
+    arrayPrecioPesosHasta= [[NSArray alloc] initWithObjects:@"100.000",@"200.000", @"300.000",
+                            @"400.000",@"600.000", @"800.000",
+                            @"1.000.000",@"1.500.000", @"2.000.000",nil];
+    
+    arrayPrecioUFDesde = [[NSArray alloc] initWithObjects: @"Max",@"100",@"200", @"400",@"600",@"800", @"1000"
+                          @"1500",@"1800", @"2000",@"2200",@"2600", @"3000", nil];
+    arrayPrecioUFHasta = [[NSArray alloc] initWithObjects: @"Max",@"100",@"200", @"400",@"600",@"800", @"1000"
+                          @"1500",@"1800", @"2000",@"2200",@"2600", @"3000", nil];
+    arraySuperficie =[[NSArray alloc] initWithObjects:@"50 mts",@"100 mts", @"200 mts", nil];
+    
+    [self agregarLabelBoton:self.tipoPropiedad texto:@"Todos"];
+
 }
 - (void)redondearbotones:(UIButton *) boton{
     boton.layer.cornerRadius = 6;
@@ -564,6 +657,13 @@ bool isShown = false;
     [[boton layer] setBorderColor:boton.tintColor.CGColor];
     
 }
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    self.vistaResultadoGoogle.hidden = NO;
+    self.vistafiltros.hidden = YES;
+    
+    return YES;
+}
+
 - (BOOL)textFieldShouldClear:(UITextField *)textField {
     return YES;
 }
@@ -605,13 +705,10 @@ bool isShown = false;
           if (httpResponse.statusCode == 200)
               
           {
-              
-              
               NSError *jsonError;
               NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
               
               if (!jsonError)
-                  
               {
                   if(!self.mapView.hidden){
                       [self.mapView setHidden: YES];
@@ -626,33 +723,24 @@ bool isShown = false;
                           NSDictionary *value = [jsonData objectForKey:key];
                           for (id valor in value) {
                               [self.listado addObject:[valor objectForKey:@"description"]];
-                              
-                              
                           }
                       }
                   }
                   dispatch_async(dispatch_get_main_queue(), ^{
                       [self refreshTableView];
                   });
-                  
               }
-              
           }
           
       }] resume];
-
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    
         [self llamadoAutoComplete:[[textField text]
-                               stringByReplacingCharactersInRange:range withString:string]];
+                stringByReplacingCharactersInRange:range withString:string]];
     
     return true;
 }
-
-
-
 
 - (void) refreshTableView
 {
@@ -754,11 +842,25 @@ bool isShown = false;
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     if(pickerView == self.pickerTipoPropiedad)
         return [arrayTipoPropiedad count];
-    else
-        if(pickerView == self.pickerTipoMoneda)
+    else{
+        if(pickerView == self.pickerTipoMoneda){
             return [arrayTipoMoneda count];
-        else
-            return 0;
+        }
+        else{
+            if(pickerView == self.pickerRangoDesde)
+                return [arrayPrecioPesosDesde count];
+            else{
+                if(pickerView == self.pickerRangoHasta)
+                    return [arrayPrecioPesosDesde count];
+                else{
+                    if(pickerView == self.pickerSuperficie)
+                        return [arraySuperficie count];
+                    else
+                        return 0;
+                }
+            }
+        }
+    }
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
@@ -766,13 +868,36 @@ bool isShown = false;
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-  return [arrayTipoPropiedad objectAtIndex:row];
+    if(pickerView == self.pickerTipoPropiedad)
+        return [arrayTipoPropiedad objectAtIndex:row];
+    else{
+        if(pickerView == self.pickerTipoMoneda){
+            return [arrayTipoMoneda objectAtIndex: row];
+        }
+        else{
+            if(pickerView == self.pickerRangoDesde)
+                return [arrayPrecioPesosDesde objectAtIndex:row];
+            else{
+                if(pickerView == self.pickerRangoHasta)
+                    return [arrayPrecioPesosDesde objectAtIndex:row];
+                else{
+                    return [arraySuperficie objectAtIndex:row];
+                }
+            }
+        }
+    }
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.input) {
+        [textField resignFirstResponder];
+    }
+    return NO;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-     UITableViewCell *cell;
-           static NSString *CellIdentifier = @"Cell";
+        UITableViewCell *cell;
+        static NSString *CellIdentifier = @"Cell";
         
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
@@ -780,7 +905,7 @@ bool isShown = false;
         }
         cell.textLabel.text = [self.listado objectAtIndex:indexPath.row];
     
-        [self.listado removeAllObjects];
+        //[self.listado removeAllObjects];
     return cell;
 
 }
@@ -790,14 +915,14 @@ bool isShown = false;
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     [self.input setText: cell.textLabel.text];
     [self.view endEditing:YES];
     [self.mapView setHidden: NO];
-    [tableView setHidden: YES];
-
-  }
+    self.vistaResultadoGoogle.hidden = YES;
+    tableView.hidden = YES;
+    self.vistafiltros.hidden = NO;
+}
 
 
 
