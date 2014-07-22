@@ -68,8 +68,6 @@
                 [self addSubview:gradient];
                 
                 self.backgroundView = gradient;
-                
-                // pal cache..
                 _propiedad.img = miima;
             }
         }];
@@ -97,6 +95,7 @@
     
     _lblTitulo.text = _propiedad.title;
     _lblPrecio.text = _propiedad.precio;
+    [self loadSlideShow];
 }
 
 - (void)bajarImagenDesdeUrl:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock
@@ -116,7 +115,7 @@
 }
 
 - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
-    //UIGraphicsBeginImageContext(newSize);
+    // UIGraphicsBeginImageContext(newSize);
     // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
     // Pass 1.0 to force exact pixel size.
     UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
@@ -124,6 +123,45 @@
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return newImage;
+}
+
+- (void)showSlideShow:(NSArray *)items{
+    int i = 0;
+    for (NSDictionary *obj in items) {
+        UIImageView *img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"imagenNoDisponible.jpg"]];
+        img.frame = CGRectMake(i*320, 0, 320, 200);
+        [self bajarImagenDesdeUrl:[NSURL URLWithString:[obj objectForKey:@"url"]] completionBlock:^(BOOL succeeded, UIImage *image) {
+            if (succeeded) {
+                UIImage *miima = [self imageWithImage:image scaledToSize:CGSizeMake(self.frame.size.width, self.frame.size.height)];
+                img.image = miima;
+                [_scrollview addSubview:img];
+            }
+        }];
+        i++;
+    }
+    _scrollview.contentSize = CGSizeMake(320*items.count, 200);
+    _scrollview.frame = CGRectMake(0, 0, 320, 200);
+}
+
+-(void)loadSlideShow{
+    NSString *urlString = [NSString stringWithFormat:@"https://api.mercadolibre.com/items/%@?attributes=pictures",_propiedad.idMeli];
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSURLSession *session = [NSURLSession sharedSession];
+    [[session dataTaskWithURL:url
+            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
+      {
+          NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+          if (httpResponse.statusCode == 200)
+          {
+              NSError *jsonError;
+              NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+              if (!jsonError)
+              {
+                  NSArray *items = [jsonData objectForKey:@"pictures"];
+                  [self showSlideShow:items];
+              }
+          }
+      }] resume];
 }
 
 @end

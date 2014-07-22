@@ -196,6 +196,7 @@
     if (cell == nil) {
         cell = [[CeldaPropiedadViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+
     [cell setData:propiedades[indexPath.row]];
     return cell;
 }
