@@ -501,6 +501,7 @@
                         <outlet property="scrollView" destination="ls2-q9-91H" id="yqF-ly-g0h"/>
                         <outlet property="segmentedBanos" destination="gJz-ZG-Hec" id="Sn6-KK-Ivb"/>
                         <outlet property="segmentedDormitorios" destination="eNO-VL-SDJ" id="C6X-KZ-j2a"/>
+                        <outlet property="segmentedTipoOperacion" destination="1KG-vm-Jn1" id="Ds1-X3-x8r"/>
                         <outlet property="tableView" destination="DCf-ez-ReX" id="kgJ-bq-DWi"/>
                         <outlet property="tipoPropiedad" destination="1KG-vm-Jn1" id="ugi-4F-HOi"/>
                         <outlet property="viewTipoPropiedad" destination="MNX-os-ReX" id="KuQ-Th-mKn"/>

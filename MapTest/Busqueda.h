@@ -13,7 +13,8 @@
 @property UnidadGeografica *unidadGeografica;
 @property TipoOperacion tipoOperacion;
 @property TipoPropiedad tipoPropiedad;
-@property NSString *rangoPrecio;
+@property NSInteger rangoPrecioDesde;
+@property NSInteger rangoPrecioHasta;
 @property NSString *rangoSuperficie;
 @property NSInteger cantidadDormitorios;
 @property NSInteger cantidadBaños;

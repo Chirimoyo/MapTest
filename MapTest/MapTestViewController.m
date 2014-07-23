@@ -38,6 +38,9 @@
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedDormitorios;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedBanos;
+@property (weak, nonatomic) IBOutlet UIButton *segmentedTipoOperacion;
+
+
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) NSMutableArray * listado;
@@ -59,15 +62,13 @@
 @property (strong, nonatomic) NSArray *arraySuperficie;
 @property (weak, nonatomic) IBOutlet UIView *vistaResultadoGoogle;
 @property (weak, nonatomic) IBOutlet UIView *vistafiltros;
-
+@property (strong, nonatomic) Busqueda *busqueda;
 
 @end
 
 @implementation MapTestViewController {
     GMSMapView *mapView_;
     CLLocationManager *locationManager;
-    
-    
 }
 
 @synthesize delegate;
@@ -81,6 +82,8 @@
 @synthesize arrayPrecioArriendoUFHasta;
 @synthesize arrayPrecioCompraUFDesde;
 @synthesize arrayPrecioCompraUFHasta;
+@synthesize arraySuperficie;
+@synthesize busqueda;
 
 bool isShown = false;
 
@@ -545,7 +548,7 @@ bool isShown = false;
     }
     
 }
-
+/*
 - (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     if(pickerView == self.pickerTipoPropiedad)
@@ -565,6 +568,7 @@ bool isShown = false;
 
     }
 }
+ */
 
 - (void) agregarLabelBoton: (UIButton *) button texto:(NSString *)texto {
     double buttonWidth= button.frame.size.width;
@@ -652,11 +656,26 @@ bool isShown = false;
                                      @"200.000",@"300.000", @"400.000",
                                      @"500.000",@"1.000.000", @"1.500.000",nil];
     
-  /*  arrayPrecioUFDesde = [[NSArray alloc] initWithObjects: @"Max",@"100",@"200", @"400",@"600",@"800", @"1000"
-                          @"1500",@"1800", @"2000",@"2200",@"2600", @"3000", nil];
-    arrayPrecioUFHasta = [[NSArray alloc] initWithObjects: @"Max",@"100",@"200", @"400",@"600",@"800", @"1000"
-                          @"1500",@"1800", @"2000",@"2200",@"2600", @"3000", nil];
-    arraySuperficie =[[NSArray alloc] initWithObjects:@"50 mts",@"100 mts", @"200 mts", nil];*/
+    arrayPrecioArriendoUFDesde = [[NSArray alloc] initWithObjects: @"No min",@"2",@"4", @"6",@"10",@"14", @"18",
+                          @"22",@"26", @"30", nil];
+    arrayPrecioArriendoUFHasta = [[NSArray alloc] initWithObjects: @"No max",@"2",@"4", @"6",@"10",@"14", @"18",
+                                  @"22",@"26", @"30", nil];
+    
+    
+    arrayPrecioCompraPesosDesde = [[NSArray alloc] initWithObjects:@"No min",@"50.000",@"100.000", @"150.000",
+                                     @"200.000",@"300.000", @"400.000",
+                                     @"500.000",@"1.000.000", @"1.500.000",nil];
+    arrayPrecioCompraPesosHasta = [[NSArray alloc] initWithObjects:@"No max",@"50.000",@"100.000", @"150.000",
+                                     @"200.000",@"300.000", @"400.000",
+                                     @"500.000",@"1.000.000", @"1.500.000",nil];
+    
+    arrayPrecioCompraUFDesde = [[NSArray alloc] initWithObjects: @"No min",@"2",@"4", @"6",@"10",@"14", @"18",
+                                  @"22",@"26", @"30", nil];
+    arrayPrecioCompraUFHasta = [[NSArray alloc] initWithObjects: @"No max",@"2",@"4", @"6",@"10",@"14", @"18",
+                                  @"22",@"26", @"30", nil];
+    
+    
+     arraySuperficie =[[NSArray alloc] initWithObjects:@"50 mts",@"100 mts", @"200 mts", nil];
     
     [self agregarLabelBoton:self.tipoPropiedad texto:@"Todos"];
 
@@ -810,7 +829,6 @@ bool isShown = false;
                               [ugeo setLatitud:lat];
                               [ugeo setLongitud:lng];
                               [ugeo setNombre:self.input.text];
-                              Busqueda *busqueda = [Busqueda new];
                               [busqueda setUnidadGeografica: ugeo];
                               
                               //NSString *itemToPassBack = @"Pass this value back to ViewControllerA";
@@ -837,15 +855,36 @@ bool isShown = false;
      [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(void) cargarRangos{
 
+    
+}
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     if(pickerView == self.pickerTipoPropiedad)
         [self agregarLabelBoton: self.tipoPropiedad texto:[arrayTipoPropiedad objectAtIndex:row]];
     else
-        if(pickerView == self.pickerTipoMoneda){
+        if(pickerView == self.pickerTipoMoneda)
+        {
             [self.btnTipoMoneda setTitle:[arrayTipoMoneda objectAtIndex:row] forState:UIControlStateNormal];
+            if([[arrayTipoMoneda objectAtIndex:row] isEqualToString:@"UF"])
+            {
+                NSInteger filaDesde = [self.pickerRangoDesde selectedRowInComponent:0];
+                NSInteger filaHasta = [self.pickerRangoHasta selectedRowInComponent:0];
+                
+                [self.pickerRangoDesde reloadComponent:0];
+                [self.pickerRangoHasta reloadComponent:0];
+
+            }
+            else{
+                NSInteger filaDesde = [self.pickerRangoDesde selectedRowInComponent:0];
+                NSInteger filaHasta = [self.pickerRangoHasta selectedRowInComponent:0];
+                
+                [self.pickerRangoDesde reloadComponent:0];
+                [self.pickerRangoHasta reloadComponent:0];
+
+            }
         }
         else{
             if(pickerView == self.pickerRangoDesde)
@@ -859,7 +898,7 @@ bool isShown = false;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-   /* if(pickerView == self.pickerTipoPropiedad)
+   if(pickerView == self.pickerTipoPropiedad)
         return [arrayTipoPropiedad count];
     else{
         if(pickerView == self.pickerTipoMoneda){
@@ -867,10 +906,39 @@ bool isShown = false;
         }
         else{
             if(pickerView == self.pickerRangoDesde)
-                return [arrayPrecioPesosDesde count];
+            {
+                switch (self.segmentedTipoOperacion.selected) {
+                    case 0:
+                        if( [[self.arrayTipoMoneda objectAtIndex:[self.pickerTipoMoneda selectedRowInComponent:0]] isEqualToString:@"UF"])
+                             return [arrayPrecioCompraUFDesde count];
+                        else
+                             return [arrayPrecioCompraPesosDesde count];
+                        break;
+                    default: //para arriendo y arriendo de temporada
+                        if( [[self.arrayTipoMoneda objectAtIndex:[self.pickerTipoMoneda selectedRowInComponent:0]] isEqualToString:@"UF"])
+                            return [arrayPrecioArriendoUFDesde count];
+                        else
+                            return [arrayPrecioArriendoPesosDesde count];
+                        break;
+                }
+            }
             else{
-                if(pickerView == self.pickerRangoHasta)
-                    return [arrayPrecioPesosDesde count];
+                if(pickerView == self.pickerRangoHasta){
+                    switch (self.segmentedTipoOperacion.selected) {
+                        case 0:
+                            if( [[self.arrayTipoMoneda objectAtIndex:[self.pickerTipoMoneda selectedRowInComponent:0]] isEqualToString:@"UF"])
+                                return [arrayPrecioCompraUFHasta count];
+                            else
+                                return [arrayPrecioCompraPesosHasta count];
+                            break;
+                        default: //para arriendo y arriendo de temporada
+                            if( [[self.arrayTipoMoneda objectAtIndex:[self.pickerTipoMoneda selectedRowInComponent:0]] isEqualToString:@"UF"])
+                                return [arrayPrecioArriendoUFHasta count];
+                            else
+                                return [arrayPrecioArriendoPesosHasta count];
+                            break;
+                    }
+                }
                 else{
                     if(pickerView == self.pickerSuperficie)
                         return [arraySuperficie count];
@@ -879,8 +947,8 @@ bool isShown = false;
                 }
             }
         }
-    }*/
-    return 0;
+    }
+    
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
@@ -888,7 +956,7 @@ bool isShown = false;
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-   /* if(pickerView == self.pickerTipoPropiedad)
+   if(pickerView == self.pickerTipoPropiedad)
         return [arrayTipoPropiedad objectAtIndex:row];
     else{
         if(pickerView == self.pickerTipoMoneda){
@@ -896,17 +964,42 @@ bool isShown = false;
         }
         else{
             if(pickerView == self.pickerRangoDesde)
-                return [arrayPrecioPesosDesde objectAtIndex:row];
+                switch (self.segmentedTipoOperacion.selected) {
+                    case 0:
+                        if( [[self.arrayTipoMoneda objectAtIndex:[self.pickerTipoMoneda selectedRowInComponent:0]] isEqualToString:@"UF"])
+                            return [arrayPrecioCompraUFDesde objectAtIndex:row];
+                        else
+                            return [arrayPrecioCompraPesosDesde objectAtIndex:row];
+                        break;
+                    default: //para arriendo y arriendo de temporada
+                        if( [[self.arrayTipoMoneda objectAtIndex:[self.pickerTipoMoneda selectedRowInComponent:0]] isEqualToString:@"UF"])
+                            return [arrayPrecioArriendoUFDesde objectAtIndex:row];
+                        else
+                            return [arrayPrecioArriendoPesosDesde objectAtIndex:row];
+                        break;
+                }
             else{
                 if(pickerView == self.pickerRangoHasta)
-                    return [arrayPrecioPesosDesde objectAtIndex:row];
+                    switch (self.segmentedTipoOperacion.selected) {
+                        case 0:
+                            if( [[self.arrayTipoMoneda objectAtIndex:[self.pickerTipoMoneda selectedRowInComponent:0]] isEqualToString:@"UF"])
+                                return [arrayPrecioCompraUFHasta objectAtIndex:row];
+                            else
+                                return [arrayPrecioCompraPesosHasta objectAtIndex:row];
+                            break;
+                        default: //para arriendo y arriendo de temporada
+                            if( [[self.arrayTipoMoneda objectAtIndex:[self.pickerTipoMoneda selectedRowInComponent:0]] isEqualToString:@"UF"])
+                                return [arrayPrecioArriendoUFHasta objectAtIndex:row];
+                            else
+                                return [arrayPrecioArriendoPesosHasta objectAtIndex:row];
+                            break;
+                    }
                 else{
                     return [arraySuperficie objectAtIndex:row];
                 }
             }
         }
-    }*/
-    return @"";
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
