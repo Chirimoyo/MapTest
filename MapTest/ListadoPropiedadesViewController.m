@@ -154,6 +154,7 @@
 
 -(IBAction)volverMapa:(id)sender
 {
+    /*
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 
     VistaMapaViewController *second = [storyboard instantiateViewControllerWithIdentifier:@"VistaMapaViewController"];
@@ -166,8 +167,8 @@
     transition.type = kCATransitionFade;
     transition.subtype = kCATransitionFromRight;
     [self.navigationController.view.layer addAnimation:transition forKey:nil];
-    
-    [self.navigationController pushViewController:second animated:YES ];
+    */
+    [self.navigationController popViewControllerAnimated:YES ];
 
 }
 

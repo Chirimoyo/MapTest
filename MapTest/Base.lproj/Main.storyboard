@@ -13,12 +13,11 @@
                     </navigationBar>
                     <connections>
                         <segue destination="eM8-2P-CBl" kind="relationship" relationship="rootViewController" id="JlI-Rk-U4X"/>
-                        <segue destination="xwH-ty-43V" kind="push" id="KyA-aj-x6F"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eh4-eC-AM6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-461" y="60"/>
+            <point key="canvasLocation" x="-1201" y="216"/>
         </scene>
         <!--Vista Mapa View Controller - Santiago-->
         <scene sceneID="kxh-ZO-7CP">
@@ -71,11 +70,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="Zce-8f-PY5" id="qng-o7-Ox3"/>
+                        <segue destination="xwH-ty-43V" kind="push" identifier="goListado" id="EEK-TK-s7q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PkO-3j-7xg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-10" y="60"/>
+            <point key="canvasLocation" x="-688" y="216"/>
         </scene>
         <!--Listado Propiedades View Controller-->
         <scene sceneID="FuJ-OI-iQu">
@@ -198,7 +198,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uQH-F4-zyU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-10" y="720"/>
+            <point key="canvasLocation" x="59" y="696"/>
         </scene>
         <!--Map Test View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -514,7 +514,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="405" y="60"/>
+            <point key="canvasLocation" x="59" y="16"/>
         </scene>
     </scenes>
     <resources>

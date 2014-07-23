@@ -101,7 +101,7 @@
 
 -(IBAction)listadoPropiedades:(id)sender
 {
-
+    /*
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     ListadoPropiedadesViewController *vistaListado = [storyboard instantiateViewControllerWithIdentifier:@"ListadoPropiedadesViewController"];
@@ -116,8 +116,17 @@
     [self.navigationController.view.layer addAnimation:transition forKey:nil];
     
     [self.navigationController pushViewController:vistaListado animated:YES ];
+     */
+    [self performSegueWithIdentifier:@"goListado" sender:self];
+}
 
-    
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"goListado"]) {
+        ListadoPropiedadesViewController *vistaListado = (ListadoPropiedadesViewController *) segue.destinationViewController;
+        UnidadGeografica *unidadgeo = [UnidadGeografica new];
+        unidadgeo.nombre = [self title];
+        vistaListado.unidadGeografica = unidadgeo;
+    }
 }
 
 -(IBAction)viewFiltrosBusqueda:(id)sender
