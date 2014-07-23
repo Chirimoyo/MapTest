@@ -47,8 +47,6 @@
     mapView_.myLocationEnabled = NO;
     [self.mapView addSubview: mapView_];
     
-    
-    
     // Creates a marker in the center of the map.
     GMSMarker *marker = [[GMSMarker alloc] init];
     marker.position = CLLocationCoordinate2DMake(locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude);
@@ -121,6 +119,7 @@
 
     
 }
+
 -(IBAction)viewFiltrosBusqueda:(id)sender
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -144,7 +143,7 @@
     [self ApiMeli:nombreCiudad];
 }
 
-- (void) refreshMapDouble:(double)lat  longitud:(double)lng nombreCiudad:(NSString *)nombreCiudad{
+- (void) refreshMapDouble:(double)lat longitud:(double)lng nombreCiudad:(NSString *)nombreCiudad{
    [mapView_ clear];
    [mapView_ animateToLocation:CLLocationCoordinate2DMake(lat, lng)];
     GMSMarker *marker = [[GMSMarker alloc] init];

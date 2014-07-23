@@ -8,7 +8,7 @@
 
 #import "ListadoPropiedadesViewController.h"
 #import "PropMeli.h"
-#import "CeldaPropiedadViewCell.h";
+#import "CeldaPropiedadViewCell.h"
 
 @interface ListadoPropiedadesViewController ()
 @property NSMutableArray *propiedades;
@@ -44,14 +44,14 @@
     
     
     if ([self.unidadGeografica.nombre rangeOfString:@"Santiago"].location != NSNotFound) {
-        urlString = [NSString stringWithFormat:@"https://mobile.mercadolibre.com.ar/sites/MLC/search?category=MLC1480&limit=3&state=TUxDUE1FVEExM2JlYg&city=TUxDQ1NBTjk4M2M&offset=%d" , offset];
+        urlString = [NSString stringWithFormat:@"https://mobile.mercadolibre.com.ar/sites/MLC/search?category=MLC1480&limit=6&state=TUxDUE1FVEExM2JlYg&city=TUxDQ1NBTjk4M2M&offset=%d" , offset];
     } else {
         
         if ([self.unidadGeografica.nombre rangeOfString:@"del Mar"].location != NSNotFound) {
-            urlString = [ NSString stringWithFormat:@"https://mobile.mercadolibre.com.ar/sites/MLC/search?category=MLC1480&limit=3&state=TUxDUFZBTE84MDVj&city=TUxDQ1ZJ0WQ3ZGU4&offset=%d", offset];
+            urlString = [ NSString stringWithFormat:@"https://mobile.mercadolibre.com.ar/sites/MLC/search?category=MLC1480&limit=6&state=TUxDUFZBTE84MDVj&city=TUxDQ1ZJ0WQ3ZGU4&offset=%d", offset];
         } else {
             
-            urlString =[ NSString stringWithFormat: @"https://mobile.mercadolibre.com.ar/sites/MLC/search?category=MLC1480&limit=3&state=TUxDUERFTE9lODZj&city=TUxDQ0NPTjYwZTdk&offset=%d", offset];
+            urlString =[ NSString stringWithFormat: @"https://mobile.mercadolibre.com.ar/sites/MLC/search?category=MLC1480&limit=6&state=TUxDUERFTE9lODZj&city=TUxDQ0NPTjYwZTdk&offset=%d", offset];
         }
     }
     urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -150,23 +150,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return propiedades.count;
-}
-
--(IBAction) toggleUIButtonImage:(UIButton*)sender{
-    PropMeli *propiedad = ((PropMeli * )propiedades[sender.tag]);
-    
-    if ([sender isSelected]) {
-        [sender setImage:[UIImage imageNamed:@"NoEsFavorito"] forState:UIControlStateNormal];
-        [sender setSelected:NO];
-        propiedad.esFavorito = NO;
-
-        
-    } else {
-        [sender setImage:[UIImage imageNamed:@"EsFavorito"] forState:UIControlStateSelected];
-        [sender setSelected:YES];
-        propiedad.esFavorito = YES;
-
-    }
 }
 
 -(IBAction)volverMapa:(id)sender
