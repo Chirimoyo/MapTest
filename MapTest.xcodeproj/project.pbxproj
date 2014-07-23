@@ -66,6 +66,7 @@
 		CC15FFC1197FE4A30030A289 /* gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = CC15FFC0197FE4A30030A289 /* gradient.png */; };
 		CC15FFC3197FE8CE0030A289 /* Transparent_Gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = CC15FFC2197FE8CE0030A289 /* Transparent_Gradient.png */; };
 		CC15FFC5197FF28B0030A289 /* home-gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = CC15FFC4197FF28B0030A289 /* home-gradient.png */; };
+		CC15FFC719800B8D0030A289 /* santiago.gpx in Resources */ = {isa = PBXBuildFile; fileRef = CC15FFC619800B8D0030A289 /* santiago.gpx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,6 +169,7 @@
 		CC15FFC0197FE4A30030A289 /* gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gradient.png; sourceTree = "<group>"; };
 		CC15FFC2197FE8CE0030A289 /* Transparent_Gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Transparent_Gradient.png; sourceTree = "<group>"; };
 		CC15FFC4197FF28B0030A289 /* home-gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-gradient.png"; sourceTree = "<group>"; };
+		CC15FFC619800B8D0030A289 /* santiago.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = santiago.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +212,7 @@
 		BF6FF5A6195088DF001905AC = {
 			isa = PBXGroup;
 			children = (
+				CC15FFC619800B8D0030A289 /* santiago.gpx */,
 				CC15FFBE197FE4320030A289 /* Assets */,
 				CC15FF86197FE2400030A289 /* Libs */,
 				BFC871EE196B29A40007D662 /* MapTest */,
@@ -467,6 +470,7 @@
 				BFC8720F196B29A40007D662 /* Main.storyboard in Resources */,
 				CC15FFC1197FE4A30030A289 /* gradient.png in Resources */,
 				CC15FFC3197FE8CE0030A289 /* Transparent_Gradient.png in Resources */,
+				CC15FFC719800B8D0030A289 /* santiago.gpx in Resources */,
 				BFC8721C196B29A40007D662 /* MapTest-Info.plist in Resources */,
 				BFA8A9B019701AF600DFCAC1 /* imagenNoDisponible.jpg in Resources */,
 			);

@@ -141,9 +141,6 @@
 
     [second setModalPresentationStyle:UIModalPresentationFullScreen];
     [self presentViewController:second animated:YES completion:nil];
-    
-    
-
 }
 
 - (void) refreshMap:(id)lat  longitud:(id)lng nombreCiudad:(NSString *)nombreCiudad{
