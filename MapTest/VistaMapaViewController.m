@@ -9,6 +9,7 @@
 #import "VistaMapaViewController.h"
 #import "MapTestViewController.h"
 #import "ListadoPropiedadesViewController.h"
+#import "Busqueda.h"
 #import "AFHTTPRequestOperationManager.h"
 
 @interface VistaMapaViewController ()
@@ -20,6 +21,7 @@
     GMSMapView *mapView_;
     CLLocationManager *locationManager;
     GMSMarker *currentPositionMarker;
+    NSUserDefaults *userDefaults;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -34,6 +36,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    userDefaults = [NSUserDefaults standardUserDefaults];
     [self initMap];
     [self initMarker];
 }
@@ -48,11 +51,12 @@
     mapView_.myLocationEnabled = NO;
     [self.mapView addSubview: mapView_];
 
-    BOOL existePreferencia = NO;
-    if (existePreferencia) {
+    NSString *ultimaBusqueda = [userDefaults objectForKey:@"ultimaBusqueda"];
+    if (ultimaBusqueda != nil) {
+        NSLog(@"ultimaBusqueda %@", ultimaBusqueda);
+        self.title = ultimaBusqueda;
         //cargar la ultima busqueda realizada
-        [self ApiMeli: self.ugeo.nombre];
-
+        [self ApiMeli: ultimaBusqueda];
     } else {
         //ubicar al usuario en su posición actual
         [self centrarMapaPosicionUsuario];
@@ -78,12 +82,12 @@
 
 
 
-- (void)addItemViewController:(MapTestViewController *)controller didFinishEnteringItem:(UnidadGeografica *)item
+- (void)addItemViewController:(MapTestViewController *)controller didFinishEnteringItem:(Busqueda *)item
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.title = item.nombre;
+        self.title = item.unidadGeografica.nombre;
         
-        [self refreshMap:item.latitud longitud:item.longitud nombreCiudad: item.nombre];
+        [self refreshMap:item.unidadGeografica.latitud longitud:item.unidadGeografica.longitud nombreCiudad: item.unidadGeografica.nombre];
     });
     //NSLog(@"This was returned from ViewControllerB %@",item.nombre);
 }
@@ -276,8 +280,8 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    //[self ApiMeli:@"Santiago"];
 }
+
 
 
 @end

@@ -10,12 +10,13 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import <CoreLocation/CoreLocation.h>
 #import "UnidadGeografica.h"
+#import "Busqueda.h"
 
 
 @class MapTestViewController;
 
 @protocol MapTestViewControllerDelegate <NSObject>
-- (void)addItemViewController:(MapTestViewController *)controller didFinishEnteringItem:(UnidadGeografica *)item;
+- (void)addItemViewController:(MapTestViewController *)controller didFinishEnteringItem:(Busqueda *)item;
 @end
 
 @interface MapTestViewController : UIViewController<UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UIPickerViewDelegate>

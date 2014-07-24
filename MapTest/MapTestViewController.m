@@ -656,7 +656,8 @@ bool isShown = false;
     NSString *urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?address=%@&types=geocode&language=fr&sensor=true&key=AIzaSyA6ORrTeE4pXuzmbP9nm2nFpgoLB_EHhlc", self.input.text ];
     
     urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
+    [[NSUserDefaults standardUserDefaults] setObject:self.input.text forKey:@"ultimaBusqueda"];
+
     NSURL *url = [NSURL URLWithString:urlString];
     
     NSURLSession *session = [NSURLSession sharedSession];
@@ -696,7 +697,7 @@ bool isShown = false;
                               [busqueda setUnidadGeografica: ugeo];
                               
                               //NSString *itemToPassBack = @"Pass this value back to ViewControllerA";
-                              [self.delegate addItemViewController:self didFinishEnteringItem:ugeo];
+                              [self.delegate addItemViewController:self didFinishEnteringItem:busqueda];
                               dispatch_async(dispatch_get_main_queue(), ^{
                                   [self dismissViewControllerAnimated:YES completion:nil];
                               });
