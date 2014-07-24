@@ -57,10 +57,10 @@
 @property (weak, nonatomic) IBOutlet UIView *vistafiltros;
 @property (strong, nonatomic) Busqueda *busqueda;
 
-@property (nonatomic) NSInteger filaDesdeCompra;;
-@property (nonatomic) NSInteger filaDesdeArriendo;
-@property (nonatomic) NSInteger filaHastaCompra;
-@property (nonatomic) NSInteger filaHastaArriendo;
+@property (strong, nonatomic) NSNumber *filaDesdeCompra;;
+@property (strong, nonatomic) NSNumber *filaDesdeArriendo;
+@property (strong, nonatomic) NSNumber *filaHastaCompra;
+@property (strong, nonatomic) NSNumber *filaHastaArriendo;
 
 @end
 
@@ -533,25 +533,29 @@ bool isShown = false;
     {
         valorHasta = arrayPrecioArriendoPesosHasta[[self.pickerRangoHasta selectedRowInComponent:0]];
         valorDesde = arrayPrecioArriendoPesosDesde[[self.pickerRangoDesde selectedRowInComponent:0]];
-        self.filaDesdeArriendo = [arrayPrecioArriendoPesosDesde indexOfObject:valorHasta];
-        self.filaHastaArriendo = [arrayPrecioArriendoPesosHasta indexOfObject:valorHasta];
+        self.filaDesdeArriendo = [NSNumber numberWithInteger: [arrayPrecioArriendoPesosDesde indexOfObject:valorDesde]];
+        self.filaHastaArriendo = [NSNumber numberWithInteger: [arrayPrecioArriendoPesosHasta indexOfObject:valorHasta]];
+        
         [self.pickerRangoDesde reloadComponent:0];
         [self cargarValoresPrecioHasta];
         [self.pickerRangoHasta reloadComponent:0];
-        [self.pickerRangoDesde selectRow:self.filaDesdeCompra inComponent:0 animated:NO];
-        [self.pickerRangoHasta selectRow:self.filaHastaCompra inComponent:0 animated:NO];
+        [self.pickerRangoDesde selectRow:[self.filaDesdeCompra integerValue] inComponent:0 animated:NO];
+        [self.pickerRangoHasta selectRow:[self.filaHastaCompra integerValue] inComponent:0 animated:NO];
     }
     else{
         
         valorHasta = arrayPrecioCompraPesosHasta[[self.pickerRangoHasta selectedRowInComponent:0]];
         valorDesde = arrayPrecioCompraPesosDesde[[self.pickerRangoDesde selectedRowInComponent:0]];
-        self.filaDesdeCompra = [arrayPrecioCompraPesosDesde indexOfObject:valorHasta];
-        self.filaHastaCompra = [arrayPrecioCompraPesosHasta indexOfObject:valorHasta];
+        self.filaDesdeCompra = [NSNumber numberWithInteger: [arrayPrecioCompraPesosDesde indexOfObject:valorDesde]];
+        self.filaHastaCompra = [NSNumber numberWithInteger: [arrayPrecioCompraPesosHasta indexOfObject:valorHasta]];
         [self.pickerRangoDesde reloadComponent:0];
         [self cargarValoresPrecioHasta];
+        
         [self.pickerRangoHasta reloadComponent:0];
-        [self.pickerRangoDesde selectRow:self.filaDesdeArriendo inComponent:0 animated:NO];
-        [self.pickerRangoHasta selectRow:self.filaHastaArriendo inComponent:0 animated:NO];
+        
+        [self.pickerRangoDesde selectRow:[self.filaDesdeArriendo intValue] inComponent:0 animated:NO];
+        
+        [self.pickerRangoHasta selectRow:[self.filaHastaArriendo intValue] inComponent:0 animated:NO];
     }
     
     
@@ -719,8 +723,11 @@ bool isShown = false;
     //TODO: refactorizar
     if(self.segmentedTipoOperacion.selectedSegmentIndex == 0)
     {
-        self.filaDesdeCompra = [self.pickerRangoDesde selectedRowInComponent:0];
-        self.filaHastaCompra = [self.pickerRangoHasta selectedRowInComponent:0];
+        
+        NSString *valorHasta = arrayPrecioArriendoPesosHasta[[self.pickerRangoHasta selectedRowInComponent:0]];
+        NSString *valorDesde = arrayPrecioArriendoPesosDesde[[self.pickerRangoDesde selectedRowInComponent:0]];
+        NSInteger filaDesde = [arrayPrecioArriendoPesosDesde indexOfObject:valorDesde];
+        
         NSInteger totalElementosPicker = [arrayPrecioCompraPesosDesde count];
 
         [arrayPrecioCompraPesosHasta removeAllObjects];
@@ -729,7 +736,7 @@ bool isShown = false;
         [arrayPrecioCompraPesosHasta addObject:@"No max"];
         [arrayPrecioCompraUFHasta addObject:@"No max"];
         
-        for(NSInteger i = self.filaDesdeCompra; i < totalElementosPicker; i++)
+        for(NSInteger i = filaDesde; i < totalElementosPicker; i++)
         {
             if(i != 0){
                 [arrayPrecioCompraPesosHasta addObject:arrayPrecioCompraPesosDesde[i]];
@@ -738,8 +745,10 @@ bool isShown = false;
         }
     }
     else{
-        self.filaDesdeArriendo = [self.pickerRangoDesde selectedRowInComponent:0];
-        self.filaHastaArriendo = [self.pickerRangoHasta selectedRowInComponent:0];
+        NSString *valorHasta = arrayPrecioCompraPesosHasta[[self.pickerRangoHasta selectedRowInComponent:0]];
+        NSString *valorDesde = arrayPrecioCompraPesosDesde[[self.pickerRangoDesde selectedRowInComponent:0]];
+        NSInteger filaDesde = [arrayPrecioCompraPesosDesde indexOfObject:valorDesde];
+       
         NSInteger totalElementosPicker = [arrayPrecioArriendoPesosDesde count];
         
         [arrayPrecioArriendoPesosHasta removeAllObjects];
@@ -748,7 +757,7 @@ bool isShown = false;
         [arrayPrecioArriendoPesosHasta addObject:@"No max"];
         [arrayPrecioArriendoUFHasta addObject:@"No max"];
         
-        for(NSInteger i = self.filaDesdeArriendo; i < totalElementosPicker; i++)
+        for(NSInteger i = filaDesde; i < totalElementosPicker; i++)
         {
             if(i != 0){
                 [arrayPrecioArriendoPesosHasta addObject:arrayPrecioArriendoPesosDesde[i]];
