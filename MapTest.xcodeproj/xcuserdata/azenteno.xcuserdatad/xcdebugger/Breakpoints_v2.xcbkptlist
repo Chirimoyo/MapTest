@@ -556,11 +556,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427759866.096179"
+            timestampString = "427915220.235155"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "489"
-            endingLineNumber = "489"
+            startingLineNumber = "346"
+            endingLineNumber = "346"
             landmarkName = "-tipoPropiedadClick:"
             landmarkType = "5">
             <Locations>
@@ -618,11 +618,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427818738.609689"
+            timestampString = "427915220.235155"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "758"
-            endingLineNumber = "758"
+            startingLineNumber = "617"
+            endingLineNumber = "617"
             landmarkName = "-llamadoAutoComplete:"
             landmarkType = "5">
          </BreakpointContent>
@@ -634,11 +634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427759866.096179"
+            timestampString = "427912356.473376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "arrayPrecioArriendoUFHasta"
             landmarkType = "19">
          </BreakpointContent>
@@ -650,11 +650,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427759866.096179"
+            timestampString = "427912356.473376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "arrayPrecioArriendoPesosHasta"
             landmarkType = "19">
          </BreakpointContent>
@@ -666,11 +666,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427818738.609689"
+            timestampString = "427915220.235155"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "737"
-            endingLineNumber = "737"
+            startingLineNumber = "596"
+            endingLineNumber = "596"
             landmarkName = "-llamadoAutoComplete:"
             landmarkType = "5">
          </BreakpointContent>
@@ -682,11 +682,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427759866.096179"
+            timestampString = "427912356.473376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "arrayPrecioCompraPesosDesde"
             landmarkType = "19">
          </BreakpointContent>
@@ -698,11 +698,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427818996.048971"
+            timestampString = "427915220.235155"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1000"
-            endingLineNumber = "1000"
+            startingLineNumber = "915"
+            endingLineNumber = "915"
             landmarkName = "-pickerView:titleForRow:forComponent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -714,11 +714,59 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427818738.609689"
+            timestampString = "427915220.235155"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "775"
-            endingLineNumber = "775"
+            startingLineNumber = "634"
+            endingLineNumber = "634"
+            landmarkName = "@implementation MapTestViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MapTest/MapTestViewController.m"
+            timestampString = "427915220.235155"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "914"
+            endingLineNumber = "914"
+            landmarkName = "-pickerView:titleForRow:forComponent:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MapTest/MapTestViewController.m"
+            timestampString = "427915220.235155"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "913"
+            endingLineNumber = "913"
+            landmarkName = "-pickerView:titleForRow:forComponent:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MapTest/MapTestViewController.m"
+            timestampString = "427915220.235155"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "635"
+            endingLineNumber = "635"
             landmarkName = "-refreshTableView"
             landmarkType = "5">
          </BreakpointContent>
@@ -730,75 +778,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427818996.048971"
+            timestampString = "427915220.235155"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "999"
-            endingLineNumber = "999"
-            landmarkName = "-pickerView:titleForRow:forComponent:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427818996.048971"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "998"
-            endingLineNumber = "998"
-            landmarkName = "-pickerView:titleForRow:forComponent:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427818738.609689"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "776"
-            endingLineNumber = "776"
-            landmarkName = "-refreshTableView"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427818738.609689"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "851"
-            endingLineNumber = "851"
-            landmarkName = "-btnAceptar:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427818738.609689"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "639"
-            endingLineNumber = "639"
+            startingLineNumber = "470"
+            endingLineNumber = "470"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -810,27 +794,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427818738.609689"
+            timestampString = "427915220.235155"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "872"
-            endingLineNumber = "872"
-            landmarkName = "-pickerView:didSelectRow:inComponent:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427818996.048971"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "959"
-            endingLineNumber = "959"
+            startingLineNumber = "878"
+            endingLineNumber = "878"
             landmarkName = "-pickerView:titleForRow:forComponent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -842,13 +810,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427818738.609689"
+            timestampString = "427915220.235155"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "865"
-            endingLineNumber = "865"
-            landmarkName = "-pickerView:didSelectRow:inComponent:"
-            landmarkType = "5">
+            startingLineNumber = "877"
+            endingLineNumber = "877"
+            landmarkName = "@implementation MapTestViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -858,11 +826,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427818996.048971"
+            timestampString = "427915220.235155"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "901"
-            endingLineNumber = "901"
+            startingLineNumber = "829"
+            endingLineNumber = "829"
             landmarkName = "-pickerView:numberOfRowsInComponent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -874,12 +842,140 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427818996.048971"
+            timestampString = "427915220.235155"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "958"
-            endingLineNumber = "958"
-            landmarkName = "-pickerView:titleForRow:forComponent:"
+            startingLineNumber = "832"
+            endingLineNumber = "832"
+            landmarkName = "-pickerView:numberOfRowsInComponent:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MapTest/MapTestViewController.m"
+            timestampString = "427915220.235155"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "480"
+            endingLineNumber = "480"
+            landmarkName = "-cargarData"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MapTest/MapTestViewController.m"
+            timestampString = "427915220.235155"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "846"
+            endingLineNumber = "846"
+            landmarkName = "-pickerView:numberOfRowsInComponent:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MapTest/MapTestViewController.m"
+            timestampString = "427915220.235155"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "766"
+            endingLineNumber = "766"
+            landmarkName = "-pickerView:didSelectRow:inComponent:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MapTest/MapTestViewController.m"
+            timestampString = "427915220.235155"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "768"
+            endingLineNumber = "768"
+            landmarkName = "-pickerView:didSelectRow:inComponent:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MapTest/MapTestViewController.m"
+            timestampString = "427915220.235155"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "781"
+            endingLineNumber = "781"
+            landmarkName = "-pickerView:didSelectRow:inComponent:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MapTest/MapTestViewController.m"
+            timestampString = "427915220.235155"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "763"
+            endingLineNumber = "763"
+            landmarkName = "-pickerView:didSelectRow:inComponent:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MapTest/MapTestViewController.m"
+            timestampString = "427915220.235155"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "306"
+            endingLineNumber = "306"
+            landmarkName = "-rangoPrecioClick:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MapTest/MapTestViewController.m"
+            timestampString = "427915220.235155"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "532"
+            endingLineNumber = "532"
+            landmarkName = "-tipoOperacionClick:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
