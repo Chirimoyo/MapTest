@@ -40,11 +40,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/VistaMapaViewController.m"
-            timestampString = "427995369.627158"
+            timestampString = "427997272.955341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -72,11 +72,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/VistaMapaViewController.m"
-            timestampString = "427995369.627158"
+            timestampString = "427997272.955341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -88,11 +88,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/VistaMapaViewController.m"
-            timestampString = "427995369.627158"
+            timestampString = "427997272.955341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
             landmarkName = "-ApiMeli:"
             landmarkType = "5">
          </BreakpointContent>
@@ -104,11 +104,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/VistaMapaViewController.m"
-            timestampString = "427995369.627158"
+            timestampString = "427997272.955341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
             landmarkName = "-addMarker:longitud:idMeli:"
             landmarkType = "5">
          </BreakpointContent>
@@ -120,11 +120,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/VistaMapaViewController.m"
-            timestampString = "427995369.627158"
+            timestampString = "427997272.955341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
             landmarkName = "-addMarker:longitud:idMeli:"
             landmarkType = "5">
          </BreakpointContent>
@@ -236,11 +236,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/VistaMapaViewController.m"
-            timestampString = "427995369.627158"
+            timestampString = "427997272.955341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
             landmarkName = "-ApiMeli:"
             landmarkType = "5">
          </BreakpointContent>
@@ -751,8 +751,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "992"
             endingLineNumber = "992"
-            landmarkName = "-pickerView:titleForRow:forComponent:"
-            landmarkType = "5">
+            landmarkName = "@implementation MapTestViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -767,8 +767,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "991"
             endingLineNumber = "991"
-            landmarkName = "@implementation MapTestViewController"
-            landmarkType = "3">
+            landmarkName = "-pickerView:numberOfRowsInComponent:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -895,7 +895,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "869"
             endingLineNumber = "869"
-            landmarkName = "-pickerView:didSelectRow:inComponent:"
+            landmarkName = "-cargarValoresPrecioHasta"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -943,7 +943,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "821"
             endingLineNumber = "821"
-            landmarkName = "-cargarValoresPrecioHasta"
+            landmarkName = "-CerrarModal:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1012,61 +1012,61 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/VistaMapaViewController.m"
-            timestampString = "427995369.627158"
+            timestampString = "427997272.955341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "-initMap"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "-setDireccionFromLocationFromLatitude:Longitud:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/VistaMapaViewController.m"
-            timestampString = "427995369.627158"
+            timestampString = "427997272.955341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "-initMap"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "-setDireccionFromLocationFromLatitude:Longitud:"
             landmarkType = "5">
             <Locations>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[VistaMapaViewController setDireccionFromLatLon:]"
+                  symbolName = "-[VistaMapaViewController setDireccionFromLocationFromLatitude:Longitud:]"
                   moduleName = "MapTest"
                   urlString = "file:///Users/azenteno/Documents/Developments/MapTest/MapTest/VistaMapaViewController.m"
-                  timestampString = "427995451.260973"
+                  timestampString = "427999404.435041"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
                   offsetFromSymbolStart = "48">
                </Location>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__50-[VistaMapaViewController setDireccionFromLatLon:]_block_invoke"
+                  symbolName = "__73-[VistaMapaViewController setDireccionFromLocationFromLatitude:Longitud:]_block_invoke"
                   moduleName = "MapTest"
                   urlString = "file:///Users/azenteno/Documents/Developments/MapTest/MapTest/VistaMapaViewController.m"
-                  timestampString = "427995451.261207"
+                  timestampString = "427999404.435197"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
-                  offsetFromSymbolStart = "121">
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "122">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1074,16 +1074,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/VistaMapaViewController.m"
-            timestampString = "427995369.627158"
+            timestampString = "427997346.368707"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "-initMap"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
+            landmarkName = "-centrarMapaPosicionUsuario"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

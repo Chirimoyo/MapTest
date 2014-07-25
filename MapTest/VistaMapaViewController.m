@@ -72,13 +72,12 @@
         [self centrarMapaPosicionUsuario];
     }
 }
--(void *)setDireccionFromLatLon:(CLLocationCoordinate2D)location
+-(void *)setDireccionFromLocationFromLatitude:(double) lat Longitud:(double) lon
 {
-    [[GMSGeocoder geocoder] reverseGeocodeCoordinate:CLLocationCoordinate2DMake(40.4375, -3.6818) completionHandler:^(GMSReverseGeocodeResponse* response, NSError* error) {
-        NSLog(@"reverse geocoding results:");
+    [[GMSGeocoder geocoder] reverseGeocodeCoordinate:CLLocationCoordinate2DMake(lat, lon) completionHandler:^(GMSReverseGeocodeResponse* response, NSError* error) {
         for(GMSAddress* addressObj in [response results])
         {
-            self.title = [[NSString alloc] stringByAppendingFormat:@"%@", addressObj.lines];
+            self.title = addressObj.lines[1];
         }
     }];
     return @"";
@@ -270,7 +269,7 @@
     [locationManager startUpdatingLocation];
     [self ApiMeli:@"Santiago"];
 
-    self.title  = @"Posición actual";
+    [self setDireccionFromLocationFromLatitude:(double)locationManager.location.coordinate.latitude Longitud:((double)locationManager.location.coordinate.longitude)];
     
 }
 
