@@ -269,7 +269,7 @@
     [locationManager startUpdatingLocation];
     [self ApiMeli:@"Santiago"];
 
-    [self setDireccionFromLocationFromLatitude:(double)locationManager.location.coordinate.latitude Longitud:((double)locationManager.location.coordinate.longitude)];
+   // [self setDireccionFromLocationFromLatitude:(double)locationManager.location.coordinate.latitude Longitud:((double)locationManager.location.coordinate.longitude)];
     
 }
 
