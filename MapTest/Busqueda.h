@@ -10,6 +10,7 @@
 #import "UnidadGeografica.h"
 #import "Enums.h"
 @interface Busqueda : NSObject
+
 @property UnidadGeografica *unidadGeografica;
 @property TipoOperacion tipoOperacion;
 @property TipoPropiedad tipoPropiedad;

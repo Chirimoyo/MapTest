@@ -40,11 +40,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/VistaMapaViewController.m"
-            timestampString = "426790262.278503"
+            timestampString = "427995369.627158"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "-viewFiltrosBusqueda:"
             landmarkType = "5">
          </BreakpointContent>
@@ -72,12 +72,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/VistaMapaViewController.m"
-            timestampString = "426790262.278503"
+            timestampString = "427995369.627158"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
-            landmarkName = "-viewFiltrosBusqueda:"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -88,11 +88,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/VistaMapaViewController.m"
-            timestampString = "426790262.278503"
+            timestampString = "427995369.627158"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "-ApiMeli:"
             landmarkType = "5">
          </BreakpointContent>
@@ -104,11 +104,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/VistaMapaViewController.m"
-            timestampString = "426790262.278503"
+            timestampString = "427995369.627158"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
             landmarkName = "-ApiMeli:"
             landmarkType = "5">
          </BreakpointContent>
@@ -120,11 +120,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/VistaMapaViewController.m"
-            timestampString = "426790262.278503"
+            timestampString = "427995369.627158"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
             landmarkName = "-ApiMeli:"
             landmarkType = "5">
          </BreakpointContent>
@@ -236,11 +236,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/VistaMapaViewController.m"
-            timestampString = "426790262.278503"
+            timestampString = "427995369.627158"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
             landmarkName = "-ApiMeli:"
             landmarkType = "5">
          </BreakpointContent>
@@ -556,11 +556,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427915220.235155"
+            timestampString = "427992578.444626"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "346"
-            endingLineNumber = "346"
+            startingLineNumber = "370"
+            endingLineNumber = "370"
             landmarkName = "-tipoPropiedadClick:"
             landmarkType = "5">
             <Locations>
@@ -618,11 +618,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427922159.559353"
+            timestampString = "427992906.053356"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "621"
-            endingLineNumber = "621"
+            startingLineNumber = "717"
+            endingLineNumber = "717"
             landmarkName = "-llamadoAutoComplete:"
             landmarkType = "5">
          </BreakpointContent>
@@ -634,11 +634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427912356.473376"
+            timestampString = "427992578.444626"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "arrayPrecioArriendoUFHasta"
             landmarkType = "19">
          </BreakpointContent>
@@ -650,11 +650,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427912356.473376"
+            timestampString = "427992578.444626"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "arrayPrecioArriendoPesosHasta"
             landmarkType = "19">
          </BreakpointContent>
@@ -666,11 +666,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427922159.559353"
+            timestampString = "427992906.053356"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "600"
-            endingLineNumber = "600"
+            startingLineNumber = "696"
+            endingLineNumber = "696"
             landmarkName = "-llamadoAutoComplete:"
             landmarkType = "5">
          </BreakpointContent>
@@ -682,11 +682,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427912356.473376"
+            timestampString = "427992578.444626"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "arrayPrecioCompraPesosDesde"
             landmarkType = "19">
          </BreakpointContent>
@@ -698,11 +698,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427923989.631717"
+            timestampString = "427993983.303922"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "924"
-            endingLineNumber = "924"
+            startingLineNumber = "1029"
+            endingLineNumber = "1029"
             landmarkName = "-pickerView:titleForRow:forComponent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -714,11 +714,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427922159.559353"
+            timestampString = "427992906.053356"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "638"
-            endingLineNumber = "638"
+            startingLineNumber = "734"
+            endingLineNumber = "734"
             landmarkName = "@implementation MapTestViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -730,11 +730,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427923989.631717"
+            timestampString = "427993983.303922"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "923"
-            endingLineNumber = "923"
+            startingLineNumber = "1028"
+            endingLineNumber = "1028"
             landmarkName = "-pickerView:titleForRow:forComponent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -746,11 +746,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427923989.631717"
+            timestampString = "427993983.303922"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "922"
-            endingLineNumber = "922"
+            startingLineNumber = "1027"
+            endingLineNumber = "1027"
             landmarkName = "-pickerView:titleForRow:forComponent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -762,11 +762,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427922159.559353"
+            timestampString = "427992906.053356"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "639"
-            endingLineNumber = "639"
+            startingLineNumber = "735"
+            endingLineNumber = "735"
             landmarkName = "-refreshTableView"
             landmarkType = "5">
          </BreakpointContent>
@@ -778,11 +778,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427915220.235155"
+            timestampString = "427992578.444626"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "470"
-            endingLineNumber = "470"
+            startingLineNumber = "517"
+            endingLineNumber = "517"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -794,11 +794,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427923989.631717"
+            timestampString = "427993983.303922"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "887"
-            endingLineNumber = "887"
+            startingLineNumber = "992"
+            endingLineNumber = "992"
             landmarkName = "-pickerView:titleForRow:forComponent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -810,11 +810,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427923989.631717"
+            timestampString = "427993983.303922"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "886"
-            endingLineNumber = "886"
+            startingLineNumber = "991"
+            endingLineNumber = "991"
             landmarkName = "@implementation MapTestViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -826,11 +826,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427923989.631717"
+            timestampString = "427993983.303922"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "838"
-            endingLineNumber = "838"
+            startingLineNumber = "943"
+            endingLineNumber = "943"
             landmarkName = "-pickerView:numberOfRowsInComponent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -842,11 +842,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427923989.631717"
+            timestampString = "427993983.303922"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "841"
-            endingLineNumber = "841"
+            startingLineNumber = "946"
+            endingLineNumber = "946"
             landmarkName = "-pickerView:numberOfRowsInComponent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -858,11 +858,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427915220.235155"
+            timestampString = "427992578.444626"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "480"
-            endingLineNumber = "480"
+            startingLineNumber = "527"
+            endingLineNumber = "527"
             landmarkName = "-cargarData"
             landmarkType = "5">
          </BreakpointContent>
@@ -874,11 +874,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427923989.631717"
+            timestampString = "427993983.303922"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "855"
-            endingLineNumber = "855"
+            startingLineNumber = "960"
+            endingLineNumber = "960"
             landmarkName = "-pickerView:numberOfRowsInComponent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -890,11 +890,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427923989.631717"
+            timestampString = "427993983.303922"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "775"
-            endingLineNumber = "775"
+            startingLineNumber = "874"
+            endingLineNumber = "874"
             landmarkName = "-pickerView:didSelectRow:inComponent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -906,11 +906,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427923989.631717"
+            timestampString = "427993983.303922"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "777"
-            endingLineNumber = "777"
+            startingLineNumber = "880"
+            endingLineNumber = "880"
             landmarkName = "-pickerView:didSelectRow:inComponent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -922,11 +922,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427923989.631717"
+            timestampString = "427993983.303922"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "790"
-            endingLineNumber = "790"
+            startingLineNumber = "893"
+            endingLineNumber = "893"
             landmarkName = "-pickerView:didSelectRow:inComponent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -938,11 +938,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427923989.631717"
+            timestampString = "427993983.303922"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "772"
-            endingLineNumber = "772"
+            startingLineNumber = "869"
+            endingLineNumber = "869"
             landmarkName = "-pickerView:didSelectRow:inComponent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -954,11 +954,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427915220.235155"
+            timestampString = "427992578.444626"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "306"
-            endingLineNumber = "306"
+            startingLineNumber = "329"
+            endingLineNumber = "329"
             landmarkName = "-rangoPrecioClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -970,11 +970,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427922214.461047"
+            timestampString = "427992906.053356"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "530"
-            endingLineNumber = "530"
+            startingLineNumber = "626"
+            endingLineNumber = "626"
             landmarkName = "-tipoOperacionClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -986,11 +986,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427922536.230612"
+            timestampString = "427993983.303922"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "724"
-            endingLineNumber = "724"
+            startingLineNumber = "821"
+            endingLineNumber = "821"
             landmarkName = "-cargarValoresPrecioHasta"
             landmarkType = "5">
          </BreakpointContent>
@@ -1002,12 +1002,152 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapTest/MapTestViewController.m"
-            timestampString = "427924915.008075"
+            timestampString = "427992906.053356"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "529"
-            endingLineNumber = "529"
+            startingLineNumber = "625"
+            endingLineNumber = "625"
             landmarkName = "-tipoOperacionClick:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MapTest/Busqueda.h"
+            timestampString = "427989193.243197"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "unidadGeografica"
+            landmarkType = "19">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[Busqueda unidadGeografica]"
+                  moduleName = "MapTest"
+                  urlString = "file:///Users/azenteno/Documents/Developments/MapTest/MapTest/Busqueda.h"
+                  timestampString = "427935049.955494"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "30">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[Busqueda setUnidadGeografica:]"
+                  moduleName = "MapTest"
+                  urlString = "file:///Users/azenteno/Documents/Developments/MapTest/MapTest/Busqueda.h"
+                  timestampString = "427935049.9557"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "31">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MapTest/VistaMapaViewController.m"
+            timestampString = "427995369.627158"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MapTest/VistaMapaViewController.m"
+            timestampString = "427995369.627158"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "-setDireccionFromLatLon:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MapTest/VistaMapaViewController.m"
+            timestampString = "427995369.627158"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "-setDireccionFromLatLon:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[VistaMapaViewController setDireccionFromLatLon:]"
+                  moduleName = "MapTest"
+                  urlString = "file:///Users/azenteno/Documents/Developments/MapTest/MapTest/VistaMapaViewController.m"
+                  timestampString = "427995451.260973"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__50-[VistaMapaViewController setDireccionFromLatLon:]_block_invoke"
+                  moduleName = "MapTest"
+                  urlString = "file:///Users/azenteno/Documents/Developments/MapTest/MapTest/VistaMapaViewController.m"
+                  timestampString = "427995451.261207"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "121">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MapTest/VistaMapaViewController.m"
+            timestampString = "427995369.627158"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "-setDireccionFromLatLon:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

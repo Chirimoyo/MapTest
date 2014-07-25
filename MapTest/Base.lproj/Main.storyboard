@@ -248,6 +248,18 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X6R-Vi-3aN">
+                                        <rect key="frame" x="254" y="27" width="55" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="13"/>
+                                        <state key="normal" title="Cancelar">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnCancelarClick:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="T4d-p2-hVP"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.2274509804" green="0.61176470589999998" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -260,7 +272,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MNX-os-ReX">
-                                                <rect key="frame" x="13" y="82" width="297" height="0.0"/>
+                                                <rect key="frame" x="11" y="82" width="297" height="0.0"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <pickerView hidden="YES" contentMode="scaleToFill" fixedFrame="YES" showsSelectionIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JkY-93-Bjc">
@@ -428,6 +440,9 @@
                                                 <state key="normal" title="Limpiar filtros">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="limpiarFiltros:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="HiZ-TN-2fH"/>
+                                                </connections>
                                             </button>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EDa-Nu-LRL">
                                                 <rect key="frame" x="9" y="127" width="95" height="29"/>
@@ -442,6 +457,22 @@
                                                     <action selector="tipoMonedaClick:" destination="vXZ-lx-hvc" eventType="valueChanged" id="pbs-ed-2lV"/>
                                                 </connections>
                                             </segmentedControl>
+                                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9jW-i8-Ilt">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="9"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="DCf-ez-ReX" userLabel="google">
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="456"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="vXZ-lx-hvc" id="3NY-TQ-Hcp"/>
+                                                            <outlet property="delegate" destination="vXZ-lx-hvc" id="Sd4-Z1-cjT"/>
+                                                        </connections>
+                                                    </tableView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                            </view>
                                         </subviews>
                                     </scrollView>
                                 </subviews>
@@ -452,26 +483,11 @@
                                     <constraint firstAttribute="trailing" secondItem="ls2-q9-91H" secondAttribute="trailing" id="SGz-Sv-qbX"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9jW-i8-Ilt">
-                                <rect key="frame" x="0.0" y="65" width="320" height="456"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="DCf-ez-ReX" userLabel="google">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="456"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="vXZ-lx-hvc" id="3NY-TQ-Hcp"/>
-                                            <outlet property="delegate" destination="vXZ-lx-hvc" id="Sd4-Z1-cjT"/>
-                                        </connections>
-                                    </tableView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="btnCancelar" destination="X6R-Vi-3aN" id="bDZ-Tb-QpW"/>
                         <outlet property="btnLimpiar" destination="JVP-k8-8h0" id="DtO-0A-cWz"/>
                         <outlet property="btnRangoPrecio" destination="KNg-5p-exJ" id="CjN-sP-jKz"/>
                         <outlet property="btnSuperficie" destination="WYJ-Cd-Lvg" id="uPm-nO-zE1"/>

@@ -37,11 +37,12 @@
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     [locationManager startUpdatingLocation];
-    self.title  = @"Posición actual";
+    
     
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude: locationManager.location.coordinate.latitude
                                                             longitude:locationManager.location.coordinate.longitude
                                                                  zoom:10];
+    
     
     mapView_ = [GMSMapView mapWithFrame:self.mapView.bounds camera:camera];
     mapView_.myLocationEnabled = NO;
@@ -68,6 +69,17 @@
     
 
     // Do any additional setup after loading the view.
+}
+-(void *)setDireccionFromLatLon:(CLLocationCoordinate2D)location
+{
+    [[GMSGeocoder geocoder] reverseGeocodeCoordinate:CLLocationCoordinate2DMake(40.4375, -3.6818) completionHandler:^(GMSReverseGeocodeResponse* response, NSError* error) {
+        NSLog(@"reverse geocoding results:");
+        for(GMSAddress* addressObj in [response results])
+        {
+            self.title = [[NSString alloc] stringByAppendingFormat:@"%@", addressObj.lines];
+        }
+    }];
+    return @"";
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error

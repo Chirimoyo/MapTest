@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnRangoPrecio;
 @property (weak, nonatomic) IBOutlet UIButton *btnSuperficie;
 @property (weak, nonatomic) IBOutlet UIButton *btnLimpiar;
+@property (weak, nonatomic) IBOutlet UIButton *btnCancelar;
 
 @property (weak, nonatomic) IBOutlet UIView *viewTipoPropiedad;
 
@@ -119,6 +120,9 @@ bool isShown = false;
                     vista.frame = frame;
                 } completion:^(BOOL finished) {
                 }];
+                [self agregarImageButton: self.tipoPropiedad nombreImagen:@"IconoDown"];
+                [self agregarImageButton: self.btnRangoPrecio nombreImagen:@"IconoDown"];
+                [self agregarImageButton: self.btnSuperficie  nombreImagen:@"IconoDown"];
             }
         }
     }
@@ -135,8 +139,10 @@ bool isShown = false;
     CGRect frameBtnLimpiar = self.btnLimpiar.frame;
     CGRect framelblPrecio = self.lblPrecio.frame;
     CGRect framebtnRangoPrecio = self.btnRangoPrecio.frame;
+    CGRect framesegmentedTipoMonedas = self.segmentedTipoMoneda.frame;
 
     if (frameSuperficie.size.height == 172){
+         [self agregarImageButton: self.btnSuperficie nombreImagen:@"IconoDown"];
         frameSuperficie.size.height = 0;
         frameLblDormitorio.origin.y = 225;
         frameSegmentedDormitorio.origin.y = 247;
@@ -158,6 +164,7 @@ bool isShown = false;
         if(self.btnSuperficie.frame.origin.y > 178)
         {
             framebtnRangoPrecio.origin.y = 127;
+            framesegmentedTipoMonedas.origin.y = 127;
             framelblPrecio.origin.y = 105;
             framebtnSuperficie.origin.y = 178;
             frameLblDormitorio.origin.y = 225 + 172;
@@ -180,21 +187,28 @@ bool isShown = false;
                 self.btnLimpiar.frame = frameBtnLimpiar;
                 self.lblPrecio.frame = framelblPrecio;
                 self.btnRangoPrecio.frame = framebtnRangoPrecio;
+                self.segmentedTipoMoneda.frame = framesegmentedTipoMonedas;
+                
             } completion:^(BOOL finished)
              {
                  [UIView animateWithDuration:0.5 animations:^{
                      self.vistaSuperficie.frame = frameSuperficie;
                  } completion:^(BOOL finished) {
                      if(frameSuperficie.size.height == 172){
+                         [self agregarImageButton: self.btnSuperficie nombreImagen:@"IconoUp"];
                          self.pickerSuperficie.hidden=NO;
                      }
                      else
+                     {
+                         [self agregarImageButton: self.btnSuperficie nombreImagen:@"IconoDown"];
                          self.pickerSuperficie.hidden=YES;
+                     }
                  }];
              }];
         }
         else{
             if(self.btnSuperficie.frame.origin.y == 178 && frameSuperficie.size.height == 0){
+                 [self agregarImageButton: self.btnSuperficie nombreImagen:@"IconoUp"];
             frameLblDormitorio.origin.y = 225 + 172;
             frameSegmentedDormitorio.origin.y = 247 + 172;
             frameLblBanos.origin.y = 285 + 172;
@@ -211,8 +225,10 @@ bool isShown = false;
                 self.segmentedBanos.frame = frameSegmentedBanos;
                 self.btnLimpiar.frame = frameBtnLimpiar;
                 self.vistaSuperficie.frame = frameSuperficie;
+                [self.vistafiltros setUserInteractionEnabled:NO];
             } completion:^(BOOL finished)
              {
+                 [self.vistafiltros setUserInteractionEnabled:YES];
                 if(frameSuperficie.size.height == 172)
                     self.pickerSuperficie.hidden=NO;
                 else
@@ -235,8 +251,10 @@ bool isShown = false;
     CGRect frameLblBanos = self.lblBanos.frame;
     CGRect frameSegmentedBanos = self.segmentedBanos.frame;
     CGRect frameBtnLimpiar = self.btnLimpiar.frame;
+    CGRect frameSegmentedTipoMoneda = self.segmentedTipoMoneda.frame;
 
     if (frameRangoPrecios.size.height == 162){
+        [self agregarImageButton: self.btnRangoPrecio nombreImagen:@"IconoDown"];
         frameRangoPrecios.size.height = 0;
         self.pickerRangoDesde.hidden = YES;
         self.pickerRangoHasta.hidden = YES;
@@ -260,6 +278,7 @@ bool isShown = false;
     }else{
         if(self.btnRangoPrecio.frame.origin.y > 127)
         {
+            frameSegmentedTipoMoneda.origin.y = 127;
             framebtnRangoPrecio.origin.y = 127;
             framelblPrecio.origin.y = 105;
             framebtnSuperficie.origin.y = 178 + 162;
@@ -274,6 +293,7 @@ bool isShown = false;
                 frameRangoPrecios.size.height = 162;
             [UIView animateWithDuration:0.5  animations:^{
                 [self cerrarPickers];
+                self.segmentedTipoMoneda.frame = frameSegmentedTipoMoneda;
                 self.btnRangoPrecio.frame = framebtnRangoPrecio;
                 self.lblPrecio.frame = framelblPrecio;
                 self.lblDormitorios.frame = frameLblDormitorio;
@@ -288,10 +308,12 @@ bool isShown = false;
                      self.vistaRangoPrecios.frame = frameRangoPrecios;
                  } completion:^(BOOL finished) {
                      if(frameRangoPrecios.size.height == 162){
+                         [self agregarImageButton: self.btnRangoPrecio nombreImagen:@"IconoUp"];
                          self.pickerRangoDesde.hidden=NO;
                          self.pickerRangoHasta.hidden=NO;
                      }
                      else{
+                         [self agregarImageButton: self.btnRangoPrecio nombreImagen:@"IconoDown"];
                          self.pickerRangoDesde.hidden=YES;
                          self.pickerRangoHasta.hidden=YES;
                      }
@@ -301,6 +323,7 @@ bool isShown = false;
             
         }
         else{
+            [self agregarImageButton: self.btnRangoPrecio nombreImagen:@"IconoUp"];
                 double delay = ([self cerrarPickers] == YES? 0.5 : 0 );
                 framebtnSuperficie.origin.y = 178 + 162;
                 frameLblDormitorio.origin.y = 225 + 162;
@@ -342,6 +365,7 @@ bool isShown = false;
     CGRect framesegmentedTipoMonedas = self.segmentedTipoMoneda.frame;
     BOOL cerroPickers = NO;
     if (frameTipoPropiedad.size.height == 162){
+        [self agregarImageButton: self.tipoPropiedad nombreImagen:@"IconoDown"];
         frameTipoPropiedad.size.height = 0;
         self.pickerTipoPropiedad.hidden = YES;
         framebtnRangoPrecio.origin.y = 127;
@@ -356,6 +380,7 @@ bool isShown = false;
     }
     else{
         cerroPickers = [self cerrarPickers];
+        [self agregarImageButton: self.tipoPropiedad nombreImagen:@"IconoUp"];
         frameTipoPropiedad.size.height = 162;
         framebtnRangoPrecio.origin.y = 127 + 162;
         framesegmentedTipoMonedas.origin.y = 127 + 162;
@@ -380,7 +405,9 @@ bool isShown = false;
             self.btnLimpiar.frame = frameBtnLimpiar;
             self.viewTipoPropiedad.frame = frameTipoPropiedad;
             self.segmentedTipoMoneda.frame = framesegmentedTipoMonedas;
+            [self.vistafiltros setUserInteractionEnabled:NO];
         } completion:^(BOOL finished) {
+            [self.vistafiltros setUserInteractionEnabled:YES];
                 self.pickerTipoPropiedad.hidden=NO;
         }];
 
@@ -397,8 +424,10 @@ bool isShown = false;
             self.segmentedBanos.frame = frameSegmentedBanos;
             self.btnLimpiar.frame = frameBtnLimpiar;
             self.segmentedTipoMoneda.frame = framesegmentedTipoMonedas;
+            [self.vistafiltros setUserInteractionEnabled:NO];
             
         } completion:^(BOOL finished) {
+            [self.vistafiltros setUserInteractionEnabled:YES];
             if(frameTipoPropiedad.size.height == 162)
                 self.pickerTipoPropiedad.hidden=NO;
             self.viewTipoPropiedad.frame = frameTipoPropiedad;
@@ -406,6 +435,20 @@ bool isShown = false;
 
     }
     
+}
+
+- (void) agregarImageButton: (UIButton *) button nombreImagen: (NSString *) nombreImagen {
+    double buttonheight = button.frame.size.height;
+    UIImageView *buttonImage = [[UIImageView alloc] initWithFrame:CGRectMake(button.frame.size.width - 30 , 10, 15, 10)]; ;
+    [buttonImage setImage:[UIImage imageNamed:nombreImagen]];
+    buttonImage.tag = 101;
+    for (UIView *subView in button.subviews)
+    {
+        if (subView.tag == 101){
+            [subView removeFromSuperview];
+        }
+    }
+    [button addSubview:buttonImage];
 }
 
 - (void) agregarLabelBoton: (UIButton *) button texto:(NSString *)texto {
@@ -417,12 +460,12 @@ bool isShown = false;
             [subView removeFromSuperview];
         }
     }
-    buttonLabel = [[UILabel alloc] initWithFrame:CGRectMake(190, 0, 100,buttonheight )];
+    buttonLabel = [[UILabel alloc] initWithFrame:CGRectMake(160, 0, 90,buttonheight )];
     buttonLabel.textColor = button.titleLabel.tintColor;
     buttonLabel.backgroundColor = [UIColor clearColor];
     buttonLabel.text = texto;
     buttonLabel.tag = 100;
-    buttonLabel.font = [UIFont systemFontOfSize:14];
+    buttonLabel.font = [UIFont systemFontOfSize:13];
     buttonLabel.textAlignment = UITextAlignmentCenter;
     [button addSubview:buttonLabel];
 }
@@ -454,6 +497,10 @@ bool isShown = false;
     [self redondearbotones:self.btnRangoPrecio];
     [self redondearbotones:self.btnSuperficie];
 
+    [self agregarImageButton: self.tipoPropiedad nombreImagen:@"IconoDown"];
+    [self agregarImageButton: self.btnRangoPrecio nombreImagen:@"IconoDown"];
+    [self agregarImageButton: self.btnSuperficie nombreImagen:@"IconoDown"];
+    
     CGAffineTransform t0 = CGAffineTransformMakeTranslation (0, self.pickerTipoPropiedad.bounds.size.height/2);
     CGAffineTransform s0 = CGAffineTransformMakeScale       (1.0, 0.8);
     CGAffineTransform t1 = CGAffineTransformMakeTranslation (0, -self.pickerTipoPropiedad.bounds.size.height/2);
@@ -518,11 +565,60 @@ bool isShown = false;
     [[boton layer] setBorderColor:boton.tintColor.CGColor];
     
 }
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+
+-(IBAction)btnCancelarClick:(id)sender{
+    CGRect frameTextField = CGRectMake(self.input.frame.origin.x, self.input.frame.origin.y, 297, self.input.frame.size.height);
+    self.btnCancelar.hidden = NO;
+    [UIView animateWithDuration:0.1 animations:^{
+        self.input.frame = frameTextField;
+        self.vistaResultadoGoogle.hidden = YES;
+        self.vistafiltros.hidden = NO;
+        [self.input resignFirstResponder];
+    } completion:^(BOOL finished) {
+        
+    }];
+
+}
+
+
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textFiel{
     self.vistaResultadoGoogle.hidden = NO;
     self.vistafiltros.hidden = YES;
+    CGRect frameTextField = CGRectMake(self.input.frame.origin.x, self.input.frame.origin.y, 240, self.input.frame.size.height);
+    [UIView animateWithDuration:0.2 animations:^{
+        self.input.frame = frameTextField;
+        
+    } completion:^(BOOL finished) {
+        self.btnCancelar.hidden = NO;
+    }];
+
     
     return YES;
+}
+
+-(IBAction)limpiarFiltros:(id)sender{
+    
+    for(id item in self.tipoPropiedad.subviews){
+        if([item isKindOfClass: [UILabel class]])
+        {
+            if( ((UILabel *)item).tag == 100)
+                [item removeFromSuperview];
+        }
+    }
+    [self.pickerTipoPropiedad selectRow:0 inComponent:0 animated: NO];
+    
+    for(id item in self.btnSuperficie.subviews){
+        if([item isKindOfClass: [UILabel class]])
+        {
+            if( ((UILabel *)item).tag == 100)
+                [item removeFromSuperview];
+        }
+    }
+    
+    [self.segmentedTipoMoneda setSelectedSegmentIndex: 0];
+    [self.segmentedDormitorios setSelectedSegmentIndex: 0];
+    [self.segmentedBanos setSelectedSegmentIndex: 0];
 }
 
 -(IBAction)tipoOperacionClick:(id)sender
@@ -650,6 +746,7 @@ bool isShown = false;
         return [self.listado count];
 }
 
+
 - (IBAction)btnAceptar:(id)sender{
 
     
@@ -770,9 +867,15 @@ bool isShown = false;
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    if(pickerView == self.pickerTipoPropiedad)
+    if(pickerView == self.pickerTipoPropiedad){
         [self agregarLabelBoton: self.tipoPropiedad texto:[arrayTipoPropiedad objectAtIndex:row]];
-    else
+    }
+    else{
+            if(pickerView == self.pickerSuperficie)
+            {
+                 [self agregarLabelBoton: self.btnSuperficie texto:[arraySuperficie objectAtIndex:row]];
+            }
+            else{
             if(pickerView == self.pickerRangoHasta)
             {
               
@@ -828,6 +931,8 @@ bool isShown = false;
                     [self.pickerRangoHasta selectRow:index inComponent:0 animated:NO];
                 }
             }
+            }
+        }
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
