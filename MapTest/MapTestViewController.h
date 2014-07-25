@@ -16,7 +16,7 @@
 @class MapTestViewController;
 
 @protocol MapTestViewControllerDelegate <NSObject>
-- (void)addItemViewController:(MapTestViewController *)controller didFinishEnteringItem:(Busqueda *)item;
+- (void)actualizarMapaDesdeBusqueda:(NSString *)titulo latitud:(NSNumber *)lat longitud:(NSNumber *)lon;
 @end
 
 @interface MapTestViewController : UIViewController<UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UIPickerViewDelegate>

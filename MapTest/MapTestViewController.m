@@ -656,7 +656,6 @@ bool isShown = false;
     NSString *urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?address=%@&types=geocode&language=fr&sensor=true&key=AIzaSyA6ORrTeE4pXuzmbP9nm2nFpgoLB_EHhlc", self.input.text ];
     
     urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [[NSUserDefaults standardUserDefaults] setObject:self.input.text forKey:@"ultimaBusqueda"];
 
     NSURL *url = [NSURL URLWithString:urlString];
     
@@ -689,15 +688,20 @@ bool isShown = false;
                           for (id valor in value) {
                               id lat= [[[valor objectForKey:@"geometry"] objectForKey:@"location"] objectForKey:@"lat"];
                               id lng= [[[valor objectForKey:@"geometry"] objectForKey:@"location"] objectForKey:@"lng"];
-                             
+                              busqueda = [Busqueda new];
                               UnidadGeografica *ugeo = [UnidadGeografica new];
                               [ugeo setLatitud:lat];
                               [ugeo setLongitud:lng];
                               [ugeo setNombre:self.input.text];
                               [busqueda setUnidadGeografica: ugeo];
                               
-                              //NSString *itemToPassBack = @"Pass this value back to ViewControllerA";
-                              [self.delegate addItemViewController:self didFinishEnteringItem:busqueda];
+                              NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+
+                              [userDefaults setObject:ugeo.nombre forKey:@"ultimaBusqueda"];
+                              [userDefaults setObject:ugeo.latitud forKey:@"latitud"];
+                              [userDefaults setObject:ugeo.longitud forKey:@"longitud"];
+
+                              [self.delegate actualizarMapaDesdeBusqueda:ugeo.nombre latitud:ugeo.latitud longitud:ugeo.longitud];
                               dispatch_async(dispatch_get_main_queue(), ^{
                                   [self dismissViewControllerAnimated:YES completion:nil];
                               });

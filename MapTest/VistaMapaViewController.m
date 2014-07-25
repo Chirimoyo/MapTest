@@ -52,11 +52,12 @@
     [self.mapView addSubview: mapView_];
 
     NSString *ultimaBusqueda = [userDefaults objectForKey:@"ultimaBusqueda"];
+    NSNumber *lat = [userDefaults objectForKey:@"latitud"];
+    NSNumber *lon = [userDefaults objectForKey:@"longitud"];
     if (ultimaBusqueda != nil) {
         NSLog(@"ultimaBusqueda %@", ultimaBusqueda);
-        self.title = ultimaBusqueda;
         //cargar la ultima busqueda realizada
-        [self ApiMeli: ultimaBusqueda];
+        [self actualizarMapaDesdeBusqueda:ultimaBusqueda latitud:lat longitud:lon];
     } else {
         //ubicar al usuario en su posición actual
         [self centrarMapaPosicionUsuario];
@@ -81,17 +82,16 @@
 }
 
 
-
-- (void)addItemViewController:(MapTestViewController *)controller didFinishEnteringItem:(Busqueda *)item
+//puede ser actualizado externamente
+- (void)actualizarMapaDesdeBusqueda:(NSString *)titulo latitud:(NSNumber *)lat longitud:(NSNumber *)lon
 {
+    NSLog(@"actualizar mapa: %@", titulo);
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.title = item.unidadGeografica.nombre;
-        
-        [self refreshMap:item.unidadGeografica.latitud longitud:item.unidadGeografica.longitud nombreCiudad: item.unidadGeografica.nombre];
+        self.title = titulo;
+        [self refreshMap:lat longitud:lon nombreCiudad: titulo];
     });
     //NSLog(@"This was returned from ViewControllerB %@",item.nombre);
 }
-
 
 -(IBAction)listadoPropiedades:(id)sender
 {
