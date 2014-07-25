@@ -16,4 +16,6 @@
 
 @property (weak, nonatomic) IBOutlet UIView *mapView;
 @property (weak, nonatomic) UnidadGeografica *ugeo;
+- (IBAction)fnCentrar:(id)sender;
+
 @end

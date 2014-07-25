@@ -11,7 +11,7 @@
 #import "Enums.h"
 @interface Busqueda : NSObject
 
-@property UnidadGeografica *unidadGeografica;
+@property (nonatomic, strong) UnidadGeografica *unidadGeografica;
 @property TipoOperacion tipoOperacion;
 @property TipoPropiedad tipoPropiedad;
 @property NSInteger rangoPrecioDesde;
