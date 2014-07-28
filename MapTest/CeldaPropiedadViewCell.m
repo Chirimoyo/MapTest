@@ -10,6 +10,13 @@
 #import "CeldaPropiedadViewCell.h"
 #import "AlphaGradientView.h"
 #import "UIImageView+AFNetworking.h"
+#import "AFHTTPRequestOperation.h"
+
+@interface CeldaPropiedadViewCell(){
+    UIActivityIndicatorView *activity;
+    NSDictionary *jsonData;
+}
+@end
 
 @implementation CeldaPropiedadViewCell
 
@@ -36,12 +43,19 @@
 
 -(void)setData:(PropMeli*)data{
     _propiedad = data;
+    
     UIImageView *first = [[UIImageView alloc] init];
     first.frame = CGRectMake(0, 0, 320, 200);
     NSURL *urlImg =[NSURL URLWithString:_propiedad.imagen ];
     [first setImageWithURL:urlImg placeholderImage:[UIImage imageNamed:@"imagenNoDisponible.jpg"]];
     first.contentMode = UIViewContentModeScaleAspectFill;
     [_scrollview addSubview:first];
+    
+    activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    activity.frame = CGRectMake(320+160, 100, 10, 10);
+    [activity startAnimating];
+    [_scrollview addSubview:activity];
+    _scrollview.contentSize = CGSizeMake(320*2, 200);
     
     UIButton *btnAgregarFavoritos = [UIButton buttonWithType:UIButtonTypeCustom];
     btnAgregarFavoritos.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
@@ -62,16 +76,26 @@
     
     _lblTitulo.text = _propiedad.title;
     _lblPrecio.text = _propiedad.precio;
-    [self loadSlideShow];
 }
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    NSLog(@"Punto %f", scrollView.contentOffset.x);
+    if (jsonData) {
+        NSArray *items = [jsonData objectForKey:@"pictures"];
+        [self showSlideShow:items];
+    } else {
+        [self loadSlideShow];
+    }
+}
 
 - (void)showSlideShow:(NSArray *)items{
     int i = 0;
+    NSLog(@"-------------------------------------");
     for (NSDictionary *obj in items) {
         UIImageView *img = [[UIImageView alloc] init];
         img.frame = CGRectMake(i*320, 0, 320, 200);
         NSURL *urlImg = [NSURL URLWithString:[obj objectForKey:@"url"]];
+        NSLog(@"CARGAR %@", [obj objectForKey:@"url"]);
         [img setImageWithURL:urlImg placeholderImage:[UIImage imageNamed:@"imagenNoDisponible.jpg"]];
         img.contentMode = UIViewContentModeScaleAspectFill;
         [_scrollview addSubview:img];
@@ -79,10 +103,31 @@
     }
     _scrollview.contentSize = CGSizeMake(320*items.count, 200);
     _scrollview.frame = CGRectMake(0, 0, 320, 200);
+    [activity stopAnimating];
 }
 
 -(void)loadSlideShow{
-    NSString *urlString = [NSString stringWithFormat:@"https://api.mercadolibre.com/items/%@?attributes=pictures",_propiedad.idMeli];
+    NSString *string = [NSString stringWithFormat:@"https://api.mercadolibre.com/items/%@?attributes=pictures",_propiedad.idMeli];
+    NSURL *url = [NSURL URLWithString:string];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        jsonData = (NSDictionary *)responseObject;
+        NSArray *items = [jsonData objectForKey:@"pictures"];
+        [self showSlideShow:items];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error cargando JSON"
+                                                            message:[error localizedDescription]
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }];
+    [operation start];
+    /*
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLSession *session = [NSURLSession sharedSession];
     [[session dataTaskWithURL:url
@@ -92,7 +137,7 @@
           if (httpResponse.statusCode == 200)
           {
               NSError *jsonError;
-              NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+              jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
               if (!jsonError)
               {
                   NSArray *items = [jsonData objectForKey:@"pictures"];
@@ -100,6 +145,7 @@
               }
           }
       }] resume];
+     */
 }
 
 -(IBAction) toggleUIButtonImage:(UIButton*)sender{

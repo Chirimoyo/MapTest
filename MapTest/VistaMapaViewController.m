@@ -48,6 +48,7 @@
     userDefaults = [NSUserDefaults standardUserDefaults];
     [self initMap];
     [self initMarker];
+    [self initSearchableBar];
 }
 
 -(void) initMap{
@@ -94,6 +95,10 @@
     currentPositionMarker.map = mapView_;
 }
 
+-(void) initSearchableBar{
+    _btnTitulo.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -106,7 +111,7 @@
 {
     NSLog(@"actualizar mapa: %@", titulo);
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.title = titulo;
+        [_btnTitulo setTitle:titulo forState:UIControlStateNormal];
         [self refreshMap:lat longitud:lon nombreCiudad: titulo];
     });
     //NSLog(@"This was returned from ViewControllerB %@",item.nombre);
@@ -146,7 +151,7 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 
     MapTestViewController *second = [storyboard instantiateViewControllerWithIdentifier:@"MapTestViewController"];
-    second.nombreCiudad = [self title];
+    second.nombreCiudad = _btnTitulo.titleLabel.text;
     second.delegate  = self;
     
     second.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
@@ -260,6 +265,20 @@
 - (IBAction)fnCentrar:(id)sender {
     NSLog(@"Centrar button pressed");
     [self centrarMapaPosicionUsuario];
+}
+
+- (IBAction)fnCambiarTitulo:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    MapTestViewController *second = [storyboard instantiateViewControllerWithIdentifier:@"MapTestViewController"];
+    second.nombreCiudad = _btnTitulo.titleLabel.text;
+    second.showTextDialog = YES;
+    second.delegate  = self;
+    
+    second.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    
+    [second setModalPresentationStyle:UIModalPresentationFullScreen];
+    [self presentViewController:second animated:YES completion:nil];
 }
 
 -(void) centrarMapaPosicionUsuario {

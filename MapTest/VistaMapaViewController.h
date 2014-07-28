@@ -17,5 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIView *mapView;
 @property (weak, nonatomic) UnidadGeografica *ugeo;
 - (IBAction)fnCentrar:(id)sender;
+- (IBAction)fnCambiarTitulo:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *btnTitulo;
 
 @end

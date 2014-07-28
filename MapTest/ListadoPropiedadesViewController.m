@@ -42,7 +42,6 @@
     
     NSString *urlString;
     
-    
     if ([self.unidadGeografica.nombre rangeOfString:@"Santiago"].location != NSNotFound) {
         urlString = [NSString stringWithFormat:@"https://mobile.mercadolibre.com.ar/sites/MLC/search?category=MLC1480&limit=6&state=TUxDUE1FVEExM2JlYg&city=TUxDQ1NBTjk4M2M&offset=%d" , offset];
     } else {

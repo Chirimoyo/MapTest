@@ -28,4 +28,5 @@ __weak IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *mapView;
 @property (nonatomic, weak) id <MapTestViewControllerDelegate> delegate;
 @property (nonatomic) NSString *nombreCiudad;
+@property (nonatomic) BOOL *showTextDialog;
 @end

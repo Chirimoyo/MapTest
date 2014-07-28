@@ -19,7 +19,7 @@
             </objects>
             <point key="canvasLocation" x="-1201" y="216"/>
         </scene>
-        <!--Vista Mapa View Controller - Santiago-->
+        <!--Vista Mapa View Controller-->
         <scene sceneID="kxh-ZO-7CP">
             <objects>
                 <viewController storyboardIdentifier="VistaMapaViewController" id="eM8-2P-CBl" customClass="VistaMapaViewController" sceneMemberID="viewController">
@@ -70,8 +70,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Santiago" id="qve-l8-zDP">
+                    <navigationItem key="navigationItem" id="qve-l8-zDP">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" image="menu" id="qWZ-9c-lcG"/>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eIz-Ng-JZM">
+                            <rect key="frame" x="71" y="5" width="168" height="34"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="                                        ">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="fnCambiarTitulo:" destination="eM8-2P-CBl" eventType="touchUpInside" id="PiU-v1-TDF"/>
+                            </connections>
+                        </button>
                         <barButtonItem key="rightBarButtonItem" image="lupa" id="WWC-lY-FfX">
                             <connections>
                                 <action selector="viewFiltrosBusqueda:" destination="eM8-2P-CBl" id="v9c-H9-62g"/>
@@ -79,6 +91,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="btnTitulo" destination="eIz-Ng-JZM" id="t8w-9r-FOW"/>
                         <outlet property="mapView" destination="Zce-8f-PY5" id="qng-o7-Ox3"/>
                         <segue destination="xwH-ty-43V" kind="push" identifier="goListado" id="EEK-TK-s7q"/>
                     </connections>
@@ -142,6 +155,9 @@
                                                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xSC-1V-pK4">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="yL3-5g-8YH" id="IVa-Ii-H6M"/>
+                                                    </connections>
                                                 </scrollView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="home-gradient.png" translatesAutoresizingMaskIntoConstraints="NO" id="uuZ-0G-iuP">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
