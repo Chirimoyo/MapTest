@@ -90,12 +90,10 @@
 
 - (void)showSlideShow:(NSArray *)items{
     int i = 0;
-    NSLog(@"-------------------------------------");
     for (NSDictionary *obj in items) {
         UIImageView *img = [[UIImageView alloc] init];
         img.frame = CGRectMake(i*320, 0, 320, 200);
         NSURL *urlImg = [NSURL URLWithString:[obj objectForKey:@"url"]];
-        NSLog(@"CARGAR %@", [obj objectForKey:@"url"]);
         [img setImageWithURL:urlImg placeholderImage:[UIImage imageNamed:@"imagenNoDisponible.jpg"]];
         img.contentMode = UIViewContentModeScaleAspectFill;
         [_scrollview addSubview:img];

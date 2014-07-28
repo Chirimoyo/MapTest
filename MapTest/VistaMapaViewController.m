@@ -73,6 +73,7 @@
         [self centrarMapaPosicionUsuario];
     }
 }
+
 -(void *)setDireccionFromLocationFromLatitude:(double) lat Longitud:(double) lon
 {
     [[GMSGeocoder geocoder] reverseGeocodeCoordinate:CLLocationCoordinate2DMake(lat, lon) completionHandler:^(GMSReverseGeocodeResponse* response, NSError* error) {
@@ -207,29 +208,6 @@
 
         }
     }
-    /*
-
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
-        NSDictionary *jsonData = (NSDictionary *)responseObject;
-        for( id key in jsonData){
-            if ( [key isEqualToString:@"results"]){
-                NSDictionary *value = [jsonData objectForKey:key];
-                for (id valor in value) {
-                    id lat= [[valor objectForKey:@"location"] objectForKey:@"latitude"];
-                    id lng= [[valor objectForKey:@"location"] objectForKey:@"longitude"];
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                    [self addMarker:lat longitud:lng idMeli:[valor objectForKey:@"permalink"] ];
-                    });
-                }
-            }
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
-
-     */
 
     urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *url = [NSURL URLWithString:urlString];

@@ -11,6 +11,7 @@
 #import "PropMeli.h"
 #import "Busqueda.h"
 #import <QuartzCore/QuartzCore.h>
+#import "AFHTTPRequestOperation.h"
 
 
 @interface MapTestViewController ()
@@ -582,7 +583,7 @@ bool isShown = false;
 
 
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textFiel{
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     self.vistaResultadoGoogle.hidden = NO;
     self.vistafiltros.hidden = YES;
     CGRect frameTextField = CGRectMake(self.input.frame.origin.x, self.input.frame.origin.y, 240, self.input.frame.size.height);
@@ -673,13 +674,52 @@ bool isShown = false;
 
 
 -(void)llamadoAutoComplete:(NSString *)nombreUgeo{
+    
+    NSString *string = [NSString  stringWithFormat:@"https://maps.googleapis.com/maps/api/place/autocomplete/json?input=%@&types=geocode&language=cl&sensor=true&key=AIzaSyA6ORrTeE4pXuzmbP9nm2nFpgoLB_EHhlc&componentRestrictions={country:cl}", self.input.text];
+    string = [string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *url = [NSURL URLWithString:string];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *jsonData = (NSDictionary *)responseObject;
+        //NSArray *items = [jsonData objectForKey:@"pictures"];
+        if(!self.mapView.hidden){
+            [self.mapView setHidden: YES];
+            [tableView setHidden: NO];
+        }
+        
+        [self.listado removeAllObjects];
+        
+        for( id key in jsonData){
+            
+            if ( [key isEqualToString:@"predictions"]){
+                NSDictionary *value = [jsonData objectForKey:key];
+                for (id valor in value) {
+                    [self.listado addObject:[valor objectForKey:@"description"]];
+                }
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [tableView reloadData];
+        });
+    
+    
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error cargando JSON"
+                                                            message:[error localizedDescription]
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        NSLog(@"%@", error);
+        [alertView show];
+    }];
+    [operation start];
 
-    NSString *urlString = [NSString  stringWithFormat:@"https://maps.googleapis.com/maps/api/place/autocomplete/json?input=%@&types=geocode&language=cl&sensor=true&key=AIzaSyA6ORrTeE4pXuzmbP9nm2nFpgoLB_EHhlc&componentRestrictions={country:cl}", nombreUgeo];
     
-    
-    NSString *strUrl=[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSURL *url = [NSURL URLWithString:strUrl];
-    
+    /*
     NSURLSession *session = [NSURLSession sharedSession];
     
     [[session dataTaskWithURL:url
@@ -717,18 +757,18 @@ bool isShown = false;
                       }
                   }
                   dispatch_async(dispatch_get_main_queue(), ^{
-                      [self refreshTableView];
+                      [tableView reloadData];
                   });
               }
           }
           
       }] resume];
+    */
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-        [self llamadoAutoComplete:[[textField text]
+    [self llamadoAutoComplete:[[textField text]
                 stringByReplacingCharactersInRange:range withString:string]];
-    
     return true;
 }
 
@@ -1051,11 +1091,11 @@ bool isShown = false;
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
-        cell.textLabel.text = [self.listado objectAtIndex:indexPath.row];
     
+        cell.textLabel.text = [self.listado objectAtIndex:indexPath.row];
+        NSLog(@"indexpath %i %@", indexPath.row, [self.listado objectAtIndex:indexPath.row]);
         //[self.listado removeAllObjects];
     return cell;
-
 }
 
 
@@ -1066,12 +1106,22 @@ bool isShown = false;
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     [self.input setText: cell.textLabel.text];
     [self.view endEditing:YES];
-    [self.mapView setHidden: NO];
-    self.vistaResultadoGoogle.hidden = YES;
-    tableView.hidden = YES;
-    self.vistafiltros.hidden = NO;
+    if(_showTextDialog){
+        [self performSelector:@selector(btnAceptar:) withObject:nil afterDelay:0];
+    } else {
+        [self.mapView setHidden: NO];
+        self.vistaResultadoGoogle.hidden = YES;
+        tableView.hidden = YES;
+        self.vistafiltros.hidden = NO;
+    }
 }
 
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if(_showTextDialog){
+        self.vistaResultadoGoogle.hidden = NO;
+        self.vistafiltros.hidden = YES;
+    }
+}
 
 @end
