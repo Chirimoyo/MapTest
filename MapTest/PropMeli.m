@@ -10,7 +10,4 @@
 
 @implementation PropMeli
 
-
-
-
 @end

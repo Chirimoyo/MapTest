@@ -8,14 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "PropMeli.h"
-@interface CeldaPropiedadViewCell : UITableViewCell
+@interface CeldaPropiedadViewCell : UITableViewCell<UIScrollViewDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UILabel *lblTitulo;
 @property (weak, nonatomic) IBOutlet UILabel *lblDetalle;
 @property (weak, nonatomic) IBOutlet UILabel *lblPrecio;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollview;
-@property (weak, nonatomic) NSMutableDictionary *photos;
 
 @property (nonatomic, strong) PropMeli *propiedad;
 
