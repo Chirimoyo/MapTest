@@ -793,7 +793,8 @@ bool isShown = false;
 
 -(void)llamadoAutoComplete:(NSString *)nombreUgeo{
     
-    NSString *string = [NSString  stringWithFormat:@"https://maps.googleapis.com/maps/api/place/autocomplete/json?input=%@&types=geocode&language=cl&sensor=true&key=AIzaSyA6ORrTeE4pXuzmbP9nm2nFpgoLB_EHhlc&componentRestrictions={country:cl}", self.input.text];
+    NSString *string =  [NSString  stringWithFormat:@"https://maps.googleapis.com/maps/api/place/autocomplete/json?input=%@&types=geocode&language=cl&sensor=false&key=AIzaSyA6ORrTeE4pXuzmbP9nm2nFpgoLB_EHhlc&components=country:cl", nombreUgeo];
+    
     string = [string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *url = [NSURL URLWithString:string];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];

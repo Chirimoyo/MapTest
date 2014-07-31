@@ -109,8 +109,8 @@
 - (void)actualizarMapaDesdeBusqueda:(Busqueda *)bus
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [_btnTitulo setTitle:titulo forState:UIControlStateNormal];
-        [self refreshMap:lat longitud:lon nombreCiudad: titulo];
+        /*[_btnTitulo setTitle:titulo forState:UIControlStateNormal];
+        [self refreshMap:lat longitud:lon nombreCiudad: titulo];*/
         self.busqueda = bus;
         self.title = self.busqueda.unidadGeografica.nombre;
         [self refreshMap];
