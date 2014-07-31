@@ -81,7 +81,8 @@
             // Add logic
         }
     }];
-    return @"";}
+    return @"";
+}
 
 -(void) initMarker{
     // Creates a marker in the center of the map.

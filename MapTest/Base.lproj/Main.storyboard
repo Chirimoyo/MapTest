@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="bgz-bz-POa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="bgz-bz-POa">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -19,7 +19,7 @@
             </objects>
             <point key="canvasLocation" x="-1201" y="216"/>
         </scene>
-        <!--Vista Mapa View Controller - Santiago-->
+        <!--Vista Mapa View Controller-->
         <scene sceneID="kxh-ZO-7CP">
             <objects>
                 <viewController storyboardIdentifier="VistaMapaViewController" id="eM8-2P-CBl" customClass="VistaMapaViewController" sceneMemberID="viewController">
@@ -70,8 +70,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Santiago" id="qve-l8-zDP">
+                    <navigationItem key="navigationItem" id="qve-l8-zDP">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" image="menu" id="qWZ-9c-lcG"/>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2zu-FX-9ng">
+                            <rect key="frame" x="71" y="6" width="168" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="fnCambiarTitulo:" destination="eM8-2P-CBl" eventType="touchUpInside" id="lZm-Hg-1Zp"/>
+                            </connections>
+                        </button>
                         <barButtonItem key="rightBarButtonItem" image="lupa" id="WWC-lY-FfX">
                             <connections>
                                 <action selector="viewFiltrosBusqueda:" destination="eM8-2P-CBl" id="v9c-H9-62g"/>
@@ -79,13 +91,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="btnTitulo" destination="2zu-FX-9ng" id="XDS-HS-qiI"/>
                         <outlet property="mapView" destination="Zce-8f-PY5" id="qng-o7-Ox3"/>
                         <segue destination="xwH-ty-43V" kind="push" identifier="goListado" id="EEK-TK-s7q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PkO-3j-7xg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-688" y="216"/>
+            <point key="canvasLocation" x="-685" y="216"/>
         </scene>
         <!--Listado Propiedades View Controller-->
         <scene sceneID="FuJ-OI-iQu">
