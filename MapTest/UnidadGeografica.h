@@ -11,6 +11,7 @@
 
 @interface UnidadGeografica : NSObject
 @property (strong, nonatomic) NSString *nombre;
-@property (strong, nonatomic) id latitud;
-@property (strong, nonatomic) id longitud;
+@property (nonatomic) double latitud;
+@property (nonatomic) double longitud;
+@property (strong, nonatomic) NSString *idMeli;
 @end
