@@ -37,7 +37,7 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 
@@ -108,12 +108,14 @@
 
 - (void)showSlideShow:(NSArray *)items{
     int i = 0;
+    NSLog(@"-------------------------------------");
     for (NSDictionary *obj in items) {
         UIImageView *img = [[UIImageView alloc] init];
         //NSLog(@"img url %@", [obj objectForKey:@"url"]);
         img.frame = CGRectMake(i*320, 0, 320, 200);
         NSURL *urlImg = [NSURL URLWithString:[obj objectForKey:@"url"]];
-        [img setImageWithURL:urlImg placeholderImage:[UIImage imageNamed:@"imagenNoDisponible.jpg"]];
+        NSLog(@"CARGAR %@", [obj objectForKey:@"url"]);
+        [img setImageWithURL:urlImg placeholderImage:[UIImage imageNamed:@"ImagenEspera.png"]];
         img.contentMode = UIViewContentModeScaleAspectFill;
         [_scrollview addSubview:img];
         i++;

@@ -13,7 +13,7 @@
 #import "AFHTTPRequestOperationManager.h"
 
 @interface VistaMapaViewController ()
-
+@property (strong, nonatomic) Busqueda *busqueda;
 @end
 
 @implementation VistaMapaViewController
@@ -23,7 +23,7 @@
     GMSMarker *currentPositionMarker;
     NSUserDefaults *userDefaults;
 }
-
+@synthesize busqueda;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -40,10 +40,7 @@
     locationManager.delegate = self;
     [locationManager startUpdatingLocation];
 
-    
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude: locationManager.location.coordinate.latitude
-                                                            longitude:locationManager.location.coordinate.longitude
-                                                                 zoom:10];
+   
 
     userDefaults = [NSUserDefaults standardUserDefaults];
     [self initMap];
@@ -52,22 +49,21 @@
 }
 
 -(void) initMap{
-    float init_latitude = -33.438941;
-    float init_longitude = -70.644632;
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude: init_latitude
-                                                            longitude: init_longitude
-                                                                 zoom:10];
+    
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude: locationManager.location.coordinate.latitude
+                                                            longitude:locationManager.location.coordinate.longitude
+                                                                 zoom:11];
     mapView_ = [GMSMapView mapWithFrame:self.mapView.bounds camera:camera];
     mapView_.myLocationEnabled = NO;
+    mapView_.delegate = self;
     [self.mapView addSubview: mapView_];
 
     NSString *ultimaBusqueda = [userDefaults objectForKey:@"ultimaBusqueda"];
-    NSNumber *lat = [userDefaults objectForKey:@"latitud"];
-    NSNumber *lon = [userDefaults objectForKey:@"longitud"];
+
     if (ultimaBusqueda != nil) {
         NSLog(@"ultimaBusqueda %@", ultimaBusqueda);
         //cargar la ultima busqueda realizada
-        [self actualizarMapaDesdeBusqueda:ultimaBusqueda latitud:lat longitud:lon];
+        [self actualizarMapaDesdeBusqueda:nil];
     } else {
         //ubicar al usuario en su posición actual
         [self centrarMapaPosicionUsuario];
@@ -76,14 +72,16 @@
 
 -(void *)setDireccionFromLocationFromLatitude:(double) lat Longitud:(double) lon
 {
-    [[GMSGeocoder geocoder] reverseGeocodeCoordinate:CLLocationCoordinate2DMake(lat, lon) completionHandler:^(GMSReverseGeocodeResponse* response, NSError* error) {
-        for(GMSAddress* addressObj in [response results])
-        {
-            self.title = addressObj.lines[1];
+    [[GMSGeocoder geocoder]  reverseGeocodeCoordinate:CLLocationCoordinate2DMake(lat, lon) completionHandler:^(GMSReverseGeocodeResponse* response, NSError* error) {
+        if ([[response results] count] > 0){
+            GMSAddress* addressObj = [[response results] firstObject];
+            self.title = addressObj.locality;
+        }
+        else {
+            // Add logic
         }
     }];
-    return @"";
-}
+    return @"";}
 
 -(void) initMarker{
     // Creates a marker in the center of the map.
@@ -108,12 +106,14 @@
 
 
 //puede ser actualizado externamente
-- (void)actualizarMapaDesdeBusqueda:(NSString *)titulo latitud:(NSNumber *)lat longitud:(NSNumber *)lon
+- (void)actualizarMapaDesdeBusqueda:(Busqueda *)bus
 {
-    NSLog(@"actualizar mapa: %@", titulo);
     dispatch_async(dispatch_get_main_queue(), ^{
         [_btnTitulo setTitle:titulo forState:UIControlStateNormal];
         [self refreshMap:lat longitud:lon nombreCiudad: titulo];
+        self.busqueda = bus;
+        self.title = self.busqueda.unidadGeografica.nombre;
+        [self refreshMap];
     });
     //NSLog(@"This was returned from ViewControllerB %@",item.nombre);
 }
@@ -125,7 +125,7 @@
     ListadoPropiedadesViewController *vistaListado = [storyboard instantiateViewControllerWithIdentifier:@"ListadoPropiedadesViewController"];
     UnidadGeografica *unidadgeo = [UnidadGeografica new];
     unidadgeo.nombre = [self title];
-    vistaListado.unidadGeografica = unidadgeo;
+    vistaListado.busqueda = self.busqueda;
     CATransition *transition = [CATransition animation];
     transition.duration = 0.3f;
     transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
@@ -141,9 +141,8 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"goListado"]) {
         ListadoPropiedadesViewController *vistaListado = (ListadoPropiedadesViewController *) segue.destinationViewController;
-        UnidadGeografica *unidadgeo = [UnidadGeografica new];
-        unidadgeo.nombre = [self title];
-        vistaListado.unidadGeografica = unidadgeo;
+       
+        vistaListado.busqueda = self.busqueda;
     }
 }
 
@@ -152,7 +151,8 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 
     MapTestViewController *second = [storyboard instantiateViewControllerWithIdentifier:@"MapTestViewController"];
-    second.nombreCiudad = _btnTitulo.titleLabel.text;
+    second.nombreCiudad = [self title];
+    second.busqueda = self.busqueda;
     second.delegate  = self;
     
     second.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
@@ -161,53 +161,36 @@
     [self presentViewController:second animated:YES completion:nil];
 }
 
-- (void) refreshMap:(id)lat  longitud:(id)lng nombreCiudad:(NSString *)nombreCiudad{
+- (void) refreshMap{
     [mapView_ clear];
-    [mapView_ animateToLocation:CLLocationCoordinate2DMake([lat doubleValue], [lng doubleValue])];
-    [self ApiMeli:nombreCiudad];
-}
-
-- (void) refreshMapDouble:(double)lat longitud:(double)lng nombreCiudad:(NSString *)nombreCiudad{
-   [mapView_ clear];
-   [mapView_ animateToLocation:CLLocationCoordinate2DMake(lat, lng)];
-    GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.position = CLLocationCoordinate2DMake(lat, lng);
-    UIImage *imagen = [UIImage imageNamed:@"pinUsuario" ];
-    [marker setIcon:imagen];
-    marker.title = @"Santiago";
-    marker.snippet = @"Chile";
-    marker.map = mapView_;
-   [self ApiMeli:nombreCiudad];
+    [mapView_ animateToLocation:CLLocationCoordinate2DMake(self.busqueda.unidadGeografica.latitud, busqueda.unidadGeografica.longitud)];
+    [self ApiMeli];
 }
 
 
--(void) addMarker:(id)lat longitud:(id)lng idMeli:(id)idMeli{
+
+
+-(void) addMarker:(id)lat longitud:(id)lng idMeli:(id)idMeli idTipoPropiedad:(NSString *) idTipoPropiedad{
     GMSMarker *marker = [[GMSMarker alloc] init];
     marker.position = CLLocationCoordinate2DMake([lat doubleValue], [lng doubleValue]);
     marker.title = idMeli;
     marker.snippet = idMeli;
     marker.zIndex = 80;
-    UIImage *imagen = [UIImage imageNamed:@"PinPropiedad" ];
+    UIImage *imagen;
+    if([idTipoPropiedad isEqualToString:@"MLC1466"]){
+        imagen = [UIImage imageNamed:@"pinCasa" ];}
+    else{
+        imagen = [UIImage imageNamed:@"PinPropiedad" ];
+    }
+    
     [marker setIcon:imagen];
     marker.map = mapView_;
 }
 
--(void) ApiMeli:(NSString *) ciudad{
+-(void) ApiMeli{
     NSString *urlString;
     
-    if ([ciudad rangeOfString:@"Santiago"].location != NSNotFound) {
-        urlString = @"https://mobile.mercadolibre.com.ar/sites/MLC/search?category=MLC1480&limit=50&state=TUxDUE1FVEExM2JlYg&city=TUxDQ1NBTjk4M2M";
-    } else {
-        
-        if ([ciudad rangeOfString:@"del Mar"].location != NSNotFound) {
-            urlString = @"https://mobile.mercadolibre.com.ar/sites/MLC/search?category=MLC1480&limit=50&state=TUxDUFZBTE84MDVj&city=TUxDQ1ZJ0WQ3ZGU4";
-        } else {
-            
-            //urlString =@"https://mobile.mercadolibre.com.ar/sites/MLC/search?category=MLC1480&limit=50&state=TUxDUERFTE9lODZj&city=TUxDQ0NPTjYwZTdk";
-            urlString = @"https://mobile.mercadolibre.com.ar/sites/MLC/search?category=MLC1480&limit=50&state=TUxDUE1FVEExM2JlYg&city=TUxDQ1NBTjk4M2M";
-
-        }
-    }
+    urlString = [NSString stringWithFormat: @"https://mobile.mercadolibre.com.ar/sites/MLC/search?category=%@&limit=100&state=%@&price=*-%d&%d-", self.busqueda.tipoOperacion , self.busqueda.unidadGeografica.idMeli, self.busqueda.rangoPrecioDesde, self.busqueda.rangoPrecioHasta ];
 
     urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *url = [NSURL URLWithString:urlString];
@@ -229,7 +212,7 @@
                               id lat= [[valor objectForKey:@"location"] objectForKey:@"latitude"];
                               id lng= [[valor objectForKey:@"location"] objectForKey:@"longitude"];
                               dispatch_async(dispatch_get_main_queue(), ^{
-                                  [self addMarker:lat longitud:lng idMeli:[valor objectForKey:@"permalink"] ];
+                                  [self addMarker:lat longitud:lng idMeli:[valor objectForKey:@"permalink"] idTipoPropiedad: busqueda.tipoPropiedad ];
                               });
                           }
                       }
@@ -264,24 +247,40 @@
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startUpdatingLocation];
-    [self ApiMeli:@"Santiago"];
+    self.busqueda = [Busqueda new];
+    UnidadGeografica *ugeo = [UnidadGeografica new];
+    [ugeo setLatitud:locationManager.location.coordinate.latitude];
+    [ugeo setLongitud: locationManager.location.coordinate.longitude];
+    [ugeo setIdMeli: @"TUxDUE1FVEExM2JlYg"]; //esta en duro pq se q parte en stgo!!
+    [ugeo setNombre: @"Posición actual"];
+    [self.busqueda setTipoOperacion:@"MLC1480"];
+    [self.busqueda setTipoPropiedad:@"MLC1472"];
+    [self.busqueda setTipoMoneda:0];
+    [self.busqueda setRangoPrecioDesde:0];
+    [self.busqueda setRangoPrecioHasta:0];
+    
+    [busqueda setUnidadGeografica:ugeo];
+    busqueda.tipoOperacion = @"MLC1480";
+    
+    [self ApiMeli];
+    self.title = @"Posición actual";
 
-   // [self setDireccionFromLocationFromLatitude:(double)locationManager.location.coordinate.latitude Longitud:((double)locationManager.location.coordinate.longitude)];
+    //[self setDireccionFromLocationFromLatitude:(double)locationManager.location.coordinate.latitude Longitud:((double)locationManager.location.coordinate.longitude)];
     
 }
 
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
-    NSLog(@"%@", locations);
-
-    currentPositionMarker.position = CLLocationCoordinate2DMake(locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude);
-    mapView_.camera = [GMSCameraPosition cameraWithLatitude: locationManager.location.coordinate.latitude
-                                                  longitude: locationManager.location.coordinate.longitude
-                                                       zoom:10];
-    [locationManager stopUpdatingLocation];
-    //TODO: actualizar la data con el valor real
-    [self ApiMeli:@"Santiago"];
+- (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position{
+    NSLog(@"%f,%f",mapView.projection.visibleRegion.farLeft.latitude,mapView.projection.visibleRegion.farLeft.longitude);
+    NSLog(@"%f,%f",mapView.projection.visibleRegion.farRight.latitude,mapView.projection.visibleRegion.farRight.longitude);
+    NSLog(@"%f,%f",mapView.projection.visibleRegion.nearLeft.latitude,mapView.projection.visibleRegion.nearLeft.longitude);
+    NSLog(@"%f,%f",mapView.projection.visibleRegion.nearRight.latitude,mapView.projection.visibleRegion.nearRight.longitude);
+    
+    
+    CGPoint point = mapView.center;
+    CLLocationCoordinate2D coordenada = [mapView.projection coordinateForPoint:point];
+    [self setDireccionFromLocationFromLatitude:coordenada.latitude Longitud:coordenada.longitude];
+    
 }
-
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {

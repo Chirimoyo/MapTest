@@ -57,7 +57,6 @@
 @property (strong, nonatomic) NSArray *arraySuperficie;
 @property (weak, nonatomic) IBOutlet UIView *vistaResultadoGoogle;
 @property (weak, nonatomic) IBOutlet UIView *vistafiltros;
-@property (strong, nonatomic) Busqueda *busqueda;
 
 @property (strong, nonatomic) NSNumber *filaDesdeCompra;;
 @property (strong, nonatomic) NSNumber *filaDesdeArriendo;
@@ -471,6 +470,121 @@ bool isShown = false;
     [button addSubview:buttonLabel];
 }
 
+-(void)cargarControles{
+    [self llamadoAutoComplete:self.nombreCiudad];
+    
+    [self cargarData];
+    if([self.busqueda.tipoOperacion isEqualToString:@"MLC1480"] || [self.busqueda.tipoOperacion isEqualToString:@"MLC5628"]){
+        [self.segmentedTipoOperacion setSelectedSegmentIndex:0];
+    }
+    
+    if([self.busqueda.tipoOperacion isEqualToString:@"MLC6407"] || [self.busqueda.tipoOperacion isEqualToString:@"MLC6406"]){
+        [self.segmentedTipoOperacion setSelectedSegmentIndex:1];
+    }
+    
+    if([self.busqueda.tipoOperacion isEqualToString:@"MLC116367"] || [self.busqueda.tipoOperacion isEqualToString:@"MLC116364"]){
+        [self.segmentedTipoOperacion setSelectedSegmentIndex:2];
+    }
+    if([self.busqueda.tipoPropiedad isEqualToString:@"MLC1466"]){
+        [self.pickerTipoPropiedad selectRow:0 inComponent:0 animated:NO];
+    }
+    if([self.busqueda.tipoPropiedad isEqualToString:@"MLC1472"]){
+        [self.pickerTipoPropiedad selectRow:1 inComponent:0 animated:NO];
+        [self agregarLabelBoton: self.tipoPropiedad texto:@"Departamento"];
+    }
+    else
+    {
+        [self.pickerTipoPropiedad selectRow:0 inComponent:0 animated:NO];
+        [self agregarLabelBoton: self.tipoPropiedad texto:@"Casa"];
+    }
+    [self.segmentedTipoMoneda setSelectedSegmentIndex:busqueda.tipoMoneda];
+    
+    if(self.segmentedTipoOperacion.selectedSegmentIndex == 0 && self.segmentedTipoMoneda.selectedSegmentIndex == 0)
+    {
+        NSString *valorDesde = [[NSString alloc] initWithFormat: @"%d" , self.busqueda.rangoPrecioDesde];
+        self.filaDesdeCompra = [NSNumber numberWithInteger:[arrayPrecioCompraUFDesde indexOfObject:[valorDesde isEqualToString: @"0"] ? @"No min" : valorDesde]];
+        
+        [self cargarValoresPrecioHasta: [self.filaDesdeCompra intValue]];
+        NSString *valorHasta = [[NSString alloc] initWithFormat: @"%d" , self.busqueda.rangoPrecioHasta];
+        self.filaHastaCompra = [NSNumber numberWithInteger:[arrayPrecioCompraUFHasta indexOfObject:[valorHasta isEqualToString:@"0"] ? @"No max" : valorHasta ]];
+        [self.pickerRangoDesde reloadComponent:0];
+        [self.pickerRangoHasta reloadComponent:0];
+        
+        [self.pickerRangoDesde selectRow:[self.filaDesdeCompra intValue] inComponent:0 animated:NO];
+        [self.pickerRangoHasta selectRow:[self.filaHastaCompra intValue] inComponent:0 animated:NO];
+        
+    }
+    if(self.segmentedTipoOperacion.selectedSegmentIndex == 0 && self.segmentedTipoMoneda.selectedSegmentIndex == 1)
+    {
+     
+        NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
+        [numberFormatter setUsesGroupingSeparator:YES];
+        [numberFormatter setGroupingSeparator:@"."];
+        [numberFormatter setGroupingSize:3];
+        
+        [numberFormatter setGeneratesDecimalNumbers:NO];
+        [numberFormatter setMaximumFractionDigits:0];
+        //[numberFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"es_ES"]];
+        NSString *valorDesde = [numberFormatter stringFromNumber: [NSNumber numberWithInteger: self.busqueda.rangoPrecioDesde]];
+        
+        //NSString *valorDesde = [[NSString alloc] initWithFormat: @"%d" , self.busqueda.rangoPrecioDesde];
+        self.filaDesdeCompra = [NSNumber numberWithInteger:[arrayPrecioCompraPesosDesde indexOfObject:valorDesde]];
+        
+        [self cargarValoresPrecioHasta: [self.filaDesdeCompra intValue]];
+        NSString *valorHasta = [numberFormatter stringFromNumber: [NSNumber numberWithInteger: self.busqueda.rangoPrecioHasta]];
+        
+        self.filaHastaCompra = [NSNumber numberWithInteger:[arrayPrecioCompraPesosHasta indexOfObject:valorHasta]];
+        [self.pickerRangoDesde reloadComponent:0];
+        [self.pickerRangoHasta reloadComponent:0];
+        
+        [self.pickerRangoDesde selectRow:[self.filaDesdeCompra intValue] inComponent:0 animated:NO];
+        [self.pickerRangoHasta selectRow:[self.filaHastaCompra intValue] inComponent:0 animated:NO];
+
+    }
+    
+    if(self.segmentedTipoOperacion.selectedSegmentIndex != 0 && self.segmentedTipoMoneda.selectedSegmentIndex == 0)
+    {
+
+        NSString *valorDesde = [[NSString alloc] initWithFormat: @"%d" , self.busqueda.rangoPrecioDesde];
+        self.filaDesdeArriendo = [NSNumber numberWithInteger:[arrayPrecioArriendoUFDesde indexOfObject:valorDesde]];
+        
+        [self cargarValoresPrecioHasta: [self.filaDesdeArriendo intValue]];
+        NSString *valorHasta = [[NSString alloc] initWithFormat: @"%d" , self.busqueda.rangoPrecioHasta];
+        self.filaHastaArriendo = [NSNumber numberWithInteger:[arrayPrecioArriendoUFHasta indexOfObject:valorHasta]];
+        [self.pickerRangoDesde reloadComponent:0];
+        [self.pickerRangoHasta reloadComponent:0];
+        
+        [self.pickerRangoDesde selectRow:[self.filaDesdeArriendo intValue] inComponent:0 animated:NO];
+        [self.pickerRangoHasta selectRow:[self.filaHastaArriendo intValue] inComponent:0 animated:NO];
+
+    }
+    if(self.segmentedTipoOperacion.selectedSegmentIndex != 0 && self.segmentedTipoMoneda.selectedSegmentIndex == 1)
+    {
+
+        NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
+        [numberFormatter setUsesGroupingSeparator:YES];
+        [numberFormatter setGroupingSeparator:@"."];
+        [numberFormatter setGroupingSize:3];
+        
+        [numberFormatter setGeneratesDecimalNumbers:NO];
+        [numberFormatter setMaximumFractionDigits:0];
+        //[numberFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"es_ES"]];
+        NSString *valorDesde = [numberFormatter stringFromNumber: [NSNumber numberWithInteger: self.busqueda.rangoPrecioDesde]];
+
+        self.filaDesdeArriendo = [NSNumber numberWithInteger:[arrayPrecioArriendoPesosDesde indexOfObject:valorDesde]];
+        
+        [self cargarValoresPrecioHasta: [self.filaDesdeArriendo intValue]];
+        NSString *valorHasta = [numberFormatter stringFromNumber: [NSNumber numberWithInteger: self.busqueda.rangoPrecioHasta]];
+        self.filaHastaArriendo = [NSNumber numberWithInteger:[arrayPrecioArriendoPesosHasta indexOfObject:valorHasta]];
+        [self.pickerRangoDesde reloadComponent:0];
+        [self.pickerRangoHasta reloadComponent:0];
+        
+        [self.pickerRangoDesde selectRow:[self.filaDesdeArriendo intValue] inComponent:0 animated:NO];
+        [self.pickerRangoHasta selectRow:[self.filaHastaArriendo intValue] inComponent:0 animated:NO];
+
+    }
+    
+}
 - (void)viewDidLoad
 {
     self.pickerTipoPropiedad.showsSelectionIndicator = YES;
@@ -491,8 +605,11 @@ bool isShown = false;
 
     self.input.delegate = self;
     self.input.clearButtonMode = UITextFieldViewModeWhileEditing;
-   
-    [self cargarData];
+    if(self.busqueda != nil)
+        [self cargarControles];
+    else
+        [self cargarData];
+    
     //textField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [self redondearbotones:self.tipoPropiedad];
     [self redondearbotones:self.btnRangoPrecio];
@@ -526,7 +643,7 @@ bool isShown = false;
 }
 
 -(void) cargarData{
-    arrayTipoPropiedad = [[NSArray alloc] initWithObjects:@"Todos",@"Casa", @"Departamento", nil];
+    arrayTipoPropiedad = [[NSArray alloc] initWithObjects:@"Casa", @"Departamento", nil];
     arrayTipoMoneda = [[NSArray alloc] initWithObjects:@"UF", @"Pesos", nil];
     
     arrayPrecioArriendoPesosDesde = [[NSMutableArray alloc] initWithObjects:@"No min",@"50.000",@"100.000", @"150.000",
@@ -536,9 +653,12 @@ bool isShown = false;
                                      @"200.000",@"300.000", @"400.000",
                                      @"500.000",@"1.000.000", @"1.500.000",nil];
     
-    arrayPrecioArriendoUFDesde = [[NSMutableArray alloc] initWithObjects: @"No min",@"2",@"4", @"6",@"10",@"14", @"18",
+    arrayPrecioArriendoUFDesde = [[NSMutableArray alloc] initWithObjects: @"No min",@"2",@"4", @"6"
+                                  ,@"10",@"14", @"18",
                                   @"22",@"26", @"30", nil];
-    arrayPrecioArriendoUFHasta = [[NSMutableArray alloc] initWithObjects: @"No max",@"2",@"4", @"6",@"10",@"14", @"18",
+    
+    arrayPrecioArriendoUFHasta = [[NSMutableArray alloc] initWithObjects: @"No max",@"2",@"4", @"6"
+                                  ,@"10",@"14", @"18",
                                   @"22",@"26", @"30", nil];
     
     arrayPrecioCompraPesosDesde = [[NSMutableArray alloc] initWithObjects:@"No min",@"10.000.000",@"20.000.000", @"30.000.000",
@@ -556,7 +676,7 @@ bool isShown = false;
     
      arraySuperficie =[[NSArray alloc] initWithObjects:@"50 mts",@"100 mts", @"200 mts", nil];
     
-    [self agregarLabelBoton:self.tipoPropiedad texto:@"Todos"];
+    [self agregarLabelBoton:self.tipoPropiedad texto:@"Casa"];
 
 }
 - (void)redondearbotones:(UIButton *) boton{
@@ -654,8 +774,6 @@ bool isShown = false;
         
         [self.pickerRangoHasta selectRow:[self.filaHastaArriendo intValue] inComponent:0 animated:NO];
     }
-    
-    
 }
 
 - (BOOL)textFieldShouldClear:(UITextField *)textField {
@@ -790,7 +908,7 @@ bool isShown = false;
 - (IBAction)btnAceptar:(id)sender{
 
     
-    NSString *urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?address=%@&types=geocode&language=fr&sensor=true&key=AIzaSyA6ORrTeE4pXuzmbP9nm2nFpgoLB_EHhlc", self.input.text ];
+    NSString *urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?address=%@, Chile&types=geocode&language=es&sensor=true&key=AIzaSyA6ORrTeE4pXuzmbP9nm2nFpgoLB_EHhlc", self.input.text ];
     
     urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 
@@ -825,25 +943,77 @@ bool isShown = false;
                           for (id valor in value) {
                               id lat= [[[valor objectForKey:@"geometry"] objectForKey:@"location"] objectForKey:@"lat"];
                               id lng= [[[valor objectForKey:@"geometry"] objectForKey:@"location"] objectForKey:@"lng"];
-                              busqueda = [Busqueda new];
-                              UnidadGeografica *ugeo = [UnidadGeografica new];
-                              [ugeo setLatitud:lat];
-                              [ugeo setLongitud:lng];
-                              [ugeo setNombre:self.input.text];
-                              [busqueda setUnidadGeografica: ugeo];
-                              
-                              NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-
-                              [userDefaults setObject:ugeo.nombre forKey:@"ultimaBusqueda"];
-                              [userDefaults setObject:ugeo.latitud forKey:@"latitud"];
-                              [userDefaults setObject:ugeo.longitud forKey:@"longitud"];
-
-                              [self.delegate actualizarMapaDesdeBusqueda:ugeo.nombre latitud:ugeo.latitud longitud:ugeo.longitud];
+                             
                               dispatch_async(dispatch_get_main_queue(), ^{
+                                  [[GMSGeocoder geocoder] reverseGeocodeCoordinate:CLLocationCoordinate2DMake([lat doubleValue], [lng doubleValue]) completionHandler:^(GMSReverseGeocodeResponse* response, NSError* error) {
+                                      
+                                      if ([[response results] count] > 0){
+                                          busqueda = [Busqueda new];
+                                          GMSAddress* addressObj = [[response results] firstObject];
+                                          UnidadGeografica *ugeo = [UnidadGeografica new];
+                                          [ugeo setLatitud: addressObj.coordinate.latitude];
+                                          [ugeo setLongitud:addressObj.coordinate.longitude];
+                                          [ugeo setNombre:addressObj.locality];
+                                          [ugeo setIdMeli:[self getLocationMercadoLibre:addressObj.administrativeArea]];
+                                          [busqueda setUnidadGeografica: ugeo];
+                                          [busqueda setTipoOperacion:[self getCategoryTipoOperacion]];
+                                          [busqueda setTipoPropiedad:[self getCategoryTipoPropiedad]];
+                                          [busqueda setCantidadBaños: self.segmentedDormitorios.selectedSegmentIndex];
+                                          [busqueda setCantidadDormitorios: self.segmentedBanos.selectedSegmentIndex];
+                                          [busqueda setTipoMoneda:self.segmentedTipoMoneda.selectedSegmentIndex];
+                                          if(self.segmentedTipoMoneda.selectedSegmentIndex == 0 && self.segmentedTipoOperacion.selectedSegmentIndex == 0){
+                                              NSString *valorHasta = arrayPrecioCompraUFHasta[[self.pickerRangoHasta selectedRowInComponent:0]];
+                                              NSString *valorDesde = arrayPrecioCompraUFDesde[[self.pickerRangoDesde selectedRowInComponent:0]];
+                                          
+                                              [busqueda setRangoPrecioDesde:[valorDesde isEqualToString:@"No min"] ? 0 : [valorDesde intValue]];
+                                              [busqueda setRangoPrecioHasta:[valorHasta isEqualToString:@"No max"] ? 0 : [valorHasta intValue]];
+                                          }
+                                          if(self.segmentedTipoMoneda.selectedSegmentIndex == 1 && self.segmentedTipoOperacion.selectedSegmentIndex == 0){
+                                              NSString *valorHasta = arrayPrecioCompraPesosHasta[[self.pickerRangoHasta selectedRowInComponent:0]];
+                                              NSString *valorDesde = arrayPrecioCompraPesosDesde[[self.pickerRangoDesde selectedRowInComponent:0]];
+                                              
+                                              [busqueda setRangoPrecioDesde:[valorDesde isEqualToString:@"No min"] ? 0 :
+                                               [[valorDesde stringByReplacingOccurrencesOfString:@"." withString:@""] intValue]];
+                                              
+                                              [busqueda setRangoPrecioHasta:[valorHasta isEqualToString:@"No max"] ? 0 :
+                                               [[valorHasta stringByReplacingOccurrencesOfString:@"." withString:@""] intValue]];
+                                          }
+                                          
+                                          if(self.segmentedTipoMoneda.selectedSegmentIndex == 0 && self.segmentedTipoOperacion.selectedSegmentIndex != 0){
+                                              NSString *valorHasta = arrayPrecioArriendoUFHasta[[self.pickerRangoHasta selectedRowInComponent:0]];
+                                              NSString *valorDesde = arrayPrecioArriendoUFDesde[[self.pickerRangoDesde selectedRowInComponent:0]];
+                                              
+                                              [busqueda setRangoPrecioDesde:[valorDesde isEqualToString:@"No min"] ? 0 : [valorDesde intValue]];
+                                              
+                                              [busqueda setRangoPrecioHasta:[valorHasta isEqualToString:@"No max"] ? 0 : [valorHasta intValue]];
+                                          }
+                                          if(self.segmentedTipoMoneda.selectedSegmentIndex == 1 && self.segmentedTipoOperacion.selectedSegmentIndex != 0){
+                                              NSString *valorHasta = arrayPrecioArriendoPesosHasta[[self.pickerRangoHasta selectedRowInComponent:0]];
+                                              NSString *valorDesde = arrayPrecioArriendoPesosDesde[[self.pickerRangoDesde selectedRowInComponent:0]];
+                                              
+                                              [busqueda setRangoPrecioDesde:[valorDesde isEqualToString:@"No min"] ? 0 : [[valorDesde stringByReplacingOccurrencesOfString:@"." withString:@""] intValue]];
+                                              
+                                              [busqueda setRangoPrecioHasta:[valorHasta isEqualToString:@"No max"] ? 0 : [[valorHasta stringByReplacingOccurrencesOfString:@"." withString:@""] intValue]];
+                                          }
+                                          //aplicar otros filtros
+                                          
+                                          
+                                          
+                                          NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                                          
+                                          [userDefaults setObject:ugeo.nombre forKey:@"ultimaBusqueda"];
+                                          [userDefaults setDouble:ugeo.latitud forKey:@"latitud"];
+                                          [userDefaults setDouble:ugeo.longitud forKey:@"longitud"];
+                                          
+                                          [self.delegate actualizarMapaDesdeBusqueda: busqueda];
+                                          
+                                          
+                                      }
+                                      
+                                  }];
                                   [self dismissViewControllerAnimated:YES completion:nil];
                               });
-                              
-                              
+        
                           }
                       }
                   }
@@ -856,6 +1026,89 @@ bool isShown = false;
 
 }
 
+-(NSString *) getLocationMercadoLibre:(NSString *) areaAdministrativa {
+    if([areaAdministrativa isEqualToString:@"Región Metropolitana de Santiago"]) {
+        return @"TUxDUE1FVEExM2JlYg";
+    }
+    if([areaAdministrativa isEqualToString:@"Región de Arica y Parinacota"]) {
+        return @"";
+    }
+    if([areaAdministrativa isEqualToString:@"Región de Tarapacá"]) {
+        return @"TUxDUFRBUkFhZDJi";
+    }
+    if([areaAdministrativa isEqualToString:@"Región de atacama"]) {
+        return @"TUxDUEFUQUE4YjAw";
+    }
+    if([areaAdministrativa isEqualToString:@"Región de Antofagasta"]) {
+        return @"TUxDUEFOVEE3NWZk";
+    }
+    if([areaAdministrativa isEqualToString:@"Región de Coquimbo"]) {
+        return @"TUxDUENPUU84MzQx";
+    }
+    if([areaAdministrativa isEqualToString:@"Región de Valparaíso"]) {
+        return @"TUxDUFZBTE84MDVj";
+    }
+    if([areaAdministrativa isEqualToString:@"Región del Libertador General Bernardo O'Higgins"]) {
+        return @"TUxDUE9IUzFjODg";
+    }
+    if([areaAdministrativa isEqualToString:@"Región del Maule"]) {
+        return @"TUxDUERFTEVkN2Yy";
+    }
+    if([areaAdministrativa isEqualToString:@"Región del Biobío"]) {
+        return @"TUxDUERFTE9lODZj";
+    }
+    if([areaAdministrativa isEqualToString:@"Región de la Araucanía"]) {
+        return @"TUxDUEFSQUE3YzVk";
+    }
+    if([areaAdministrativa isEqualToString:@"Región de Los Ríos"]) {
+        return @"";
+    }
+    if([areaAdministrativa isEqualToString:@"Región de Los Lagos"]) {
+        return @"TUxDUExPU1NmYjk5";
+    }
+    if([areaAdministrativa isEqualToString:@"Región Aysén del General Carlos Ibáñez del Campo"]) {
+        return @"TUxDUEFJU04xNGU1NA";
+    }
+    if([areaAdministrativa isEqualToString:@"Región de Magallanes y de la Antártica Chilena"]) {
+        return @"TUxDUE1BR1MxN2UxNw";
+    }
+    return @"";
+}
+-(NSString *) getCategoryTipoOperacion{
+    if(self.segmentedTipoOperacion.selectedSegmentIndex == 0 && [self.pickerTipoPropiedad selectedRowInComponent:0] == 1){
+        return @"MLC1480";
+    }
+    if(self.segmentedTipoOperacion.selectedSegmentIndex == 0 && [self.pickerTipoPropiedad selectedRowInComponent:0] == 0){
+        return @"MLC5628";
+    }
+    if(self.segmentedTipoOperacion.selectedSegmentIndex == 1 && [self.pickerTipoPropiedad selectedRowInComponent:0] == 1){
+        return @"MLC6407";
+    }
+    if(self.segmentedTipoOperacion.selectedSegmentIndex == 1 && [self.pickerTipoPropiedad selectedRowInComponent:0] == 0){
+        return @"MLC6406";
+    }
+    if(self.segmentedTipoOperacion.selectedSegmentIndex == 2 && [self.pickerTipoPropiedad selectedRowInComponent:0] == 1){
+        return @"MLC116367";
+    }
+    if(self.segmentedTipoOperacion.selectedSegmentIndex == 2 && [self.pickerTipoPropiedad selectedRowInComponent:0] == 0){
+        return @"MLC116364";
+    }
+return @"";
+}
+
+
+-(NSString *) getCategoryTipoPropiedad{
+    if([self.pickerTipoPropiedad selectedRowInComponent:0] == 0){
+        return @"MLC1466";
+    }
+    if([self.pickerTipoPropiedad selectedRowInComponent:0]  == 1){
+        return @"MLC1472";
+    }
+
+    return @"";
+}
+
+
 - (IBAction)CerrarModal:(id)sender
 {
      [self dismissViewControllerAnimated:YES completion:nil];
@@ -866,9 +1119,75 @@ bool isShown = false;
     if(self.segmentedTipoOperacion.selectedSegmentIndex == 0)
     {
         
-        NSString *valorHasta = arrayPrecioArriendoPesosHasta[[self.pickerRangoHasta selectedRowInComponent:0]];
         NSString *valorDesde = arrayPrecioArriendoPesosDesde[[self.pickerRangoDesde selectedRowInComponent:0]];
         NSInteger filaDesde = [arrayPrecioArriendoPesosDesde indexOfObject:valorDesde];
+        
+        NSInteger totalElementosPicker = [arrayPrecioCompraPesosDesde count];
+        
+        [arrayPrecioCompraPesosHasta removeAllObjects];
+        [arrayPrecioCompraUFHasta removeAllObjects];
+        
+        [arrayPrecioCompraPesosHasta addObject:@"No max"];
+        [arrayPrecioCompraUFHasta addObject:@"No max"];
+        
+        for(NSInteger i = filaDesde; i < totalElementosPicker; i++)
+        {
+            if(i != 0){
+                [arrayPrecioCompraPesosHasta addObject:arrayPrecioCompraPesosDesde[i]];
+                [arrayPrecioCompraUFHasta addObject:arrayPrecioCompraUFDesde[i]];
+            }
+        }
+    }
+    else{
+        NSString *valorDesde ;
+        NSInteger filaDesde;
+        if(self.segmentedTipoOperacion == 0){
+            if(self.segmentedTipoMoneda.selectedSegmentIndex == 0){
+                valorDesde = arrayPrecioCompraUFDesde[[self.pickerRangoDesde selectedRowInComponent:0]];
+                filaDesde = [arrayPrecioCompraUFDesde indexOfObject:valorDesde];
+        
+            }
+            else{
+                valorDesde = arrayPrecioCompraPesosDesde[[self.pickerRangoDesde selectedRowInComponent:0]];
+                filaDesde = [arrayPrecioCompraPesosDesde indexOfObject:valorDesde];
+            }
+        }
+        else{
+            if(self.segmentedTipoMoneda.selectedSegmentIndex == 0){
+                valorDesde = arrayPrecioArriendoUFDesde[[self.pickerRangoDesde selectedRowInComponent:0]];
+                filaDesde = [arrayPrecioArriendoUFDesde indexOfObject:valorDesde];
+                
+            }
+            else{
+                valorDesde = arrayPrecioArriendoPesosDesde[[self.pickerRangoDesde selectedRowInComponent:0]];
+                filaDesde = [arrayPrecioArriendoPesosDesde indexOfObject:valorDesde];
+            }
+        }
+        
+        NSInteger totalElementosPicker = [arrayPrecioArriendoPesosDesde count];
+        
+        [arrayPrecioArriendoPesosHasta removeAllObjects];
+        [arrayPrecioArriendoUFHasta removeAllObjects];
+        
+        [arrayPrecioArriendoPesosHasta addObject:@"No max"];
+        [arrayPrecioArriendoUFHasta addObject:@"No max"];
+        
+        for(NSInteger i = filaDesde; i < totalElementosPicker; i++)
+        {
+            if(i != 0){
+                [arrayPrecioArriendoPesosHasta addObject:arrayPrecioArriendoPesosDesde[i]];
+                [arrayPrecioArriendoUFHasta addObject:arrayPrecioArriendoUFDesde[i]];
+            }
+        }
+        
+    }
+}
+
+//Parche para presentacion
+-(void) cargarValoresPrecioHasta:(NSInteger) filaDesde{
+    //TODO: refactorizar
+    if(self.segmentedTipoOperacion.selectedSegmentIndex == 0)
+    {
         
         NSInteger totalElementosPicker = [arrayPrecioCompraPesosDesde count];
 
@@ -887,10 +1206,6 @@ bool isShown = false;
         }
     }
     else{
-        NSString *valorHasta = arrayPrecioCompraPesosHasta[[self.pickerRangoHasta selectedRowInComponent:0]];
-        NSString *valorDesde = arrayPrecioCompraPesosDesde[[self.pickerRangoDesde selectedRowInComponent:0]];
-        NSInteger filaDesde = [arrayPrecioCompraPesosDesde indexOfObject:valorDesde];
-       
         NSInteger totalElementosPicker = [arrayPrecioArriendoPesosDesde count];
         
         [arrayPrecioArriendoPesosHasta removeAllObjects];
@@ -910,6 +1225,61 @@ bool isShown = false;
     }
 }
 
+-(NSString *)getValorPicker:(UIPickerView *)picker{
+    if(picker == self.pickerRangoDesde){
+        if(self.segmentedTipoOperacion.selectedSegmentIndex == 0 && self.segmentedTipoMoneda.selectedSegmentIndex == 0)
+        {
+            NSInteger index = [picker selectedRowInComponent:0];
+            return arrayPrecioCompraUFDesde[index];
+            
+        }
+        if(self.segmentedTipoOperacion.selectedSegmentIndex == 0 && self.segmentedTipoMoneda.selectedSegmentIndex == 1)
+        {
+            NSInteger index = [picker selectedRowInComponent:0];
+            return arrayPrecioCompraPesosDesde[index];
+        }
+        
+        if(self.segmentedTipoOperacion.selectedSegmentIndex != 0 && self.segmentedTipoMoneda.selectedSegmentIndex == 0)
+        {
+            NSInteger index = [picker selectedRowInComponent:0];
+            return arrayPrecioArriendoUFDesde[index];
+        }
+        if(self.segmentedTipoOperacion.selectedSegmentIndex != 0 && self.segmentedTipoMoneda.selectedSegmentIndex == 1)
+        {
+            
+            NSInteger index = [picker selectedRowInComponent:0];
+            return arrayPrecioArriendoPesosDesde[index];
+        }
+
+    }
+    if(picker == self.pickerRangoHasta){
+        if(self.segmentedTipoOperacion.selectedSegmentIndex == 0 && self.segmentedTipoMoneda.selectedSegmentIndex == 0)
+        {
+            NSInteger index = [picker selectedRowInComponent:0];
+            return arrayPrecioCompraUFHasta[index];
+            
+        }
+        if(self.segmentedTipoOperacion.selectedSegmentIndex == 0 && self.segmentedTipoMoneda.selectedSegmentIndex == 1)
+        {
+            NSInteger index = [picker selectedRowInComponent:0];
+            return arrayPrecioCompraPesosHasta[index];
+        }
+        
+        if(self.segmentedTipoOperacion.selectedSegmentIndex != 0 && self.segmentedTipoMoneda.selectedSegmentIndex == 0)
+        {
+            NSInteger index = [picker selectedRowInComponent:0];
+            return arrayPrecioArriendoUFHasta[index];
+        }
+        if(self.segmentedTipoOperacion.selectedSegmentIndex != 0 && self.segmentedTipoMoneda.selectedSegmentIndex == 1)
+        {
+            
+            NSInteger index = [picker selectedRowInComponent:0];
+            return arrayPrecioArriendoPesosHasta[index];
+        }
+        
+    }
+    return @"";
+}
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     if(pickerView == self.pickerTipoPropiedad){
@@ -923,20 +1293,27 @@ bool isShown = false;
             else{
             if(pickerView == self.pickerRangoHasta)
             {
-              
                 [self cargarValoresPrecioHasta];
                 [self.pickerRangoHasta reloadComponent:0];
+                NSString *cadena = [[NSString alloc] initWithFormat:@"  %@ - %@" , [self getValorPicker:self.pickerRangoDesde] , [self getValorPicker:self.pickerRangoHasta]];
+                if(cadena.length< 26)
+                    self.btnRangoPrecio.titleLabel.font = [UIFont systemFontOfSize:13];
+                else
+                    self.btnRangoPrecio.titleLabel.font = [UIFont systemFontOfSize:12];
+                
+                [self.btnRangoPrecio setTitle:cadena forState:UIControlStateNormal];
             }
             else{
                 if(pickerView == self.pickerRangoDesde){
                     NSString *valorHasta;
                     NSString *valorDesde;
                     //TODO: Refactorizar
-                    if(self.segmentedTipoMoneda.selectedSegmentIndex == 0)
+                    if(self.segmentedTipoOperacion.selectedSegmentIndex == 0)
                     {
                         if(self.segmentedTipoMoneda.selectedSegmentIndex == 0){
                             valorHasta = arrayPrecioCompraUFHasta[[self.pickerRangoHasta selectedRowInComponent:0]];
                             valorDesde = arrayPrecioCompraUFDesde[[self.pickerRangoDesde selectedRowInComponent:0]];
+                            
                         }
                         else{
                             valorHasta = arrayPrecioCompraPesosHasta[[self.pickerRangoHasta selectedRowInComponent:0]];
@@ -953,19 +1330,22 @@ bool isShown = false;
                             valorDesde = arrayPrecioArriendoPesosDesde[[self.pickerRangoDesde selectedRowInComponent:0]];
                         }
                     }
+                   // valorHasta = [valorHasta isEqualToString:@"No max"] ? 0 : valorHasta;
+                   // valorDesde = [valorDesde isEqualToString:@"No min"] ? 0 :valorDesde;
+                    
                     [self cargarValoresPrecioHasta];
                     [self.pickerRangoHasta reloadComponent:0];
                     NSInteger index;
                     if([valorHasta intValue] >= [valorDesde intValue]){
-                        if(self.segmentedTipoMoneda.selectedSegmentIndex == 0){
+                        if(self.segmentedTipoOperacion.selectedSegmentIndex == 0){
                              if(self.segmentedTipoMoneda.selectedSegmentIndex == 0)
                                 index= [arrayPrecioCompraUFHasta indexOfObject:valorHasta];
                             else
-                                index= [arrayPrecioArriendoUFHasta indexOfObject:valorHasta];
+                                index= [arrayPrecioCompraPesosHasta indexOfObject:valorHasta];
                         }
                         else{
                              if(self.segmentedTipoMoneda.selectedSegmentIndex == 0)
-                                index= [arrayPrecioCompraPesosHasta indexOfObject:valorHasta];
+                                index= [arrayPrecioArriendoUFHasta indexOfObject:valorHasta];
                             else
                                 index= [arrayPrecioArriendoPesosHasta indexOfObject:valorHasta];
                         }
@@ -974,10 +1354,18 @@ bool isShown = false;
                         index = 0;
                     
                     [self.pickerRangoHasta selectRow:index inComponent:0 animated:NO];
+                    NSString *cadena = [[NSString alloc] initWithFormat:@"  %@ - %@" , [self getValorPicker:self.pickerRangoDesde] , [self getValorPicker:self.pickerRangoHasta]];
+                    if(cadena.length< 26)
+                        self.btnRangoPrecio.titleLabel.font = [UIFont systemFontOfSize:13];
+                    else
+                        self.btnRangoPrecio.titleLabel.font = [UIFont systemFontOfSize:12];
+                    
+                    [self.btnRangoPrecio setTitle:cadena forState:UIControlStateNormal];
+
                 }
             }
-            }
         }
+    }
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
@@ -1004,7 +1392,7 @@ bool isShown = false;
             }
             else{
                 if(pickerView == self.pickerRangoHasta){
-                    switch (self.segmentedTipoOperacion.selected) {
+                    switch (self.segmentedTipoOperacion.selectedSegmentIndex) {
                         case 0:
                             if( self.segmentedTipoMoneda.selectedSegmentIndex == 0)
                                 return [arrayPrecioCompraUFHasta count];
@@ -1114,6 +1502,21 @@ bool isShown = false;
         tableView.hidden = YES;
         self.vistafiltros.hidden = NO;
     }
+    [self.mapView setHidden: NO];
+    self.vistaResultadoGoogle.hidden = YES;
+    tableView.hidden = YES;
+    self.vistafiltros.hidden = NO;
+    CGRect frameTextField = CGRectMake(self.input.frame.origin.x, self.input.frame.origin.y, 297, self.input.frame.size.height);
+    self.btnCancelar.hidden = NO;
+    [UIView animateWithDuration:0.1 animations:^{
+        self.input.frame = frameTextField;
+        self.vistaResultadoGoogle.hidden = YES;
+        self.vistafiltros.hidden = NO;
+        [self.input resignFirstResponder];
+    } completion:^(BOOL finished) {
+        
+    }];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{

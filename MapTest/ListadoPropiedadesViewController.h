@@ -15,5 +15,5 @@
 {
     __weak IBOutlet UITableView *tableview;
 }
-@property UnidadGeografica * unidadGeografica;
+@property Busqueda * busqueda;
 @end

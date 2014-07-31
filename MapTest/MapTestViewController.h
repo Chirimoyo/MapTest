@@ -16,7 +16,7 @@
 @class MapTestViewController;
 
 @protocol MapTestViewControllerDelegate <NSObject>
-- (void)actualizarMapaDesdeBusqueda:(NSString *)titulo latitud:(NSNumber *)lat longitud:(NSNumber *)lon;
+- (void)actualizarMapaDesdeBusqueda:(Busqueda *)busqueda;
 @end
 
 @interface MapTestViewController : UIViewController<UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UIPickerViewDelegate>
@@ -29,4 +29,6 @@ __weak IBOutlet UITableView *tableView;
 @property (nonatomic, weak) id <MapTestViewControllerDelegate> delegate;
 @property (nonatomic) NSString *nombreCiudad;
 @property (nonatomic) BOOL *showTextDialog;
+@property (strong, nonatomic) Busqueda *busqueda;
+
 @end

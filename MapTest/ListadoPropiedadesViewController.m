@@ -42,17 +42,7 @@
     
     NSString *urlString;
     
-    if ([self.unidadGeografica.nombre rangeOfString:@"Santiago"].location != NSNotFound) {
-        urlString = [NSString stringWithFormat:@"https://mobile.mercadolibre.com.ar/sites/MLC/search?category=MLC1480&limit=6&state=TUxDUE1FVEExM2JlYg&city=TUxDQ1NBTjk4M2M&offset=%d" , offset];
-    } else {
-        
-        if ([self.unidadGeografica.nombre rangeOfString:@"del Mar"].location != NSNotFound) {
-            urlString = [ NSString stringWithFormat:@"https://mobile.mercadolibre.com.ar/sites/MLC/search?category=MLC1480&limit=6&state=TUxDUFZBTE84MDVj&city=TUxDQ1ZJ0WQ3ZGU4&offset=%d", offset];
-        } else {
-            
-            urlString =[ NSString stringWithFormat: @"https://mobile.mercadolibre.com.ar/sites/MLC/search?category=MLC1480&limit=6&state=TUxDUERFTE9lODZj&city=TUxDQ0NPTjYwZTdk&offset=%d", offset];
-        }
-    }
+   urlString = [NSString stringWithFormat: @"https://mobile.mercadolibre.com.ar/sites/MLC/search?category=%@&limit=100&state=%@", self.busqueda.tipoOperacion , self.busqueda.unidadGeografica.idMeli ];
     urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     NSURL *url = [NSURL URLWithString:urlString];
@@ -129,7 +119,7 @@
     [super viewDidLoad];
     self.navigationItem.hidesBackButton = YES;
     
-    self.title = self.unidadGeografica.nombre ;
+    self.title = self.busqueda.unidadGeografica.nombre ;
     propiedades =  [NSMutableArray new];
     [self cargarTabla:0];
 }

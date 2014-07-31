@@ -12,13 +12,14 @@
 @interface Busqueda : NSObject
 
 @property (nonatomic, strong) UnidadGeografica *unidadGeografica;
-@property TipoOperacion tipoOperacion;
-@property TipoPropiedad tipoPropiedad;
+@property NSString *tipoOperacion;
+@property NSString *tipoPropiedad;
 @property NSInteger rangoPrecioDesde;
 @property NSInteger rangoPrecioHasta;
 @property NSString *rangoSuperficie;
 @property NSInteger cantidadDormitorios;
 @property NSInteger cantidadBaños;
+@property NSInteger tipoMoneda;
 @property BOOL Amoblado;
 
 @end
