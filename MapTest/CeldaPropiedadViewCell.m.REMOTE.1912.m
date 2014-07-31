@@ -14,7 +14,7 @@
 
 @interface CeldaPropiedadViewCell(){
     UIActivityIndicatorView *activity;
-    UIImageView *first;
+    NSDictionary *jsonData;
 }
 @end
 
@@ -42,18 +42,12 @@
 }
 
 -(void)setData:(PropMeli*)data{
-    //remover todo dentro del scrollview
-    for(UIView *subview in [_scrollview subviews]) {
-        [subview removeFromSuperview];
-    }
-
     _propiedad = data;
     
     UIImageView *first = [[UIImageView alloc] init];
     first.frame = CGRectMake(0, 0, 320, 200);
     NSURL *urlImg =[NSURL URLWithString:_propiedad.imagen ];
-    [first setImage:[UIImage imageNamed:@"imagenNoDisponible.jpg"]];
-    [first setImageWithURL:urlImg placeholderImage:[UIImage imageNamed:@"imagenNoDisponible.jpg"]];
+    [first setImageWithURL:urlImg placeholderImage:[UIImage imageNamed:@"ImagenEspera.png"]];
     first.contentMode = UIViewContentModeScaleAspectFill;
     [_scrollview addSubview:first];
     
@@ -78,33 +72,20 @@
     [btnAgregarFavoritos setTintColor: [UIColor whiteColor]];
     [btnAgregarFavoritos addTarget:self action:@selector(toggleUIButtonImage:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:btnAgregarFavoritos];
-
+    
+    
     _lblTitulo.text = _propiedad.title;
     _lblPrecio.text = _propiedad.precio;
-    
-    //recuperando el estado de la celda
-    if(!CGPointEqualToPoint(_propiedad.currentOffset, CGPointZero)){
-        if (_propiedad.imagenes) {
-            [self showSlideShow:_propiedad.imagenes];
-        } else {
-            [self loadSlideShow];
-        }
-    } else {
-        _propiedad.currentOffset = CGPointZero;
-    }
-    [_scrollview setContentOffset:_propiedad.currentOffset];
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-    if (_propiedad.imagenes) {
-        [self showSlideShow:_propiedad.imagenes];
+    NSLog(@"Punto %f", scrollView.contentOffset.x);
+    if (jsonData) {
+        NSArray *items = [jsonData objectForKey:@"pictures"];
+        [self showSlideShow:items];
     } else {
         [self loadSlideShow];
     }
-}
-
--(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    _propiedad.currentOffset = scrollView.contentOffset;    
 }
 
 - (void)showSlideShow:(NSArray *)items{
@@ -112,7 +93,6 @@
     NSLog(@"-------------------------------------");
     for (NSDictionary *obj in items) {
         UIImageView *img = [[UIImageView alloc] init];
-        //NSLog(@"img url %@", [obj objectForKey:@"url"]);
         img.frame = CGRectMake(i*320, 0, 320, 200);
         NSURL *urlImg = [NSURL URLWithString:[obj objectForKey:@"url"]];
         NSLog(@"CARGAR %@", [obj objectForKey:@"url"]);
@@ -135,9 +115,9 @@
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSDictionary *jsonData = (NSDictionary *)responseObject;
-        _propiedad.imagenes = [jsonData objectForKey:@"pictures"];
-        [self showSlideShow:_propiedad.imagenes];
+        jsonData = (NSDictionary *)responseObject;
+        NSArray *items = [jsonData objectForKey:@"pictures"];
+        [self showSlideShow:items];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error cargando JSON"
                                                             message:[error localizedDescription]
@@ -147,6 +127,25 @@
         [alertView show];
     }];
     [operation start];
+    /*
+     NSURL *url = [NSURL URLWithString:urlString];
+     NSURLSession *session = [NSURLSession sharedSession];
+     [[session dataTaskWithURL:url
+     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
+     {
+     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+     if (httpResponse.statusCode == 200)
+     {
+     NSError *jsonError;
+     jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+     if (!jsonError)
+     {
+     NSArray *items = [jsonData objectForKey:@"pictures"];
+     [self showSlideShow:items];
+     }
+     }
+     }] resume];
+     */
 }
 
 -(IBAction) toggleUIButtonImage:(UIButton*)sender{
@@ -163,4 +162,62 @@
         _propiedad.esFavorito = YES;
     }
 }
+
+
+/*
+ if (_propiedad.img != nil) {
+ AlphaGradientView* gradient = [[AlphaGradientView alloc] initWithFrame:
+ CGRectMake(0, 0, self.frame.size.width,
+ self.frame.size.height)];
+ 
+ gradient.color = [UIColor blackColor];
+ gradient.direction = GRADIENT_DOWN;
+ UIColor *background = [[UIColor alloc] initWithPatternImage:_propiedad.img];
+ gradient.backgroundColor = background;
+ [self addSubview:gradient];
+ self.backgroundView = gradient;
+ }
+ else
+ {
+ UIImageView *cbg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"imagenNoDisponible.jpg"]];
+ cbg.image = [UIImage imageNamed:@"imagenNoDisponible.jpg"];
+ self.backgroundView = cbg;
+ [self bajarImagenDesdeUrl:[NSURL URLWithString:_propiedad.imagen] completionBlock:^(BOOL succeeded, UIImage *image) {
+ if (succeeded) {
+ UIImage *miima = [self imageWithImage:image scaledToSize:CGSizeMake(self.frame.size.width, self.frame.size.height)];
+ 
+ _propiedad.img = miima;
+ }
+ }];
+ 
+ }
+ 
+ - (void)bajarImagenDesdeUrl:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock
+ {
+ NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+ [NSURLConnection  sendAsynchronousRequest:request
+ queue:[NSOperationQueue mainQueue]
+ completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+ if ( !error )
+ {
+ UIImage *image = [[UIImage alloc] initWithData:data];
+ completionBlock(YES,image);
+ } else {
+ completionBlock(NO,nil);
+ }
+ }];
+ }
+ 
+ - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+ // UIGraphicsBeginImageContext(newSize);
+ // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
+ // Pass 1.0 to force exact pixel size.
+ UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+ [image drawInRect:CGRectMake(0, 0, 320, 220)];
+ UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+ UIGraphicsEndImageContext();
+ return newImage;
+ }
+ */
+
 @end

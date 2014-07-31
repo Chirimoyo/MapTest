@@ -14,7 +14,11 @@
 
 @interface CeldaPropiedadViewCell(){
     UIActivityIndicatorView *activity;
+<<<<<<< HEAD
     UIImageView *first;
+=======
+    NSDictionary *jsonData;
+>>>>>>> v2
 }
 @end
 
@@ -48,12 +52,19 @@
     }
 
     _propiedad = data;
-    
-    UIImageView *first = [[UIImageView alloc] init];
+<<<<<<< HEAD
+    first = [[UIImageView alloc] init];
     first.frame = CGRectMake(0, 0, 320, 200);
     NSURL *urlImg =[NSURL URLWithString:_propiedad.imagen ];
     [first setImage:[UIImage imageNamed:@"imagenNoDisponible.jpg"]];
     [first setImageWithURL:urlImg placeholderImage:[UIImage imageNamed:@"imagenNoDisponible.jpg"]];
+=======
+    
+    UIImageView *first = [[UIImageView alloc] init];
+    first.frame = CGRectMake(0, 0, 320, 200);
+    NSURL *urlImg =[NSURL URLWithString:_propiedad.imagen ];
+    [first setImageWithURL:urlImg placeholderImage:[UIImage imageNamed:@"ImagenEspera.png"]];
+>>>>>>> v2
     first.contentMode = UIViewContentModeScaleAspectFill;
     [_scrollview addSubview:first];
     
@@ -81,6 +92,7 @@
 
     _lblTitulo.text = _propiedad.title;
     _lblPrecio.text = _propiedad.precio;
+<<<<<<< HEAD
     
     //recuperando el estado de la celda
     if(!CGPointEqualToPoint(_propiedad.currentOffset, CGPointZero)){
@@ -98,14 +110,26 @@
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     if (_propiedad.imagenes) {
         [self showSlideShow:_propiedad.imagenes];
+=======
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    NSLog(@"Punto %f", scrollView.contentOffset.x);
+    if (jsonData) {
+        NSArray *items = [jsonData objectForKey:@"pictures"];
+        [self showSlideShow:items];
+>>>>>>> v2
     } else {
         [self loadSlideShow];
     }
 }
+<<<<<<< HEAD
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     _propiedad.currentOffset = scrollView.contentOffset;    
 }
+=======
+>>>>>>> v2
 
 - (void)showSlideShow:(NSArray *)items{
     int i = 0;
@@ -135,9 +159,15 @@
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+<<<<<<< HEAD
         NSDictionary *jsonData = (NSDictionary *)responseObject;
         _propiedad.imagenes = [jsonData objectForKey:@"pictures"];
         [self showSlideShow:_propiedad.imagenes];
+=======
+        jsonData = (NSDictionary *)responseObject;
+        NSArray *items = [jsonData objectForKey:@"pictures"];
+        [self showSlideShow:items];
+>>>>>>> v2
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error cargando JSON"
                                                             message:[error localizedDescription]
@@ -147,6 +177,28 @@
         [alertView show];
     }];
     [operation start];
+<<<<<<< HEAD
+=======
+    /*
+     NSURL *url = [NSURL URLWithString:urlString];
+     NSURLSession *session = [NSURLSession sharedSession];
+     [[session dataTaskWithURL:url
+     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
+     {
+     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+     if (httpResponse.statusCode == 200)
+     {
+     NSError *jsonError;
+     jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+     if (!jsonError)
+     {
+     NSArray *items = [jsonData objectForKey:@"pictures"];
+     [self showSlideShow:items];
+     }
+     }
+     }] resume];
+     */
+>>>>>>> v2
 }
 
 -(IBAction) toggleUIButtonImage:(UIButton*)sender{
@@ -163,4 +215,65 @@
         _propiedad.esFavorito = YES;
     }
 }
+<<<<<<< HEAD
+=======
+
+
+/*
+ if (_propiedad.img != nil) {
+ AlphaGradientView* gradient = [[AlphaGradientView alloc] initWithFrame:
+ CGRectMake(0, 0, self.frame.size.width,
+ self.frame.size.height)];
+ 
+ gradient.color = [UIColor blackColor];
+ gradient.direction = GRADIENT_DOWN;
+ UIColor *background = [[UIColor alloc] initWithPatternImage:_propiedad.img];
+ gradient.backgroundColor = background;
+ [self addSubview:gradient];
+ self.backgroundView = gradient;
+ }
+ else
+ {
+ UIImageView *cbg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"imagenNoDisponible.jpg"]];
+ cbg.image = [UIImage imageNamed:@"imagenNoDisponible.jpg"];
+ self.backgroundView = cbg;
+ [self bajarImagenDesdeUrl:[NSURL URLWithString:_propiedad.imagen] completionBlock:^(BOOL succeeded, UIImage *image) {
+ if (succeeded) {
+ UIImage *miima = [self imageWithImage:image scaledToSize:CGSizeMake(self.frame.size.width, self.frame.size.height)];
+ 
+ _propiedad.img = miima;
+ }
+ }];
+ 
+ }
+ 
+ - (void)bajarImagenDesdeUrl:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock
+ {
+ NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+ [NSURLConnection  sendAsynchronousRequest:request
+ queue:[NSOperationQueue mainQueue]
+ completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+ if ( !error )
+ {
+ UIImage *image = [[UIImage alloc] initWithData:data];
+ completionBlock(YES,image);
+ } else {
+ completionBlock(NO,nil);
+ }
+ }];
+ }
+ 
+ - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+ // UIGraphicsBeginImageContext(newSize);
+ // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
+ // Pass 1.0 to force exact pixel size.
+ UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+ [image drawInRect:CGRectMake(0, 0, 320, 220)];
+ UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+ UIGraphicsEndImageContext();
+ return newImage;
+ }
+ */
+
+>>>>>>> v2
 @end
