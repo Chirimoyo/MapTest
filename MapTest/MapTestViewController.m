@@ -1502,21 +1502,17 @@ return @"";
         self.vistaResultadoGoogle.hidden = YES;
         tableView.hidden = YES;
         self.vistafiltros.hidden = NO;
+        CGRect frameTextField = CGRectMake(self.input.frame.origin.x, self.input.frame.origin.y, 297, self.input.frame.size.height);
+        self.btnCancelar.hidden = NO;
+        [UIView animateWithDuration:0.1 animations:^{
+            self.input.frame = frameTextField;
+            self.vistaResultadoGoogle.hidden = YES;
+            self.vistafiltros.hidden = NO;
+            [self.input resignFirstResponder];
+        } completion:^(BOOL finished) {
+            
+        }];
     }
-    [self.mapView setHidden: NO];
-    self.vistaResultadoGoogle.hidden = YES;
-    tableView.hidden = YES;
-    self.vistafiltros.hidden = NO;
-    CGRect frameTextField = CGRectMake(self.input.frame.origin.x, self.input.frame.origin.y, 297, self.input.frame.size.height);
-    self.btnCancelar.hidden = NO;
-    [UIView animateWithDuration:0.1 animations:^{
-        self.input.frame = frameTextField;
-        self.vistaResultadoGoogle.hidden = YES;
-        self.vistafiltros.hidden = NO;
-        [self.input resignFirstResponder];
-    } completion:^(BOOL finished) {
-        
-    }];
     
 }
 
