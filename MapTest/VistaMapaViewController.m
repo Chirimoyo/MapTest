@@ -12,8 +12,12 @@
 #import "Busqueda.h"
 #import "AFHTTPRequestOperationManager.h"
 
+#import "UIViewController+ECSlidingViewController.h"
+
 @interface VistaMapaViewController ()
 @property (strong, nonatomic) Busqueda *busqueda;
+@property (nonatomic, strong) UIPanGestureRecognizer *dynamicTransitionPanGesture;
+
 @end
 
 @implementation VistaMapaViewController
@@ -23,6 +27,7 @@
     GMSMarker *currentPositionMarker;
     NSUserDefaults *userDefaults;
 }
+
 @synthesize busqueda;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -298,6 +303,8 @@
     [super viewDidAppear:animated];
 }
 
-
+- (IBAction)fnMenu:(id)sender {
+    [self.slidingViewController anchorTopViewToRightAnimated:YES];
+}
 
 @end

@@ -20,4 +20,6 @@
 - (IBAction)fnCambiarTitulo:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *btnTitulo;
 
+- (IBAction)fnMenu:(id)sender;
+
 @end

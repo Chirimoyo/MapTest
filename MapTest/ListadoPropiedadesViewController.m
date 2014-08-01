@@ -44,7 +44,7 @@
     
    urlString = [NSString stringWithFormat: @"https://mobile.mercadolibre.com.ar/sites/MLC/search?category=%@&limit=100&state=%@", self.busqueda.tipoOperacion , self.busqueda.unidadGeografica.idMeli ];
     urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
+    NSLog(@"------------------- la url es %@", urlString);
     NSURL *url = [NSURL URLWithString:urlString];
     
     NSURLSession *session = [NSURLSession sharedSession];
