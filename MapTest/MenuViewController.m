@@ -7,9 +7,13 @@
 //
 
 #import "MenuViewController.h"
+#import "MenuTableViewCell.h"
+#import "MenuItem.h"
 #import "UIViewController+ECSlidingViewController.h"
 
-@interface MenuViewController ()
+@interface MenuViewController (){
+    NSArray *menuItems;
+}
 @property (nonatomic, strong) UINavigationController *transitionsNavigationController;
 @end
 
@@ -28,7 +32,35 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self loadItems];
     self.transitionsNavigationController = (UINavigationController *)self.slidingViewController.topViewController;
+}
+
+- (void)loadItems{
+    NSArray *seccion1 = @[
+                          [[MenuItem alloc] initWithTitulo:@"Logo" icono:nil id:@"logo"],
+                          [[MenuItem alloc] initWithTitulo:@"Login" icono:nil id:@"login"]
+                        ];
+    NSArray *seccion2 = @[
+                          [[MenuItem alloc] initWithTitulo:@"Buscar" icono:@"buscar.png" id:@"buscar"]
+                          ];
+    NSArray *seccion3 = @[
+                          [[MenuItem alloc] initWithTitulo:@"Mis favoritos" icono:@"favoritos.png" id:@"favoritos"],
+                          [[MenuItem alloc] initWithTitulo:@"Mis búsquedas" icono:@"busquedas.png" id:@"busquedas"],
+                          [[MenuItem alloc] initWithTitulo:@"Mis áreas de interés" icono:@"areas_interes.png" id:@"areas"],
+                          [[MenuItem alloc] initWithTitulo:@"Mis cotizaciones" icono:@"cotizaciones.png" id:@"cotizaciones"]
+                          ];
+    NSArray *seccion4 = @[
+                          [[MenuItem alloc] initWithTitulo:@"Encontrar corredor" icono:@"corredor.png" id:@"corredor"],
+                          [[MenuItem alloc] initWithTitulo:@"Calificar aplicación" icono:@"calificar.png" id:@"calificar"],
+                          [[MenuItem alloc] initWithTitulo:@"Compartir aplicación" icono:@"compartir.png" id:@"compartir"],
+                          [[MenuItem alloc] initWithTitulo:@"Configuración" icono:@"config.png" id:@"configuracion"]
+                          ];
+    menuItems = @[seccion1, seccion2, seccion3, seccion4];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 14.0;
 }
 
 - (void)didReceiveMemoryWarning
@@ -37,6 +69,41 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return menuItems.count;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    NSArray *seccion = menuItems[section];
+    return seccion.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"";
+    if (indexPath.section == 0 && indexPath.row == 0) {
+    //pintamos la celda del logo
+        CellIdentifier = @"celda_logo";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
+        return cell;
+    } else {
+    //pintamos la celda de menu item
+        CellIdentifier = @"celda_boton";
+        MenuTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        
+        if (cell == nil) {
+            cell = [[MenuTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
+        MenuItem *item = menuItems[indexPath.section][indexPath.row];
+        cell.labelTitulo.text = item.titulo;
+        cell.imgLogo.image = [UIImage imageNamed:item.icono];
+        //[cell setData:propiedades[indexPath.row]];
+        return cell;
+    }
+}
 /*
 #pragma mark - Navigation
 

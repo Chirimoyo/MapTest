@@ -9,5 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface MenuItem : NSObject
+@property NSString *titulo;
+@property NSString *icono;
+@property NSString *identificador;
+
+-(id)initWithTitulo:(NSString *)tit icono:(NSString *)icon id:(NSString *)iden;
 
 @end

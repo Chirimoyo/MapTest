@@ -10,4 +10,15 @@
 
 @implementation MenuItem
 
+-(id)initWithTitulo:(NSString *)tit icono:(NSString *)icon id:(NSString *)iden{
+    self = [super init];
+    if(self)
+    {
+        self.titulo = tit;
+        self.icono = icon;
+        self.identificador = iden;
+    }
+    return self;
+}
+
 @end

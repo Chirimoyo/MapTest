@@ -8,7 +8,6 @@
 #import "QuartzCore/QuartzCore.h"
 
 #import "CeldaPropiedadViewCell.h"
-#import "AlphaGradientView.h"
 #import "UIImageView+AFNetworking.h"
 #import "AFHTTPRequestOperation.h"
 
