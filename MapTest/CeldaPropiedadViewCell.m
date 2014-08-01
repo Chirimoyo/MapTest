@@ -49,7 +49,7 @@
 
     _propiedad = data;
     
-    UIImageView *first = [[UIImageView alloc] init];
+    first = [[UIImageView alloc] init];
     first.frame = CGRectMake(0, 0, 320, 200);
     NSURL *urlImg =[NSURL URLWithString:_propiedad.imagen ];
     [first setImage:[UIImage imageNamed:@"imagenNoDisponible.jpg"]];
