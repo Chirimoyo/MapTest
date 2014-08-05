@@ -32,8 +32,16 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self loadItems];
     self.transitionsNavigationController = (UINavigationController *)self.slidingViewController.topViewController;
+    [self loadItems];
+    [_tableview setBackgroundColor:[UIColor blackColor]];
+    [self initSelected];
+}
+
+- (void)initSelected {
+    NSIndexPath *myIP = [NSIndexPath indexPathForRow:0 inSection:1];
+    [_tableview selectRowAtIndexPath:myIP animated:YES  scrollPosition:UITableViewScrollPositionBottom];
+
 }
 
 - (void)loadItems{
@@ -60,7 +68,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 14.0;
+    return 29.0;
 }
 
 - (void)didReceiveMemoryWarning
@@ -88,22 +96,30 @@
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     } else {
     //pintamos la celda de menu item
         CellIdentifier = @"celda_boton";
         MenuTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        
         if (cell == nil) {
             cell = [[MenuTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
         MenuItem *item = menuItems[indexPath.section][indexPath.row];
         cell.labelTitulo.text = item.titulo;
         cell.imgLogo.image = [UIImage imageNamed:item.icono];
-        //[cell setData:propiedades[indexPath.row]];
+        //seteamos el fondo de la celda
+        UIView *bgColorView = [[UIView alloc] init];
+        bgColorView.backgroundColor = [UIColor colorWithRed:0.0/255.0 green:157.0/255.0 blue:218.0/255.0 alpha:1];
+        [cell setSelectedBackgroundView:bgColorView];
         return cell;
     }
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+}
+
 /*
 #pragma mark - Navigation
 
@@ -114,5 +130,17 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 0)
+        return 1.0f;
+    return 0.0f;
+}
+
+- (NSString*) tableView:(UITableView *) tableView titleForHeaderInSection:(NSInteger)section
+{
+    return nil;
+}
 
 @end
