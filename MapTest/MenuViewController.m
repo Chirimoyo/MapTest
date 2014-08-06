@@ -117,7 +117,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    [self performSegueWithIdentifier:@"goHome" sender:self];
 }
 
 /*
