@@ -571,9 +571,6 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Chirimoyos;
 				TargetAttributes = {
-					BF6FF5AE195088DF001905AC = {
-						DevelopmentTeam = EE2JA3GPQ7;
-					};
 					BF6FF5CF195088DF001905AC = {
 						TestTargetID = BF6FF5AE195088DF001905AC;
 					};
